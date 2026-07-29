@@ -1,0 +1,115 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "_comment": "Illustrative Power Automate flow definition (Workflow Definition Language). This is the shape Power Automate exports as definition.json inside a flow package (.zip) — written by hand here since a live Power Platform environment/licence wasn't available to export a real one. It documents exactly how a Teams front-end would call the FastAPI /ask endpoint in rag/api.py. See power_automate/README.md for the full walkthrough and the parts that would need real connector references before deployment.",
+  "triggers": {
+    "When_a_new_message_is_added_to_a_channel": {
+      "type": "ApiConnectionWebhook",
+      "inputs": {
+        "host": {
+          "connectionName": "shared_teams",
+          "operationId": "TeamsWebhookTrigger",
+          "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams"
+        },
+        "parameters": {
+          "channelId": "@triggerBody()?['channelId']",
+          "teamId": "@triggerBody()?['teamId']"
+        }
+      },
+      "_comment": "Alternative trigger for a Copilot Studio topic instead of a raw Teams channel message: swap this for a 'Power Virtual Agents' trigger bound to an 'Ask HR/IT policy question' topic, passing the recognized user utterance as questionText."
+    }
+  },
+  "actions": {
+    "Extract_question_text": {
+      "type": "Compose",
+      "inputs": "@triggerBody()?['messageText']",
+      "runAfter": {}
+    },
+    "Call_RAG_service": {
+      "type": "Http",
+      "inputs": {
+        "method": "POST",
+        "uri": "@parameters('ragServiceBaseUrl')/ask",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "question": "@outputs('Extract_question_text')",
+          "mode": "live"
+        }
+      },
+      "runAfter": {
+        "Extract_question_text": ["Succeeded"]
+      },
+      "_comment": "ragServiceBaseUrl is an environment variable pointing at the deployed rag/api.py service, e.g. an Azure Container App or App Service URL. In this PoC it's http://localhost:8000 for local testing."
+    },
+    "Parse_RAG_response": {
+      "type": "ParseJson",
+      "inputs": {
+        "content": "@body('Call_RAG_service')",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "question": {"type": "string"},
+            "answer": {"type": "string"},
+            "mode_used": {"type": "string"},
+            "grounded": {"type": "boolean"},
+            "citations": {"type": "array", "items": {"type": "string"}}
+          }
+        }
+      },
+      "runAfter": {
+        "Call_RAG_service": ["Succeeded"]
+      }
+    },
+    "Build_adaptive_card": {
+      "type": "Compose",
+      "inputs": {
+        "type": "AdaptiveCard",
+        "version": "1.4",
+        "body": [
+          {
+            "type": "TextBlock",
+            "text": "@body('Parse_RAG_response')?['answer']",
+            "wrap": true
+          },
+          {
+            "type": "TextBlock",
+            "text": "Sources: @{join(body('Parse_RAG_response')?['citations'], ', ')}",
+            "isSubtle": true,
+            "wrap": true,
+            "size": "Small"
+          }
+        ]
+      },
+      "runAfter": {
+        "Parse_RAG_response": ["Succeeded"]
+      }
+    },
+    "Post_adaptive_card_reply_to_Teams": {
+      "type": "ApiConnection",
+      "inputs": {
+        "host": {
+          "connectionName": "shared_teams",
+          "operationId": "PostCardAsReplyToTeams",
+          "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams"
+        },
+        "parameters": {
+          "channelId": "@triggerBody()?['channelId']",
+          "teamId": "@triggerBody()?['teamId']",
+          "replyToId": "@triggerBody()?['messageId']",
+          "card": "@outputs('Build_adaptive_card')"
+        }
+      },
+      "runAfter": {
+        "Build_adaptive_card": ["Succeeded"]
+      }
+    }
+  },
+  "parameters": {
+    "ragServiceBaseUrl": {
+      "type": "string",
+      "defaultValue": "http://localhost:8000"
+    }
+  }
+}

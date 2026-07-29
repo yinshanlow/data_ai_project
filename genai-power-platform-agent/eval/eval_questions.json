@@ -1,0 +1,144 @@
+[
+  {
+    "id": 1,
+    "question": "How many days of annual leave am I entitled to in my first two years?",
+    "expected_source": "leave_policy.md",
+    "expected_keywords": ["18", "days"],
+    "in_scope": true
+  },
+  {
+    "id": 2,
+    "question": "How far in advance do I need to submit a leave request for a 5-day holiday?",
+    "expected_source": "leave_policy.md",
+    "expected_keywords": ["10", "working days"],
+    "in_scope": true
+  },
+  {
+    "id": 3,
+    "question": "How many unused annual leave days can I carry into next year?",
+    "expected_source": "leave_policy.md",
+    "expected_keywords": ["5", "carry"],
+    "in_scope": true
+  },
+  {
+    "id": 4,
+    "question": "What is the deadline for submitting an expense claim after I incur the cost?",
+    "expected_source": "expense_claims_policy.md",
+    "expected_keywords": ["30 days"],
+    "in_scope": true
+  },
+  {
+    "id": 5,
+    "question": "Can I claim alcohol on my expenses?",
+    "expected_source": "expense_claims_policy.md",
+    "expected_keywords": ["alcohol"],
+    "in_scope": true
+  },
+  {
+    "id": 6,
+    "question": "How long does it take to get reimbursed after my expense claim is approved?",
+    "expected_source": "expense_claims_policy.md",
+    "expected_keywords": ["10 working days", "payroll"],
+    "in_scope": true
+  },
+  {
+    "id": 7,
+    "question": "What happens if I lose my company laptop?",
+    "expected_source": "it_equipment_request_policy.md",
+    "expected_keywords": ["24 hours", "report"],
+    "in_scope": true
+  },
+  {
+    "id": 8,
+    "question": "How often is my work laptop refreshed?",
+    "expected_source": "it_equipment_request_policy.md",
+    "expected_keywords": ["3 years"],
+    "in_scope": true
+  },
+  {
+    "id": 9,
+    "question": "How many days a week do I need to be in the office under the hybrid policy?",
+    "expected_source": "remote_work_policy.md",
+    "expected_keywords": ["3 days", "office"],
+    "in_scope": true
+  },
+  {
+    "id": 10,
+    "question": "Am I eligible for hybrid work while I'm still on probation?",
+    "expected_source": "remote_work_policy.md",
+    "expected_keywords": ["probation", "on-site"],
+    "in_scope": true
+  },
+  {
+    "id": 11,
+    "question": "How long is the probation period for a new hire?",
+    "expected_source": "new_hire_onboarding_policy.md",
+    "expected_keywords": ["3-month", "3 month"],
+    "in_scope": true
+  },
+  {
+    "id": 12,
+    "question": "What mandatory training do I need to finish in my first week?",
+    "expected_source": "new_hire_onboarding_policy.md",
+    "expected_keywords": ["compliance training"],
+    "in_scope": true
+  },
+  {
+    "id": 13,
+    "question": "How often do I need to change my corporate account password?",
+    "expected_source": "password_and_account_security_policy.md",
+    "expected_keywords": ["90 days"],
+    "in_scope": true
+  },
+  {
+    "id": 14,
+    "question": "Who do I report a suspected phishing email to?",
+    "expected_source": "password_and_account_security_policy.md",
+    "expected_keywords": ["IT Security"],
+    "in_scope": true
+  },
+  {
+    "id": 15,
+    "question": "What class of flight can I book for a 10-hour international trip if I'm a manager?",
+    "expected_source": "business_travel_policy.md",
+    "expected_keywords": ["Premium economy"],
+    "in_scope": true
+  },
+  {
+    "id": 16,
+    "question": "How many performance review cycles happen per year and when?",
+    "expected_source": "performance_review_policy.md",
+    "expected_keywords": ["mid-year", "year-end"],
+    "in_scope": true
+  },
+  {
+    "id": 17,
+    "question": "How many weeks of paid maternity leave do I get?",
+    "expected_source": "parental_leave_policy.md",
+    "expected_keywords": ["16 weeks"],
+    "in_scope": true
+  },
+  {
+    "id": 18,
+    "question": "Can I raise a workplace harassment concern anonymously?",
+    "expected_source": "workplace_conduct_and_grievance_policy.md",
+    "expected_keywords": ["Ethics Hotline", "anonymously"],
+    "in_scope": true
+  },
+  {
+    "id": 19,
+    "question": "What is the company's reimbursement policy for leasing a personal car in Jakarta?",
+    "expected_source": null,
+    "expected_keywords": [],
+    "in_scope": false,
+    "note": "Deliberately out-of-scope: no policy document covers personal vehicle leases. The correct behavior is the not-found fallback, not a fabricated answer built from the Business Travel or Expense Claims policies."
+  },
+  {
+    "id": 20,
+    "question": "What's Meridian Holdings' stock buyback policy for shareholders?",
+    "expected_source": null,
+    "expected_keywords": [],
+    "in_scope": false,
+    "note": "Deliberately out-of-scope: this is an investor-relations topic, not an HR/IT policy, and isn't in the corpus at all."
+  }
+]

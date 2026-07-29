@@ -1,0 +1,8 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+data/chroma_db/
+eval/eval_run_output.json
+.DS_Store
