@@ -6,6 +6,16 @@ Run with:
 import sys
 from pathlib import Path
 
+try:
+    # Streamlit Community Cloud's base image ships a system sqlite3 older than
+    # the 3.35+ Chroma requires. pysqlite3-binary bundles a modern sqlite build;
+    # swap it in for the stdlib module before chromadb gets imported anywhere.
+    # Harmless no-op on machines (like local dev) with an already-current sqlite3.
+    __import__("pysqlite3")
+    sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")
+except ImportError:
+    pass
+
 import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
