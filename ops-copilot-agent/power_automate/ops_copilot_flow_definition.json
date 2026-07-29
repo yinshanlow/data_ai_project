@@ -1,0 +1,125 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "_comment": "Illustrative Power Automate flow definition, same status as genai-power-platform-agent's stub: hand-written in the real Workflow Definition Language shape, not exported from a live Power Platform environment (none available for this project). The point of this one is that it's the SAME integration pattern as Project 2's flow, now fronting a copilot that spans two backend domains instead of one — proving the FastAPI-service-as-integration-point pattern actually reuses cleanly.",
+  "triggers": {
+    "When_a_new_message_is_added_to_a_channel": {
+      "type": "ApiConnectionWebhook",
+      "inputs": {
+        "host": {
+          "connectionName": "shared_teams",
+          "operationId": "TeamsWebhookTrigger",
+          "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams"
+        },
+        "parameters": {
+          "channelId": "@triggerBody()?['channelId']",
+          "teamId": "@triggerBody()?['teamId']"
+        }
+      },
+      "_comment": "As with Project 2, a Copilot Studio topic trigger is a drop-in alternative to this raw Teams channel trigger — the rest of the flow is unchanged either way."
+    }
+  },
+  "actions": {
+    "Extract_question_text": {
+      "type": "Compose",
+      "inputs": "@triggerBody()?['messageText']",
+      "runAfter": {}
+    },
+    "Call_Ops_Copilot_service": {
+      "type": "Http",
+      "inputs": {
+        "method": "POST",
+        "uri": "@parameters('opsCopilotServiceBaseUrl')/ask",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "question": "@outputs('Extract_question_text')",
+          "mode": "live"
+        }
+      },
+      "runAfter": {
+        "Extract_question_text": ["Succeeded"]
+      },
+      "_comment": "opsCopilotServiceBaseUrl points at orchestrator/api.py (uvicorn orchestrator.api:app --port 8100). Unlike Project 2's flow, the caller here doesn't need to know or care whether the question ends up routed to the HR/IT policy tool, the analytics tools, or both — that decision happens inside the copilot."
+    },
+    "Parse_Copilot_response": {
+      "type": "ParseJson",
+      "inputs": {
+        "content": "@body('Call_Ops_Copilot_service')",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "question": {"type": "string"},
+            "answer": {"type": "string"},
+            "mode_used": {"type": "string"},
+            "handled": {"type": "boolean"},
+            "tool_calls": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "tool": {"type": "string"},
+                  "input": {"type": "object"},
+                  "output": {"type": "object"}
+                }
+              }
+            }
+          }
+        }
+      },
+      "runAfter": {
+        "Call_Ops_Copilot_service": ["Succeeded"]
+      }
+    },
+    "Build_adaptive_card": {
+      "type": "Compose",
+      "inputs": {
+        "type": "AdaptiveCard",
+        "version": "1.4",
+        "body": [
+          {
+            "type": "TextBlock",
+            "text": "@body('Parse_Copilot_response')?['answer']",
+            "wrap": true
+          },
+          {
+            "type": "TextBlock",
+            "text": "Handled by: @{join(select(body('Parse_Copilot_response')?['tool_calls'], item(), item()?['tool']), ', ')}",
+            "isSubtle": true,
+            "wrap": true,
+            "size": "Small"
+          }
+        ]
+      },
+      "runAfter": {
+        "Parse_Copilot_response": ["Succeeded"]
+      }
+    },
+    "Post_adaptive_card_reply_to_Teams": {
+      "type": "ApiConnection",
+      "inputs": {
+        "host": {
+          "connectionName": "shared_teams",
+          "operationId": "PostCardAsReplyToTeams",
+          "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams"
+        },
+        "parameters": {
+          "channelId": "@triggerBody()?['channelId']",
+          "teamId": "@triggerBody()?['teamId']",
+          "replyToId": "@triggerBody()?['messageId']",
+          "card": "@outputs('Build_adaptive_card')"
+        }
+      },
+      "runAfter": {
+        "Build_adaptive_card": ["Succeeded"]
+      }
+    }
+  },
+  "parameters": {
+    "opsCopilotServiceBaseUrl": {
+      "type": "string",
+      "defaultValue": "http://localhost:8100"
+    }
+  }
+}

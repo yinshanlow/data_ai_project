@@ -1,0 +1,149 @@
+[
+  {
+    "id": 1,
+    "category": "hr_it",
+    "question": "How many days of annual leave do I get?",
+    "expected_tools": ["ask_hr_it_policy"],
+    "must_contain": ["18 days"]
+  },
+  {
+    "id": 2,
+    "category": "hr_it",
+    "question": "How long do I have to submit an expense claim?",
+    "expected_tools": ["ask_hr_it_policy"],
+    "must_contain": ["30 days"]
+  },
+  {
+    "id": 3,
+    "category": "hr_it",
+    "question": "What happens if I lose my company laptop?",
+    "expected_tools": ["ask_hr_it_policy"],
+    "must_contain": ["24 hours"]
+  },
+  {
+    "id": 4,
+    "category": "hr_it",
+    "question": "How many weeks of maternity leave do I get?",
+    "expected_tools": ["ask_hr_it_policy"],
+    "must_contain": ["16 weeks"]
+  },
+  {
+    "id": 5,
+    "category": "hr_it",
+    "question": "How often do I need to change my corporate password?",
+    "expected_tools": ["ask_hr_it_policy"],
+    "must_contain": ["90 days"]
+  },
+  {
+    "id": 6,
+    "category": "hr_it",
+    "question": "How many days a week do I need to be in the office?",
+    "expected_tools": ["ask_hr_it_policy"],
+    "must_contain": ["3 days"]
+  },
+  {
+    "id": 7,
+    "category": "customer_lookup",
+    "question": "What is the churn risk for customer CUST100000?",
+    "expected_tools": ["get_customer_churn_risk"],
+    "must_contain": ["CUST100000", "Medium"]
+  },
+  {
+    "id": 8,
+    "category": "customer_lookup",
+    "question": "Can you look up CUST100005 and tell me their churn probability?",
+    "expected_tools": ["get_customer_churn_risk"],
+    "must_contain": ["CUST100005", "High"]
+  },
+  {
+    "id": 9,
+    "category": "customer_lookup",
+    "question": "Is CUST100004 at risk of churning?",
+    "expected_tools": ["get_customer_churn_risk"],
+    "must_contain": ["CUST100004", "Low"]
+  },
+  {
+    "id": 10,
+    "category": "invalid_customer",
+    "question": "What's the churn risk for customer CUST999999?",
+    "expected_tools": ["get_customer_churn_risk"],
+    "must_contain": ["no customer found"],
+    "must_not_contain": ["Medium", "High", "Low"],
+    "note": "CUST999999 doesn't exist. Correct behavior is an explicit not-found message, not a fabricated risk band."
+  },
+  {
+    "id": 11,
+    "category": "country_kpi",
+    "question": "Give me the customer KPIs for Singapore.",
+    "expected_tools": ["get_country_kpis"],
+    "must_contain": ["Singapore", "customers"]
+  },
+  {
+    "id": 12,
+    "category": "country_kpi",
+    "question": "How many high-risk customers do we have in Malaysia?",
+    "expected_tools": ["get_country_kpis"],
+    "must_contain": ["Malaysia"]
+  },
+  {
+    "id": 13,
+    "category": "country_kpi",
+    "question": "What's our total revenue from Indonesia?",
+    "expected_tools": ["get_country_kpis"],
+    "must_contain": ["Indonesia"]
+  },
+  {
+    "id": 14,
+    "category": "churn_drivers",
+    "question": "Why are customers churning?",
+    "expected_tools": ["get_churn_risk_drivers"],
+    "must_contain": ["frequency"]
+  },
+  {
+    "id": 15,
+    "category": "churn_drivers",
+    "question": "How accurate is the churn model?",
+    "expected_tools": ["get_churn_risk_drivers"],
+    "must_contain": ["accuracy"]
+  },
+  {
+    "id": 16,
+    "category": "out_of_scope",
+    "question": "What's the weather like in Singapore today?",
+    "expected_tools": [],
+    "must_contain": [],
+    "note": "Weather has nothing to do with either HR/IT policy or RetailPulse customer analytics."
+  },
+  {
+    "id": 17,
+    "category": "out_of_scope",
+    "question": "What's Meridian Holdings' stock buyback policy for shareholders?",
+    "expected_tools": [],
+    "must_contain": [],
+    "note": "Same deliberately out-of-scope question as Project 2's eval set, now testing the orchestrator's own judgment rather than just the RAG pipeline's distance gate."
+  },
+  {
+    "id": 18,
+    "category": "compound",
+    "question": "How many days of annual leave do I get, and what's the churn risk for CUST100000?",
+    "expected_tools": ["ask_hr_it_policy", "get_customer_churn_risk"],
+    "must_contain": ["18 days", "CUST100000"],
+    "note": "Deliberately compound: needs BOTH tools. See README honest failure case for how each mode handles this."
+  },
+  {
+    "id": 19,
+    "category": "compound",
+    "question": "What's our remote work policy, and how many customers do we have in Malaysia?",
+    "expected_tools": ["ask_hr_it_policy", "get_country_kpis"],
+    "must_contain": ["3 days", "Malaysia"],
+    "note": "Second compound question, different tool pair, to avoid drawing a conclusion from a single example."
+  },
+  {
+    "id": 20,
+    "category": "ambiguous",
+    "question": "Tell me about our onboarding numbers and process.",
+    "expected_tools": ["ask_hr_it_policy"],
+    "must_contain": [],
+    "note": "Ambiguous on purpose: 'onboarding numbers' sounds like it could be an analytics question (customer/employee onboarding counts) but RetailPulse's analytics tools only cover customer churn data, not headcount — the only real answer lives in the onboarding policy doc. Tests whether the router over-reaches into analytics when there's no matching tool."
+  }
+]
