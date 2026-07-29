@@ -59,13 +59,20 @@ collapsing three different analytics lookups behind one dispatcher — Claude's
 native tool selection *is* the router, so there's no reason to build a second,
 hidden router inside a single "analytics" tool.
 
-**The HR/IT policy tool is an HTTP call to Project 2's actual FastAPI service, not a
-Python import of its internals.** Project 2's `rag/api.py` was built specifically so
-more than one caller could reuse it (that was the whole premise of its Power Automate
-stub). This project is the second real caller — proof that the service boundary
-was worth building, not just decoration. The trade-off: local testing needs Project
-2's service running as well (see Quick start below), which is a bit more operational
-overhead than a single-process demo, but it's the architecturally honest choice.
+**The HR/IT policy tool prefers an HTTP call to Project 2's actual FastAPI service,
+with an embedded fallback.** Project 2's `rag/api.py` was built specifically so more
+than one caller could reuse it (that was the whole premise of its Power Automate
+stub) — this project is the second real caller, and calling it over HTTP when it's
+running is proof that service boundary was worth building, not just decoration. But
+Streamlit Community Cloud only runs one process per app, so there's no way to also
+run Project 2's service alongside this one when hosted. Rather than ship a hosted
+demo where every HR/IT question silently fails, `tools/policy.py` checks whether the
+HTTP service is reachable and, if not, falls back to importing Project 2's RAG
+pipeline directly in the same process — both projects live in the same repo, so its
+code and policy documents are physically present wherever this one is. Local
+multi-service development still prefers HTTP (see Quick start below); the fallback is
+a deliberate, documented adaptation to a single-process hosting constraint, not a
+silent reversal of the design.
 
 **Analytics tools are a small fixed set of typed functions, not open text-to-SQL.**
 Same reasoning as Project 2's grounding gate: an LLM (or a mock-mode regex) freely
@@ -77,10 +84,12 @@ for a project this size. `get_customer_churn_risk`, `get_country_kpis`, and
 
 ## Quick start (no API key needed)
 
-This needs **two services running** — that's the cost of the HTTP-reuse design above.
+This runs standalone — the embedded fallback described above means you don't strictly
+need Project 2's service running. But running both is the more realistic architecture
+to actually demo (a real HTTP call between two services, not an in-process shortcut):
 
 ```bash
-# Terminal 1 — Project 2's policy service (already built, being reused here)
+# Terminal 1 — Project 2's policy service (optional but recommended)
 cd genai-power-platform-agent
 source .venv/bin/activate            # see that project's README to set it up first
 uvicorn rag.api:app --port 8000
@@ -94,8 +103,10 @@ python -m eval.run_eval              # runs the 20-question eval set, mock mode,
 streamlit run app/streamlit_app.py
 ```
 
-Everything above runs in **mock mode** by default — a rule-based keyword router with
-zero API calls and zero cost, same zero-cost-by-default philosophy as Project 2.
+If you skip Terminal 1, everything still works — the sidebar will show the embedded
+fallback is active instead of a connected HTTP service. Everything above runs in
+**mock mode** by default — a rule-based keyword router with zero API calls and zero
+cost, same zero-cost-by-default philosophy as Project 2.
 
 ### Enabling live mode (optional)
 

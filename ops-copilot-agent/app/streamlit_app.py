@@ -6,6 +6,15 @@ Run with:
 import sys
 from pathlib import Path
 
+try:
+    # Same Streamlit Community Cloud sqlite3 fix as genai-power-platform-agent —
+    # needed here too because tools/policy.py's embedded fallback imports chromadb
+    # when Project 2's HTTP service isn't reachable (always true when hosted).
+    __import__("pysqlite3")
+    sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")
+except ImportError:
+    pass
+
 import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -48,9 +57,10 @@ with st.sidebar:
     if policy_service_healthy():
         st.success(f"Connected: {POLICY_SERVICE_URL}")
     else:
-        st.error(
-            f"Unreachable at {POLICY_SERVICE_URL}. HR/IT questions will fail until it's started:\n\n"
-            "`cd ../genai-power-platform-agent && uvicorn rag.api:app --port 8000`"
+        st.info(
+            f"No HTTP service at {POLICY_SERVICE_URL} — using the embedded RAG pipeline "
+            "fallback instead (same underlying code, just in-process). For local multi-service "
+            "dev: `cd ../genai-power-platform-agent && uvicorn rag.api:app --port 8000`"
         )
 
     st.subheader("Tools available")
