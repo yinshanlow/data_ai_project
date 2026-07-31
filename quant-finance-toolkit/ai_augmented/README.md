@@ -1,16 +1,15 @@
 # Part E — AI-Augmented Quant Research (the differentiator)
 
-This module exists because of a specific piece of 2026 Singapore/APAC hiring
-research: the most differentiated and best-paid quant profile isn't "does
-classical derivatives math well" — that's a crowded field of math-PhD
-candidates — it's candidates who **combine AI/ML engineering with quant
-rigor**, because systematic trading firms are actively building in-house AI
-capability for signal generation, model interpretability, and risk tooling.
-Parts A-D of this toolkit prove classical quant fundamentals; this part
-proves the AI-engineering half of that combination, on the same real market
-data pipeline built for Part D.
+Classical derivatives math is table stakes in quant research — this module
+exists because the more differentiated, complementary skillset is combining
+**AI/ML engineering with quant rigor**. Systematic trading firms are
+increasingly building in-house AI capability for signal generation, model
+interpretability, and risk tooling, and that combination is rarer than
+strong classical math alone. Parts A-D of this toolkit prove classical quant
+fundamentals; this part proves the AI-engineering half of that combination,
+on the same real market data pipeline built for Part D.
 
-Three pieces, each targeting a specific line from that hiring research:
+Three pieces, each targeting a specific capability:
 
 | Sub-module | Targets |
 |---|---|

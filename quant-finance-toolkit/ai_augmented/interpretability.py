@@ -1,8 +1,8 @@
 """SHAP-based interpretability for both AI-augmented models in this module:
 the return-signal XGBoost model (signal_model.py) and the volatility-forecast
-XGBoost model (risk_model.py). Directly targets "model interpretability" as
-named in the 2026 hiring research this project is built against — a systematic
-trading or risk desk cannot deploy a model it can't explain.
+XGBoost model (risk_model.py). A systematic trading or risk desk cannot
+deploy a model it can't explain, which is what makes interpretability a
+first-class requirement here rather than an afterthought.
 """
 from dataclasses import dataclass
 

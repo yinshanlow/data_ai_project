@@ -1,9 +1,9 @@
 # Quant Finance Toolkit
 
 A derivatives pricing, portfolio risk, and AI-augmented research toolkit,
-built the way a Quant Analyst/Researcher candidate would demonstrate both
-classical quant fundamentals and the AI-engineering skillset that's
-increasingly differentiating candidates in the 2026 Singapore/APAC market.
+built to demonstrate both classical quantitative finance fundamentals and
+the AI/ML engineering skillset that increasingly complements them in modern
+quant research and trading teams.
 
 Sibling repo to [`quant-research-lab`](../quant-research-lab) (a
 falsification-first systematic strategy research repo — walk-forward
@@ -16,19 +16,19 @@ scope, same standard of honesty about what actually works.
 
 ## Why this exists
 
-Two pieces of research shaped this repo directly:
+Two considerations shaped this repo directly:
 
-1. **Real job requirements.** BNP Paribas's Quantitative Research Graduate
-   Programme and JPMorgan's Quantitative Analytics Program both name options
-   pricing theory, PDEs, numerical methods, stochastic calculus, and C++
-   explicitly. Part A and Part F exist specifically to demonstrate those.
-2. **2026 hiring research.** The most differentiated, best-paid profile in
-   this market isn't "does classical derivatives math well" — that's a
-   crowded field of math-PhD candidates — it's candidates who **combine
-   AI/ML engineering with quant rigor**, because systematic firms are
-   actively building in-house AI capability for signal generation, model
-   interpretability, and risk tooling. Part E is not bonus content; it's the
-   part that makes this a distinct portfolio rather than a generic
+1. **Core quantitative finance competency.** Options pricing theory, PDEs,
+   numerical methods, and stochastic calculus are the foundation of
+   quantitative research and analytics work, and C++ remains the standard
+   for performance-critical pricing and risk infrastructure. Part A and
+   Part F exist specifically to demonstrate those fundamentals solidly.
+2. **AI/ML as a genuine differentiator, not bonus content.** Systematic
+   trading and research desks are increasingly building in-house AI
+   capability for signal generation, model interpretability, and risk
+   tooling — a skillset that's rarer among candidates with strong classical
+   derivatives math alone. Part E treats that combination as core to this
+   toolkit, not an afterthought, which is what separates it from a generic
    derivatives-pricing course repo.
 
 ## Structure and status
@@ -44,11 +44,11 @@ Two pieces of research shaped this repo directly:
 
 All six parts are complete, tested, and cross-validated against each other.
 
-Built in that order deliberately — Part A is the most directly job-relevant
-and comes first; Part D reuses the statistical-validation muscle already
-built for `quant-research-lab`; Part E is the differentiator and is treated
-as core, not "if there's time." Parts B, F, and C add depth and breadth on
-top of a foundation that's already solid, tested, and documented.
+Built in that order deliberately — Part A is the most foundational and
+comes first; Part D reuses the statistical-validation muscle already built
+for `quant-research-lab`; Part E is treated as core, not "if there's time."
+Parts B, F, and C add depth and breadth on top of a foundation that's
+already solid, tested, and documented.
 
 ## The cross-module narrative
 
@@ -119,18 +119,18 @@ python -m pytest tests/ -v
 Each module's own README (linked in the table above) has the full detail:
 the model, its assumptions, a worked example, and where it breaks down.
 
-## Mapping this repo to what employers actually ask for
+## Skills demonstrated
 
-| Job requirement (from real postings) | Where it's shown here |
+| Core competency | Where it's shown here |
 |---|---|
-| "Options pricing theory, numerical methods (trees, PDE, Monte Carlo)" — BNP Paribas Quant Research Graduate Programme | `pricing/` — five independent pricing methods, cross-validated against each other |
-| "Stochastic calculus, PDEs" — BNP/JPMorgan quant programs | `pricing/pde_solver.py` (Crank-Nicolson), `advanced_models/` (Heston SDEs, Merton jump-diffusion) |
-| "C++" — named explicitly in both programs | `perf/` — the Part A Monte Carlo kernel rewritten in C++ (single- and multi-threaded) via pybind11, benchmarked against Python with an honest result |
-| "Risk management, VaR, portfolio construction" | `risk/` — Markowitz optimization, three VaR methods with a real Kupiec backtest, CVaR, stress testing |
-| "AI/ML engineering + quant rigor" — 2026 APAC hiring research, the differentiator | `ai_augmented/` — ML signal generation (honestly benchmarked against a baseline), SHAP interpretability on two different models, an LLM research assistant with documented failure modes |
-| "Model interpretability" — named directly in 2026 hiring research | `ai_augmented/interpretability.py` — SHAP applied to both the signal model and a purpose-built risk (volatility) model |
-| "Ability to validate and stress-test models rigorously" | `risk/var.py`'s Kupiec backtest; `quant-research-lab`'s walk-forward validation and permutation tests (sibling repo) |
-| "Fixed income, rates" | `fixed_income/` — bond risk metrics, yield curve bootstrapping, Vasicek short-rate model |
+| Options pricing theory, numerical methods (trees, PDE, Monte Carlo) | `pricing/` — five independent pricing methods, cross-validated against each other |
+| Stochastic calculus, PDEs | `pricing/pde_solver.py` (Crank-Nicolson), `advanced_models/` (Heston SDEs, Merton jump-diffusion) |
+| C++ for performance-critical pricing infrastructure | `perf/` — the Part A Monte Carlo kernel rewritten in C++ (single- and multi-threaded) via pybind11, benchmarked against Python with an honest result |
+| Risk management, VaR, portfolio construction | `risk/` — Markowitz optimization, three VaR methods with a real Kupiec backtest, CVaR, stress testing |
+| AI/ML engineering applied to quant research | `ai_augmented/` — ML signal generation (honestly benchmarked against a baseline), SHAP interpretability on two different models, an LLM research assistant with documented failure modes |
+| Model interpretability | `ai_augmented/interpretability.py` — SHAP applied to both the signal model and a purpose-built risk (volatility) model |
+| Ability to validate and stress-test models rigorously | `risk/var.py`'s Kupiec backtest; `quant-research-lab`'s walk-forward validation and permutation tests (sibling repo) |
+| Fixed income, rates | `fixed_income/` — bond risk metrics, yield curve bootstrapping, Vasicek short-rate model |
 
 ## Disclaimer
 

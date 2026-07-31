@@ -56,11 +56,9 @@ with tabs[0]:
     st.header("Why this toolkit is built the way it is")
     st.markdown(
         """
-Built against two things: **real job requirements** from BNP Paribas's Quantitative Research
-Graduate Programme and JPMorgan's Quantitative Analytics Program (options pricing, PDEs,
-stochastic calculus, C++), and **2026 Singapore/APAC hiring research** showing the most
-differentiated quant profile combines AI/ML engineering with quant rigor — not just classical
-derivatives math.
+Built to demonstrate two things together: **core quantitative finance fundamentals** (options
+pricing, PDEs, stochastic calculus, C++) and **AI/ML engineering applied to quant research** —
+increasingly the more differentiated combination, not just classical derivatives math on its own.
 
 Every module cross-validates against another and states where the simpler model breaks down —
 not just in the READMEs, but with a real number or plot proving it. A few highlights:
