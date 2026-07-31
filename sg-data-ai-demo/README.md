@@ -5,11 +5,10 @@ Engineer would scope and deliver a first demo for a prospective client:
 synthetic dataset → PySpark ETL → churn-risk ML model → an interactive
 dashboard you can present live.
 
-**Why this project exists:** Singapore's data-AI presales postings (Azendian,
-NTT DATA, Accenture, Databricks) consistently ask for the same thing — SQL/Python,
-a modern data platform (Spark/Databricks), ML fundamentals, and *the ability to
-build a PoC and present it to both business and technical audiences*. This repo
-is that PoC.
+**Why this project exists:** Data & AI presales and solutions engineering roles
+consistently call for the same core skillset — SQL/Python, a modern data
+platform (Spark/Databricks), ML fundamentals, and *the ability to build a PoC
+and present it to both business and technical audiences*. This repo is that PoC.
 
 ---
 
@@ -103,14 +102,14 @@ and reason about a leakage bug, not just run `.fit()`.
 
 ---
 
-## Mapping this project to what employers actually ask for
+## Skills demonstrated
 
-| Job requirement (from real SG postings) | Where it's shown here |
+| Core competency | Where it's shown here |
 |---|---|
-| "SQL, Python for statistical programming, data visualisation, machine learning" — Azendian Presales Solutions Engineer | `ml/train_churn_model.py`, `dashboard/app.py` |
-| "Hands-on experience with modern data/AI platforms (Databricks, Snowflake)" — NTT DATA Presales Architect | `etl/transform_pyspark.py` |
-| "Ability to build PoCs and present to business and technical audiences" — multiple postings | `dashboard/app.py` + the demo script below |
-| "Deep AI/ML and data-analytics-platform expertise" — Accenture AI & Data Pre-Sales | Feature engineering + churn model + leakage fix write-up |
+| SQL, Python for statistical programming, data visualisation, machine learning | `ml/train_churn_model.py`, `dashboard/app.py` |
+| Hands-on experience with modern data/AI platforms (Databricks, Snowflake) | `etl/transform_pyspark.py` |
+| Ability to build PoCs and present to business and technical audiences | `dashboard/app.py` + the demo script below |
+| Deep AI/ML and data-analytics-platform expertise | Feature engineering + churn model + leakage fix write-up |
 
 ---
 

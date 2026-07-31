@@ -8,14 +8,13 @@ build a RAG chatbot *and* knows how it actually reaches an employee through Team
 Copilot Studio in a real enterprise rollout."**
 
 **Why this project exists:** this is the second of two portfolio projects built for
-Singapore Data & AI Presales / Solutions Engineer applications. The first
+Data & AI Presales / Solutions Engineer applications. The first
 ([`sg-data-ai-demo`](../sg-data-ai-demo)) covers the SQL/Python/ML/dashboard baseline
-that shows up in nearly every relevant posting (Azendian, NTT DATA, Accenture,
-Databricks). This one targets the newer, faster-growing line item in the same
-postings: GenAI/LLM skills combined with Microsoft Copilot/Power Platform integration
-— a combination that's rare precisely because most candidates have one side or the
-other, not both. The candidate's real Power Platform delivery background (Job
-Movement Platform, Employee Verification Application, HR workflow automation at
+that's foundational to that role. This one targets a faster-growing, complementary
+skillset: GenAI/LLM capability combined with Microsoft Copilot/Power Platform
+integration — a combination that's rare precisely because most candidates have one
+side or the other, not both. The candidate's real Power Platform delivery background
+(Job Movement Platform, Employee Verification Application, HR workflow automation at
 Teleperformance) is what makes the Power Automate half of this credible rather than
 decorative.
 
@@ -69,7 +68,7 @@ Two things worth noting about this diagram versus a typical RAG tutorial:
 
 | Component | Choice | Why |
 |---|---|---|
-| Orchestration | **LangChain** (not LlamaIndex) | Both are fine choices for this scale of project. LangChain was picked because its `Chroma`/text-splitter/embeddings integrations are slightly more battle-tested for a "local, no-cloud-dependency" setup, and because LangChain shows up more often by name in the SG job postings this project maps against (see table below) — worth being fluent in the tool that's actually asked for. |
+| Orchestration | **LangChain** (not LlamaIndex) | Both are fine choices for this scale of project. LangChain was picked because its `Chroma`/text-splitter/embeddings integrations are slightly more battle-tested for a "local, no-cloud-dependency" setup, and it's one of the more widely-used orchestration frameworks worth being fluent in. |
 | Vector store | **Chroma** | Runs embedded/local with zero external service — no hosted vector DB account needed to run this demo. |
 | Embeddings | **sentence-transformers (`all-MiniLM-L6-v2`)** | Free, local, no API key. This is the thing that makes the whole pipeline testable with **zero cost and zero signup** — a deliberate requirement from the project spec. |
 | Generation (mock) | Extractive, no LLM call | Default mode. Quotes retrieved chunks directly rather than paraphrasing them, so there's no risk of the "generation" step introducing an unsupported claim. |
@@ -210,15 +209,15 @@ one component that is real and runnable is the FastAPI service itself.
 
 ---
 
-## Mapping this project to what employers actually ask for
+## Skills demonstrated
 
-| Job requirement (from real SG postings) | Where it's shown here |
+| Core competency | Where it's shown here |
 |---|---|
-| "Experience with GenAI/LLM concepts (RAG, embeddings, prompt engineering)" — increasingly common across Azendian, NTT DATA, Accenture Presales postings | `rag/ingest.py`, `rag/retrieval.py`, `rag/generation.py` |
-| "Microsoft Copilot Studio / Power Platform integration" — a growing line item as enterprises push Copilot adoption | `power_automate/` |
-| "Ability to build PoCs and communicate technical trade-offs to business stakeholders" | The honest-failure-case section above, and the mock/live mode split |
-| "Python, evaluation/testing discipline for AI systems" | `eval/run_eval.py`, `eval/eval_questions.json` |
-| "Hands-on with vector databases / modern data platforms" | Chroma integration in `rag/ingest.py` |
+| GenAI/LLM concepts (RAG, embeddings, prompt engineering) | `rag/ingest.py`, `rag/retrieval.py`, `rag/generation.py` |
+| Microsoft Copilot Studio / Power Platform integration | `power_automate/` |
+| Ability to build PoCs and communicate technical trade-offs to business stakeholders | The honest-failure-case section above, and the mock/live mode split |
+| Python, evaluation/testing discipline for AI systems | `eval/run_eval.py`, `eval/eval_questions.json` |
+| Hands-on with vector databases / modern data platforms | Chroma integration in `rag/ingest.py` |
 
 ---
 

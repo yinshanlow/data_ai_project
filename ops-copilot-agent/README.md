@@ -187,15 +187,15 @@ environment available).
 
 ---
 
-## Mapping this project to what employers actually ask for
+## Skills demonstrated
 
-| Job requirement (from real SG postings) | Where it's shown here |
+| Core competency | Where it's shown here |
 |---|---|
-| "Agentic AI / multi-agent orchestration" — the fastest-growing GenAI line item in 2026 SG postings | `orchestrator/agent.py`'s live-mode tool-use loop |
-| "Experience with LLM tool-use / function calling" | `orchestrator/tool_schemas.py`, `orchestrator/agent.py` |
-| "Ability to design system integrations across existing platforms" — a Solutions Architect-level ask | The HTTP-reuse decision documented above; `tools/policy.py` |
-| "Evaluation and testing discipline for agentic systems, not just single-turn chatbots" | `eval/run_eval.py`'s routing-accuracy + compound-question breakout |
-| "Can communicate trade-offs and limitations to both technical and business stakeholders" | The honest failure case section above |
+| Agentic AI / multi-agent orchestration | `orchestrator/agent.py`'s live-mode tool-use loop |
+| Experience with LLM tool-use / function calling | `orchestrator/tool_schemas.py`, `orchestrator/agent.py` |
+| Ability to design system integrations across existing platforms — a Solutions Architect-level skill | The HTTP-reuse decision documented above; `tools/policy.py` |
+| Evaluation and testing discipline for agentic systems, not just single-turn chatbots | `eval/run_eval.py`'s routing-accuracy + compound-question breakout |
+| Can communicate trade-offs and limitations to both technical and business stakeholders | The honest failure case section above |
 
 ---
 
