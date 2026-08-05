@@ -6,11 +6,13 @@ the AI/ML engineering skillset that increasingly complements them in modern
 quant research and trading teams.
 
 Sibling repo to [`quant-research-lab`](../quant-research-lab) (a
-falsification-first systematic strategy research repo — walk-forward
-validation, deflated Sharpe, permutation tests). That repo focuses on
-*strategy research discipline*; this one focuses on *pricing, risk, and the
-AI layer on top of them*. Cross-linked, not merged, on purpose — different
-scope, same standard of honesty about what actually works.
+falsification-first systematic strategy research repo — pre-registration,
+walk-forward validation, block bootstrap, BH-FDR, permutation tests). That
+repo goes deep on one pre-registered hypothesis (does an ML signal beat this
+toolkit's own hand-crafted baseline?) with real statistical discipline; this
+one goes broad across pricing, risk, and AI-augmented research. Cross-linked,
+not merged, on purpose — different scope, same standard of honesty about
+what actually works.
 
 ---
 
@@ -45,10 +47,11 @@ Two considerations shaped this repo directly:
 All six parts are complete, tested, and cross-validated against each other.
 
 Built in that order deliberately — Part A is the most foundational and
-comes first; Part D reuses the statistical-validation muscle already built
-for `quant-research-lab`; Part E is treated as core, not "if there's time."
-Parts B, F, and C add depth and breadth on top of a foundation that's
-already solid, tested, and documented.
+comes first; Part D applies the same statistical-validation instincts that
+`quant-research-lab` takes much further (pre-registration, bootstrap CIs,
+multiple-testing correction, a locked OOS window); Part E is treated as
+core, not "if there's time." Parts B, F, and C add depth and breadth on top
+of a foundation that's already solid, tested, and documented.
 
 ## The cross-module narrative
 
@@ -129,7 +132,7 @@ the model, its assumptions, a worked example, and where it breaks down.
 | Risk management, VaR, portfolio construction | `risk/` — Markowitz optimization, three VaR methods with a real Kupiec backtest, CVaR, stress testing |
 | AI/ML engineering applied to quant research | `ai_augmented/` — ML signal generation (honestly benchmarked against a baseline), SHAP interpretability on two different models, an LLM research assistant with documented failure modes |
 | Model interpretability | `ai_augmented/interpretability.py` — SHAP applied to both the signal model and a purpose-built risk (volatility) model |
-| Ability to validate and stress-test models rigorously | `risk/var.py`'s Kupiec backtest; `quant-research-lab`'s walk-forward validation and permutation tests (sibling repo) |
+| Ability to validate and stress-test models rigorously | `risk/var.py`'s Kupiec backtest; `quant-research-lab`'s pre-registration, block bootstrap, BH-FDR, and label-permutation validity check (sibling repo) |
 | Fixed income, rates | `fixed_income/` — bond risk metrics, yield curve bootstrapping, Vasicek short-rate model |
 
 ## Disclaimer

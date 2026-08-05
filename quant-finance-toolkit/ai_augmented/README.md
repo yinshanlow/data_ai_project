@@ -63,6 +63,14 @@ hide. Two honest caveats on *why*, both real limitations rather than excuses:
    noisy financial data — a lesson that argues for the diagnostic honesty
    this whole toolkit is built around, not against building the ML pipeline.
 
+**This finding is retested properly in the sibling
+[`quant-research-lab`](../../quant-research-lab) repo** — a real 30-stock
+cross-sectional universe, an 18.5-year sample, pre-registered gates, block
+bootstrap confidence intervals, BH-FDR-corrected hyperparameter selection,
+and a locked out-of-sample window opened exactly once. The answer comes out
+the same way there too, now with real statistical weight behind it rather
+than a 4-ticker demo.
+
 ## 2. Model interpretability (SHAP)
 
 Applied to **two** models, deliberately not just the flashy one:
