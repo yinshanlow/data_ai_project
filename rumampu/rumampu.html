@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RuMampu</title>
+<style>
+@font-face{
+  font-family:'Space Grotesk';
+  font-style:normal;font-weight:700;font-display:swap;
+  src:url(data:font/woff2;base64,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) format('woff2');
+}
+:root{
+  --ink:#3C5152;
+  --paper:#E1DFC6;
+  --brand:#4A9195;
+  --confirm:#32B14A;
+  --caution:#FEC844;
+  --short:#F1592A;
+  --card:#D8D6BE;
+  --ink64:rgba(60,81,82,.64);
+  --ink40:rgba(60,81,82,.40);
+  --ink14:rgba(60,81,82,.14);
+  --disp:'Space Grotesk',system-ui,Roboto,'Segoe UI',sans-serif;
+  --body:system-ui,Roboto,'Segoe UI','Noto Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{background:#2E3E3F;font-family:var(--body);display:flex;align-items:center;justify-content:center}
+#phone{width:390px;height:844px;background:var(--paper);color:var(--ink);position:relative;overflow:hidden;border-radius:28px;box-shadow:0 24px 64px rgba(0,0,0,.45);display:flex;flex-direction:column}
+@media (max-width:430px){
+  body{background:var(--paper)}
+  #phone{width:100vw;height:100dvh;border-radius:0;box-shadow:none}
+}
+#screen{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding:0 20px 24px}
+.hdr{position:sticky;top:0;z-index:5;background:var(--paper);display:flex;align-items:center;gap:8px;padding:14px 0 10px;min-height:56px}
+.hdr .ttl{font-family:var(--disp);font-weight:700;font-size:19px;flex:1;font-variant-numeric:tabular-nums}
+.hdr .brandmark{font-family:var(--disp);font-weight:700;font-size:21px;flex:1;letter-spacing:.01em}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+button:focus-visible,a:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:6px}
+.iconbtn{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;font-size:20px;border-radius:10px}
+.langbtn{min-height:44px;padding:0 10px;display:inline-flex;align-items:center;gap:4px;font-family:var(--disp);font-weight:700;font-size:13px;letter-spacing:.06em;border:1.5px solid var(--ink14);border-radius:10px}
+.display{font-family:var(--disp);font-weight:700;font-variant-numeric:tabular-nums}
+.h-xl{font-size:40px;line-height:44px;letter-spacing:-.01em}
+.h-l{font-size:26px;line-height:32px}
+.h-m{font-size:19px;line-height:26px}
+.body-s{font-size:13px;line-height:18px}
+.muted{color:var(--ink64)}
+p,li,label{font-size:16px;line-height:24px}
+.stack>*+*{margin-top:16px}
+.stack-s>*+*{margin-top:8px}
+.card{background:var(--card);border-radius:14px;padding:16px}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;background:var(--brand);color:#fff;font-family:var(--disp);font-weight:700;font-size:19px;border-radius:14px;padding:0 20px}
+.btn:active{filter:brightness(.93)}
+.btn-quiet{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:52px;background:var(--card);border-radius:14px;padding:0 16px;font-size:16px;text-align:left;gap:8px}
+.btn-line{display:inline-flex;align-items:center;min-height:44px;font-size:16px;text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:2px;text-underline-offset:4px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.prov{display:inline-flex;align-items:center;gap:5px;font-size:11px;line-height:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink64);min-height:44px;min-width:44px;margin:-10px -6px;padding:0 6px;border-radius:4px;font-family:var(--body);font-weight:600}
+.prov .g{font-size:9px;font-style:normal}
+.figrow{display:flex;flex-direction:column;gap:2px}
+.fig{display:inline-flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+input[type=text],input[type=number],input[type=date],select{width:100%;min-height:48px;background:var(--paper);border:1.5px solid var(--ink40);border-radius:12px;padding:0 14px;font:inherit;font-size:17px;color:var(--ink);font-variant-numeric:tabular-nums}
+.field{display:flex;flex-direction:column;gap:6px}
+.field>span{font-size:13px;line-height:18px;color:var(--ink64)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding:0 16px;border:1.5px solid var(--ink40);border-radius:22px;font-size:15px;display:inline-flex;align-items:center;gap:6px}
+.chip.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip.brand-on{background:var(--brand);color:#fff;border-color:var(--brand)}
+/* waterline chart */
+.wl{position:relative;padding:10px 34px 26px 2px;margin-right:-20px} /* right margin bleed: the line overshoots the grid */
+.wl-plot{position:relative;display:flex;align-items:flex-end;gap:8px;height:170px}
+.wl.small .wl-plot{height:96px}
+.wl.small{margin-right:0;padding:8px 6px 4px 2px}
+.wl.small .wl-plot{gap:3px}
+.wl.small .wl-col{min-width:6px}
+.wl.small .wl-line{right:-4px}
+.wl.small .wl-line::after{display:none}
+.wl-col{flex:1;position:relative;height:100%;display:flex;align-items:flex-end;min-width:14px}
+.wl-bar{width:100%;background:var(--ink);border-radius:3px 3px 0 0}
+.wl-gap{position:absolute;left:15%;width:70%;background:var(--short);border-radius:2px;opacity:.95}
+.wl-line{position:absolute;left:-2px;right:-14px;border-top:2.5px solid var(--ink);pointer-events:none}
+.wl-line::after{content:'';position:absolute;right:-1px;top:-5px;border:4px solid transparent;border-left:7px solid var(--ink)}
+.wl-linelbl{position:absolute;right:0;transform:translateY(-21px);font-size:11px;letter-spacing:.06em;color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums;background:var(--paper);padding:2px 5px;border-radius:5px;border:1.5px solid var(--ink14)}
+.wl-x{display:flex;gap:8px;padding-top:6px}
+.wl-x span{flex:1;text-align:center;font-size:11px;letter-spacing:.04em;color:var(--ink64);text-transform:uppercase;min-width:14px}
+/* coverage strip */
+.cov{display:flex;gap:5px;align-items:flex-end;height:44px}
+.cov i{flex:1;display:block;border-radius:2px}
+.cov i.rec{background:var(--ink)}
+.cov i.unk{height:12px;border:1.5px dashed var(--caution);background:none}
+/* range band */
+.band{position:relative;height:64px;margin:8px 0 4px}
+.band .track{position:absolute;left:0;right:0;top:18px;height:12px;border-radius:6px;background:var(--ink14)}
+.band .fill{position:absolute;top:18px;height:12px;border-radius:6px;background:var(--ink)}
+.band .pin{position:absolute;top:32px;transform:translateX(-50%);text-align:center;font-size:12px;line-height:16px;color:var(--ink);white-space:nowrap}
+.band .pin::before{content:'▲';display:block;font-size:11px}
+.note-c{border-left:4px solid var(--caution);padding:8px 12px;background:var(--card);border-radius:0 10px 10px 0}
+.toast{position:absolute;left:20px;right:20px;bottom:84px;background:var(--ink);color:var(--paper);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:10px;font-size:15px;z-index:30;opacity:0;transform:translateY(8px);transition:opacity .18s,transform .18s;pointer-events:none}
+.toast.show{opacity:1;transform:none}
+.toast .tick{color:var(--confirm);font-size:18px}
+#tabbar{display:flex;border-top:1.5px solid var(--ink14);background:var(--paper);padding-bottom:env(safe-area-inset-bottom)}
+#tabbar button{flex:1;min-height:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-family:var(--disp);font-weight:700;font-size:12px;letter-spacing:.04em;color:var(--ink64);border-top:3px solid transparent}
+#tabbar button.on{color:var(--brand);border-top-color:var(--brand)}
+#tabbar .ico{font-size:18px;line-height:1}
+.sheetwrap{position:absolute;inset:0;z-index:40;display:flex;align-items:flex-end}
+.scrim{position:absolute;inset:0;background:rgba(60,81,82,.45)}
+.sheet{position:relative;width:100%;background:var(--paper);border-radius:20px 20px 0 0;padding:20px 20px calc(20px + env(safe-area-inset-bottom));max-height:70%;overflow-y:auto}
+.sheet h3{font-family:var(--disp);font-size:19px;margin-bottom:12px}
+.opt{display:flex;width:100%;min-height:52px;align-items:center;justify-content:space-between;font-size:17px;border-radius:12px;padding:0 12px}
+.opt.on{background:var(--card);font-weight:600}
+.ob{position:absolute;inset:0;z-index:50;background:var(--paper);display:flex;flex-direction:column;padding:24px 24px calc(24px + env(safe-area-inset-bottom))}
+.ob .obcard{flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.dots{display:flex;gap:8px;justify-content:center;margin-bottom:20px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--ink14)}
+.dots i.on{background:var(--brand)}
+.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mgrid button{min-height:48px;border:1.5px solid var(--ink40);border-radius:12px;font-size:14px}
+.mgrid button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.kv{display:flex;justify-content:space-between;align-items:baseline;gap:10px;min-height:32px}
+.kv .k{font-size:15px;color:var(--ink)}
+.kv .v{font-family:var(--disp);font-weight:700;font-variant-numeric:tabular-nums;font-size:16px;white-space:nowrap}
+.editrow{display:flex;align-items:center;gap:10px}
+.editrow .lbl{flex:1;font-size:15px}
+.editrow input{width:104px;text-align:right;min-height:44px}
+.divider{border:none;border-top:1.5px solid var(--ink14);margin:16px 0}
+.badge{display:inline-flex;align-items:center;min-height:24px;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.badge.caution{background:var(--caution);color:var(--ink)}
+.hidden{display:none !important}
+.reveal{overflow:hidden}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
+</style>
+</head>
+<body>
+<div id="phone">
+  <main id="screen" aria-live="polite"></main>
+  <nav id="tabbar" aria-label="tabs"></nav>
+  <div class="toast" id="toast" role="status"><span class="tick">✓</span><span id="toastmsg"></span></div>
+  <div id="overlay"></div>
+</div>
+
+<script>
+'use strict';
+/* ================= STRINGS — all user-facing copy, three languages ================= */
+const STRINGS = {
+en:{
+  langname:'English', months:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+  tab_home:'Home', tab_money:'Money', tab_test:'Test', tab_prepare:'Prepare',
+  back:'Back', add:'Add', edit:'Edit', done:'Done', cancel:'Cancel', keep:'Keep', remove:'Remove',
+  saved:'Saved', unknown:'Unknown', lang_pick:'Language',
+  prov_user:'your data', prov_official:'official', prov_calc:'calculated', prov_assume:'assumption',
+  provf_user:'User Data — a figure you entered yourself.',
+  provf_official:'Official Source — a published figure; source and date shown.',
+  provf_calc:'Derived Calculation — arithmetic on your own records. Nothing else added.',
+  provf_assume:'Stress-Test Assumption — an editable default, not a fact about you.',
+  ob1:'RuMampu tests a house against your worst recorded month, not your average one.',
+  ob2:'It counts and it shows. The conclusion stays yours.',
+  ob3:'Start with whatever you have — one week of income is enough to begin.',
+  ob_skip:'Skip', ob_next:'Next', ob_start:'Start',
+  home_rec:'You have {n} months of income recorded.',
+  home_rec_thin:'{n} months is a thin record. Every entry you add lets the test see more.',
+  home_test:'Test a house', home_retest:'Re-test the house',
+  headline:'{s} of your {n} recorded months would have run short.',
+  headline_zero:'None of your {n} recorded months would have run short.',
+  gap_lbl:'Largest gap',
+  covspan:'{a} – {b} recorded',
+  cov_unchecked:'Coverage not checked yet',
+  cov_missed:'Your records haven’t seen {m} yet — you said it is usually slower.',
+  money_income:'Income', money_workcosts:'Work costs', money_commit:'Commitments',
+  money_pattern:'Income pattern', money_coverage:'Coverage check',
+  net_lbl:'Income after work costs', per_month:'/ month, average',
+  inc_empty:'Add last week’s earnings. That’s enough to start.',
+  inc_amount:'Amount (RM)', inc_date:'Date', inc_source:'Source', inc_add:'Add income',
+  inc_neg:'An amount below zero can’t be saved.',
+  inc_outlier:'Well above your usual entries. Keep it?',
+  src_ehail:'E-hailing', src_freelance:'Freelance', src_parttime:'Part-time (fixed)',
+  src_own:'+ Your own source', src_name:'Source name', entry_saved:'Entry saved',
+  wc_petrol:'Petrol', wc_service:'Servicing', wc_platform:'Platform fees', wc_data:'Phone data', wc_roadtax:'Road tax & insurance',
+  wc_own:'+ Your own cost', wc_note:'Every later screen uses this number.',
+  cm_living:'Living costs', cm_debts:'Debt repayments', cm_savings:'Savings',
+  cm_rent:'Rent', cm_food:'Food', cm_util:'Utilities', cm_motor:'Motor loan', cm_ptptn:'PTPTN', cm_family:'Family support', cm_save:'Monthly savings',
+  cm_total:'Total commitments',
+  pt_avg:'Average', pt_med:'Median', pt_high:'Highest', pt_low:'Lowest',
+  pt_range:'about ± RM {x} around the average',
+  pt_rule:'A lower-income month here means one below 75% of your average. RuMampu’s own rule, not a financial standard.',
+  pt_none:'No recorded month fell below that line.',
+  pt_some:'Below that line: {m}.',
+  cv_q:'Are there times of year when you usually earn less?',
+  cv_yes:'Yes', cv_no:'No', cv_notsure:'Not sure',
+  cv_pick:'Tap the months that are usually slower.',
+  cv_unseen:'You said {slow} is usually slower. Your records cover {a} to {b} — so this test hasn’t seen a slow month yet.',
+  cv_seen:'You said {slow} is usually slower. Your records cover {a} to {b} — a slow month is in there.',
+  cv_narrow:'Your recorded amounts sit unusually close together. Weaker months may be missing from the record.',
+  cv_varied:'Your recorded amounts differ month to month. The test still only knows {a} to {b}.',
+  cv_note:'More months only help if the right months are in there.',
+  th_title:'The house', th_price:'Property price (RM)', th_fin:'Financing amount', th_dep:'Deposit (RM)',
+  th_dep0:'RM 0 is allowed — 100% financing exists.',
+  th_rate:'Rate (% / year)', th_ten:'Tenure (years)', th_inst:'Monthly instalment',
+  th_known:'I already know my monthly payment', th_knownamt:'Monthly payment (RM)',
+  th_next:'Total monthly cost',
+  tc_title:'Total monthly cost', tc_point:'The instalment is not the whole cost.',
+  tc_inst:'Instalment', tc_break:'What’s inside', tc_run:'Run the test',
+  hc_maint:'Maintenance & sinking fund', hc_insure:'Home insurance', hc_assess:'Assessment tax', hc_quit:'Quit rent', hc_parking:'Parking', hc_other:'Other',
+  pc_title:'Before the house',
+  pc_msg:'Your weakest recorded month, {m}, ran RM {x} short before a single ringgit of housing.',
+  pc_msg2:'Testing a price on top of that would show every month short at every price. Review income and costs first.',
+  pc_btn:'Go to Money',
+  rs_title:'Result',
+  rs_how:'How this was worked out',
+  rs_how_body:'Each bar is one recorded month: income after work costs, minus commitments. The line is the total monthly home cost, RM {c}. A month runs short when its bar ends below the line.',
+  rs_limit_slow:'This test hasn’t seen {m}, which you said is usually slower. The count below can’t show your weakest time of year.',
+  rs_limit_thin:'Only {n} months recorded — not enough for this count to carry weight yet.',
+  rs_range:'Carrying range', rs_compare:'Compare payments', rs_shock:'If income drops',
+  rg_lead:'Your recorded months carried payments of RM {a} – RM {b} a month.',
+  rg_how:'What the two ends mean',
+  rg_how_body:'RM {a}: every recorded month covered it. RM {b}: half of them did.',
+  rg_price:'At {r}% over {y} years, that is about RM {p} – RM {q} in price.',
+  rg_pin:'your test',
+  rg_ind:'Indicative only. Not a valuation, not an offer.',
+  cp_note:'Same recorded months, three payments.',
+  cp_short:'{s} of {n} short', cp_gap:'largest gap RM {g}', cp_pay:'Payment {i} (RM)',
+  sh_note:'A hypothetical about your recorded months — not about what lies ahead.',
+  sh_custom:'Custom', sh_pct:'Drop (%)',
+  sh_head:'At −{p}%: {s} of {n} recorded months would have run short.',
+  pr_upfront:'Upfront cash', pr_buffer:'Cash buffer', pr_docs:'Documents & financing',
+  pr_pv:'Iteration 3 preview', pr_pv_note:'After buying — direction only, not shipping yet.',
+  uf_have:'You have', uf_need:'You need', uf_gap:'Gap',
+  uf_dep:'Deposit', uf_legal:'Legal fees', uf_stampT:'Stamp duty — transfer', uf_stampL:'Stamp duty — loan', uf_val:'Valuation', uf_disb:'Disbursements', uf_move:'Moving', uf_basic:'Basics (fridge, bed, curtains)',
+  uf_dep0:'Deposit RM 0 — upfront cash is fees and setting up, not the deposit.',
+  bf_def:'The smallest amount you’d have needed at the start to get through the short months in your record without going below zero.',
+  bf_basis:'From your own record, {a} to {b} — not a general rule.',
+  bf_zero:'With this house, your recorded months never went below zero. The figure works out to RM 0.',
+  bf_bal:'Running balance by month',
+  dc_bank:'Bank statements, 6 months', dc_ehail:'E-hailing earnings summary', dc_statdec:'Statutory declaration of income', dc_epf:'EPF statement', dc_commitlist:'List of existing commitments',
+  dc_sjkp:'SJKP — published criteria',
+  dc_sj1:'Malaysian citizen, age 18–70', dc_sj2:'Gross income within SJKP’s published limit', dc_sj3:'First home',
+  dc_src:'Source: sjkp.com.my, Aug 2026',
+  dc_65:'65% check — needs review',
+  dc_65_note:'SJKP measures gross income; RuMampu measures income after work costs. Until that gap is settled, no pass or fail is shown here.',
+  dc_plain:'RuMampu does not apply for you and cannot tell you whether a bank will say yes.',
+  pv_banner:'Iteration 3 preview',
+  pv_switch:'Switch mode', pv_switch_btn:'I’ve bought the home',
+  pv_switch_note:'Estimates become actuals. The purchase itself happens outside RuMampu.',
+  pv_month:'This month', pv_in:'Actual income in', pv_out:'Actual home costs out',
+  pv_left:'Cash left', pv_shortby:'Short by',
+  pv_then:'Earlier test vs what happened',
+  pv_then_a:'Your earlier test: {s} short months out of {n} recorded.',
+  pv_then_b:'Since buying: {s2} of your first {n2} months have run short.',
+  pv_then_why:'The earlier record had no year-end month in it. Two arrived after buying.',
+  see_pattern:'Income pattern', see_coverage:'Coverage check'
+},
+ms:{
+  langname:'Bahasa Melayu', months:['Jan','Feb','Mac','Apr','Mei','Jun','Jul','Ogo','Sep','Okt','Nov','Dis'],
+  tab_home:'Utama', tab_money:'Wang', tab_test:'Uji', tab_prepare:'Sedia',
+  back:'Kembali', add:'Tambah', edit:'Ubah', done:'Selesai', cancel:'Batal', keep:'Kekalkan', remove:'Buang',
+  saved:'Disimpan', unknown:'Tidak diketahui', lang_pick:'Bahasa',
+  prov_user:'data anda', prov_official:'rasmi', prov_calc:'dikira', prov_assume:'andaian',
+  provf_user:'Data Pengguna — angka yang anda masukkan sendiri.',
+  provf_official:'Sumber Rasmi — angka diterbitkan; sumber dan tarikh dinyatakan.',
+  provf_calc:'Kiraan Terbitan — aritmetik ke atas rekod anda sendiri. Tiada tokok tambah.',
+  provf_assume:'Andaian Ujian Tekanan — nilai lalai boleh ubah, bukan fakta tentang anda.',
+  ob1:'RuMampu menguji rumah terhadap bulan paling lemah dalam rekod anda, bukan purata.',
+  ob2:'Ia mengira dan menunjukkan. Kesimpulan tetap milik anda.',
+  ob3:'Mulakan dengan apa yang ada — pendapatan seminggu pun sudah boleh bermula.',
+  ob_skip:'Langkau', ob_next:'Seterusnya', ob_start:'Mula',
+  home_rec:'Anda ada {n} bulan pendapatan direkod.',
+  home_rec_thin:'{n} bulan ialah rekod yang nipis. Setiap catatan baharu membantu ujian melihat lebih.',
+  home_test:'Uji sebuah rumah', home_retest:'Uji semula rumah itu',
+  headline:'{s} daripada {n} bulan direkod anda tidak akan cukup.',
+  headline_zero:'Kesemua {n} bulan direkod anda menutup kos ini.',
+  gap_lbl:'Jurang terbesar',
+  covspan:'{a} – {b} direkod',
+  cov_unchecked:'Liputan belum disemak',
+  cov_missed:'Rekod anda belum melihat {m} — anda kata ia biasanya perlahan.',
+  money_income:'Pendapatan', money_workcosts:'Kos kerja', money_commit:'Komitmen',
+  money_pattern:'Corak pendapatan', money_coverage:'Semakan liputan',
+  net_lbl:'Pendapatan selepas kos kerja', per_month:'/ bulan, purata',
+  inc_empty:'Masukkan pendapatan minggu lepas. Itu sudah cukup untuk bermula.',
+  inc_amount:'Jumlah (RM)', inc_date:'Tarikh', inc_source:'Sumber', inc_add:'Tambah pendapatan',
+  inc_neg:'Jumlah bawah sifar tidak dapat disimpan.',
+  inc_outlier:'Jauh lebih tinggi daripada catatan biasa anda. Kekalkan?',
+  src_ehail:'E-hailing', src_freelance:'Kerja bebas', src_parttime:'Separuh masa (tetap)',
+  src_own:'+ Sumber anda sendiri', src_name:'Nama sumber', entry_saved:'Catatan disimpan',
+  wc_petrol:'Petrol', wc_service:'Servis kenderaan', wc_platform:'Yuran platform', wc_data:'Data telefon', wc_roadtax:'Cukai jalan & insurans',
+  wc_own:'+ Kos anda sendiri', wc_note:'Setiap skrin selepas ini menggunakan angka ini.',
+  cm_living:'Kos sara hidup', cm_debts:'Bayaran hutang', cm_savings:'Simpanan',
+  cm_rent:'Sewa', cm_food:'Makanan', cm_util:'Utiliti', cm_motor:'Pinjaman motosikal', cm_ptptn:'PTPTN', cm_family:'Sokongan keluarga', cm_save:'Simpanan bulanan',
+  cm_total:'Jumlah komitmen',
+  pt_avg:'Purata', pt_med:'Penengah', pt_high:'Tertinggi', pt_low:'Terendah',
+  pt_range:'lebih kurang ± RM {x} sekitar purata',
+  pt_rule:'Bulan pendapatan rendah di sini bermaksud bawah 75% purata anda. Peraturan RuMampu sendiri, bukan piawaian kewangan.',
+  pt_none:'Tiada bulan direkod jatuh bawah garis itu.',
+  pt_some:'Bawah garis itu: {m}.',
+  cv_q:'Ada musim anda biasanya kurang pendapatan?',
+  cv_yes:'Ya', cv_no:'Tidak', cv_notsure:'Tak pasti',
+  cv_pick:'Tandakan bulan yang biasanya perlahan.',
+  cv_unseen:'Anda kata {slow} biasanya perlahan. Rekod anda meliputi {a} hingga {b} — jadi ujian ini belum melihat bulan perlahan.',
+  cv_seen:'Anda kata {slow} biasanya perlahan. Rekod anda meliputi {a} hingga {b} — bulan perlahan ada di dalamnya.',
+  cv_narrow:'Angka direkod anda terlalu rapat antara satu sama lain. Bulan lemah mungkin tiada dalam rekod.',
+  cv_varied:'Angka direkod anda berbeza dari bulan ke bulan. Ujian ini tetap hanya kenal {a} hingga {b}.',
+  cv_note:'Bulan tambahan hanya membantu jika bulan yang betul ada di dalamnya.',
+  th_title:'Rumah itu', th_price:'Harga hartanah (RM)', th_fin:'Jumlah pembiayaan', th_dep:'Bayaran muka (RM)',
+  th_dep0:'RM 0 dibenarkan — pembiayaan 100% wujud.',
+  th_rate:'Kadar (% / tahun)', th_ten:'Tempoh (tahun)', th_inst:'Ansuran bulanan',
+  th_known:'Saya sudah tahu bayaran bulanan saya', th_knownamt:'Bayaran bulanan (RM)',
+  th_next:'Jumlah kos bulanan',
+  tc_title:'Jumlah kos bulanan', tc_point:'Ansuran bukan keseluruhan kos.',
+  tc_inst:'Ansuran', tc_break:'Apa di dalamnya', tc_run:'Jalankan ujian',
+  hc_maint:'Penyelenggaraan & tabung penjelas', hc_insure:'Insurans rumah', hc_assess:'Cukai pintu', hc_quit:'Cukai tanah', hc_parking:'Parkir', hc_other:'Lain-lain',
+  pc_title:'Sebelum rumah',
+  pc_msg:'Bulan paling lemah anda, {m}, sudah kurang RM {x} sebelum satu ringgit pun kos rumah.',
+  pc_msg2:'Menguji harga di atasnya akan menunjukkan semua bulan kurang pada semua harga. Semak pendapatan dan kos dahulu.',
+  pc_btn:'Pergi ke Wang',
+  rs_title:'Keputusan',
+  rs_how:'Bagaimana ia dikira',
+  rs_how_body:'Setiap bar ialah satu bulan direkod: pendapatan selepas kos kerja, tolak komitmen. Garisan ialah jumlah kos rumah bulanan, RM {c}. Bulan dikira kurang bila barnya berakhir di bawah garisan.',
+  rs_limit_slow:'Ujian ini belum melihat {m}, yang anda kata biasanya perlahan. Kiraan di bawah tidak menunjukkan musim paling lemah anda.',
+  rs_limit_thin:'Baru {n} bulan direkod — belum cukup untuk kiraan ini membawa makna.',
+  rs_range:'Julat terbawa', rs_compare:'Banding bayaran', rs_shock:'Jika pendapatan turun',
+  rg_lead:'Bulan-bulan direkod anda membawa bayaran RM {a} – RM {b} sebulan.',
+  rg_how:'Maksud dua hujung itu',
+  rg_how_body:'RM {a}: semua bulan direkod menutupnya. RM {b}: separuh daripadanya.',
+  rg_price:'Pada {r}% selama {y} tahun, itu sekitar RM {p} – RM {q} harga rumah.',
+  rg_pin:'ujian anda',
+  rg_ind:'Petunjuk sahaja. Bukan penilaian, bukan tawaran.',
+  cp_note:'Bulan direkod yang sama, tiga bayaran.',
+  cp_short:'{s} daripada {n} kurang', cp_gap:'jurang terbesar RM {g}', cp_pay:'Bayaran {i} (RM)',
+  sh_note:'Andaian ke atas bulan direkod anda — bukan tentang masa hadapan.',
+  sh_custom:'Sendiri', sh_pct:'Turun (%)',
+  sh_head:'Pada −{p}%: {s} daripada {n} bulan direkod tidak akan cukup.',
+  pr_upfront:'Tunai permulaan', pr_buffer:'Penampan tunai', pr_docs:'Dokumen & pembiayaan',
+  pr_pv:'Pratonton Iterasi 3', pr_pv_note:'Selepas membeli — hala tuju sahaja, belum dilancarkan.',
+  uf_have:'Anda ada', uf_need:'Anda perlu', uf_gap:'Jurang',
+  uf_dep:'Bayaran muka', uf_legal:'Yuran guaman', uf_stampT:'Duti setem — pindah milik', uf_stampL:'Duti setem — pinjaman', uf_val:'Penilaian hartanah', uf_disb:'Perbelanjaan pelbagai guaman', uf_move:'Pindah rumah', uf_basic:'Asas (peti sejuk, katil, langsir)',
+  uf_dep0:'Deposit RM 0 — tunai permulaan ialah yuran dan persiapan, bukan deposit.',
+  bf_def:'Jumlah terkecil yang anda perlukan pada permulaan untuk melepasi bulan-bulan kurang dalam rekod anda tanpa jatuh bawah sifar.',
+  bf_basis:'Daripada rekod anda sendiri, {a} hingga {b} — bukan peraturan umum.',
+  bf_zero:'Dengan rumah ini, bulan direkod anda tidak pernah jatuh bawah sifar. Kiraannya RM 0.',
+  bf_bal:'Baki berjalan ikut bulan',
+  dc_bank:'Penyata bank, 6 bulan', dc_ehail:'Ringkasan pendapatan e-hailing', dc_statdec:'Surat akuan berkanun pendapatan', dc_epf:'Penyata KWSP', dc_commitlist:'Senarai komitmen sedia ada',
+  dc_sjkp:'SJKP — kriteria diterbitkan',
+  dc_sj1:'Warganegara Malaysia, umur 18–70', dc_sj2:'Pendapatan kasar dalam had terbitan SJKP', dc_sj3:'Rumah pertama',
+  dc_src:'Sumber: sjkp.com.my, Ogo 2026',
+  dc_65:'Semakan 65% — perlu semakan semula',
+  dc_65_note:'SJKP mengukur pendapatan kasar; RuMampu mengukur pendapatan selepas kos kerja. Selagi beza itu belum selesai, tiada keputusan ditunjukkan di sini.',
+  dc_plain:'RuMampu tidak memohon bagi pihak anda dan tidak dapat memberitahu sama ada bank akan kata ya.',
+  pv_banner:'Pratonton Iterasi 3',
+  pv_switch:'Tukar mod', pv_switch_btn:'Saya sudah beli rumah itu',
+  pv_switch_note:'Anggaran bertukar kepada angka sebenar. Pembelian berlaku di luar RuMampu.',
+  pv_month:'Bulan ini', pv_in:'Pendapatan sebenar masuk', pv_out:'Kos rumah sebenar keluar',
+  pv_left:'Baki tunai', pv_shortby:'Kurang sebanyak',
+  pv_then:'Ujian awal vs yang berlaku',
+  pv_then_a:'Ujian awal anda: {s} bulan kurang daripada {n} direkod.',
+  pv_then_b:'Sejak membeli: {s2} daripada {n2} bulan pertama anda kurang.',
+  pv_then_why:'Rekod awal tiada bulan hujung tahun di dalamnya. Dua bulan begitu tiba selepas membeli.',
+  see_pattern:'Corak pendapatan', see_coverage:'Semakan liputan'
+},
+zh:{
+  langname:'中文', months:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+  tab_home:'主页', tab_money:'收支', tab_test:'测试', tab_prepare:'准备',
+  back:'返回', add:'添加', edit:'修改', done:'完成', cancel:'取消', keep:'保留', remove:'删除',
+  saved:'已保存', unknown:'未知', lang_pick:'语言',
+  prov_user:'你的记录', prov_official:'官方', prov_calc:'计算所得', prov_assume:'假设',
+  provf_user:'用户数据——你自己输入的数字。',
+  provf_official:'官方来源——已公布的数字，注明来源和日期。',
+  provf_calc:'推导计算——只对你自己的记录做算术，别无其他。',
+  provf_assume:'压力测试假设——可修改的默认值，不是关于你的事实。',
+  ob1:'RuMampu 用你记录中最差的一个月来测试房子，而不是平均值。',
+  ob2:'它只做计算和展示。结论由你自己下。',
+  ob3:'有什么就从什么开始——一周的收入记录就够起步。',
+  ob_skip:'跳过', ob_next:'下一步', ob_start:'开始',
+  home_rec:'你已记录 {n} 个月的收入。',
+  home_rec_thin:'{n} 个月的记录还很薄。每多记一笔，测试就多看到一点。',
+  home_test:'测试一套房', home_retest:'重新测试这套房',
+  headline:'在已记录的 {n} 个月中，{s} 个月的钱不够。',
+  headline_zero:'已记录的 {n} 个月都够付这笔成本。',
+  gap_lbl:'最大缺口',
+  covspan:'已记录 {a} – {b}',
+  cov_unchecked:'覆盖情况尚未检查',
+  cov_missed:'你的记录还没见过{m}——你说那时通常较慢。',
+  money_income:'收入', money_workcosts:'工作开销', money_commit:'固定开支',
+  money_pattern:'收入形态', money_coverage:'覆盖检查',
+  net_lbl:'扣除工作开销后的收入', per_month:'/ 月，平均',
+  inc_empty:'先记上周的收入，就足够开始了。',
+  inc_amount:'金额 (RM)', inc_date:'日期', inc_source:'来源', inc_add:'添加收入',
+  inc_neg:'低于零的金额无法保存。',
+  inc_outlier:'比你平常的记录高很多。保留吗？',
+  src_ehail:'电召车', src_freelance:'自由接单', src_parttime:'兼职（固定）',
+  src_own:'＋自定来源', src_name:'来源名称', entry_saved:'已记录',
+  wc_petrol:'汽油', wc_service:'车辆保养', wc_platform:'平台抽成', wc_data:'手机流量', wc_roadtax:'路税与车险',
+  wc_own:'＋自定开销', wc_note:'之后每个页面都用这个数字。',
+  cm_living:'生活开销', cm_debts:'还债', cm_savings:'储蓄',
+  cm_rent:'房租', cm_food:'伙食', cm_util:'水电', cm_motor:'摩托车贷款', cm_ptptn:'PTPTN', cm_family:'家用', cm_save:'每月储蓄',
+  cm_total:'固定开支合计',
+  pt_avg:'平均', pt_med:'中位', pt_high:'最高', pt_low:'最低',
+  pt_range:'大约在平均值 ± RM {x} 之间',
+  pt_rule:'这里的低收入月，指低于你平均值 75% 的月份。这是 RuMampu 自己的规则，不是金融标准。',
+  pt_none:'没有记录月低于这条线。',
+  pt_some:'低于这条线的：{m}。',
+  cv_q:'一年中，有没有你通常赚得较少的时候？',
+  cv_yes:'有', cv_no:'没有', cv_notsure:'不确定',
+  cv_pick:'点选通常较慢的月份。',
+  cv_unseen:'你说{slow}通常较慢。你的记录覆盖 {a} 到 {b}——这次测试还没见过慢月份。',
+  cv_seen:'你说{slow}通常较慢。你的记录覆盖 {a} 到 {b}——慢月份已在其中。',
+  cv_narrow:'你记录的数字彼此过于接近。较弱的月份可能没被记到。',
+  cv_varied:'你记录的数字每月不同。但测试仍只认识 {a} 到 {b}。',
+  cv_note:'多记几个月有用的前提，是记到对的月份。',
+  th_title:'这套房', th_price:'房价 (RM)', th_fin:'贷款额', th_dep:'头期 (RM)',
+  th_dep0:'RM 0 也可以——有 100% 贷款。',
+  th_rate:'年利率 (%)', th_ten:'年期（年）', th_inst:'每月供款',
+  th_known:'我已知道每月供款', th_knownamt:'每月供款 (RM)',
+  th_next:'每月总成本',
+  tc_title:'每月总成本', tc_point:'供款不等于全部成本。',
+  tc_inst:'供款', tc_break:'包含哪些', tc_run:'开始测试',
+  hc_maint:'管理费与储备金', hc_insure:'房屋保险', hc_assess:'门牌税', hc_quit:'地税', hc_parking:'车位', hc_other:'其他',
+  pc_title:'还没算房子之前',
+  pc_msg:'你最弱的月份 {m}，在没有任何房屋成本时已短缺 RM {x}。',
+  pc_msg2:'在这之上测任何房价，每个月都会短缺。请先核对收入和开销。',
+  pc_btn:'去收支',
+  rs_title:'结果',
+  rs_how:'这是怎么算的',
+  rs_how_body:'每根柱是一个记录月：扣除工作开销的收入，再减固定开支。横线是每月房屋总成本 RM {c}。柱子够不到线，该月就算短缺。',
+  rs_limit_slow:'这次测试还没见过你说通常较慢的{m}。下面的计数无法反映你最弱的时节。',
+  rs_limit_thin:'只记录了 {n} 个月——还不足以让这个计数有分量。',
+  rs_range:'承担区间', rs_compare:'比较付款', rs_shock:'如果收入下降',
+  rg_lead:'你记录的月份承担过每月 RM {a} – RM {b} 的付款。',
+  rg_how:'两端是什么意思',
+  rg_how_body:'RM {a}：每个记录月都够。RM {b}：一半的月份够。',
+  rg_price:'按 {r}%、{y} 年计，约合房价 RM {p} – RM {q}。',
+  rg_pin:'你的测试',
+  rg_ind:'仅供参考。不是估价，也不是要约。',
+  cp_note:'同样的记录月份，三种付款。',
+  cp_short:'{n} 个月中 {s} 个短缺', cp_gap:'最大缺口 RM {g}', cp_pay:'付款 {i} (RM)',
+  sh_note:'只是对已记录月份的假设，不是对将来的判断。',
+  sh_custom:'自定', sh_pct:'下降 (%)',
+  sh_head:'按 −{p}% 计：{n} 个记录月中 {s} 个不够。',
+  pr_upfront:'购房现金', pr_buffer:'现金缓冲', pr_docs:'文件与融资',
+  pr_pv:'第 3 迭代预览', pr_pv_note:'买房之后——仅展示方向，尚未上线。',
+  uf_have:'你有', uf_need:'需要', uf_gap:'缺口',
+  uf_dep:'头期', uf_legal:'律师费', uf_stampT:'印花税——过户', uf_stampL:'印花税——贷款', uf_val:'估价费', uf_disb:'杂项支出', uf_move:'搬家', uf_basic:'基本家当（冰箱、床、窗帘）',
+  uf_dep0:'头期 RM 0——购房现金是各项费用和安家，不是头期。',
+  bf_def:'让你撑过记录中短缺的月份、且不跌破零，开头所需的最小金额。',
+  bf_basis:'来自你自己 {a} 到 {b} 的记录——不是通用规则。',
+  bf_zero:'按这套房算，你记录的月份从未跌破零。得数是 RM 0。',
+  bf_bal:'逐月滚动余额',
+  dc_bank:'银行月结单，6 个月', dc_ehail:'电召车收入摘要', dc_statdec:'收入法定声明', dc_epf:'EPF 公积金结单', dc_commitlist:'现有开支清单',
+  dc_sjkp:'SJKP——公布的条件',
+  dc_sj1:'马来西亚公民，18–70 岁', dc_sj2:'总收入在 SJKP 公布的上限内', dc_sj3:'首套房',
+  dc_src:'来源：sjkp.com.my，2026 年 8 月',
+  dc_65:'65% 核对——待复核',
+  dc_65_note:'SJKP 按总收入计，RuMampu 按扣除工作开销后的收入计。在厘清之前，这里不显示通过或不通过。',
+  dc_plain:'RuMampu 不会替你申请，也无法告诉你银行是否点头。',
+  pv_banner:'第 3 迭代预览',
+  pv_switch:'切换模式', pv_switch_btn:'我已买下这套房',
+  pv_switch_note:'估算换成实际数字。购买本身在 RuMampu 之外完成。',
+  pv_month:'本月', pv_in:'实际收入', pv_out:'实际房屋支出',
+  pv_left:'剩余现金', pv_shortby:'短缺',
+  pv_then:'先前测试 vs 实际情况',
+  pv_then_a:'先前测试：{n} 个记录月中 {s} 个短缺。',
+  pv_then_b:'买房后：头 {n2} 个月中 {s2} 个短缺。',
+  pv_then_why:'先前的记录里没有年末月份，买房后遇上了两个。',
+  see_pattern:'收入形态', see_coverage:'覆盖检查'
+}
+};
+
+/* ================= MOCK — every figure on screen derives from this ================= */
+const MOCK = {
+  sources:[
+    {id:'ehail', k:'src_ehail'},
+    {id:'freelance', k:'src_freelance'},
+    {id:'parttime', k:'src_parttime'}
+  ],
+  income:[
+    {a:500,d:'2026-02-01',s:'parttime'},{a:880,d:'2026-02-06',s:'ehail'},{a:927,d:'2026-02-13',s:'ehail'},{a:550,d:'2026-02-14',s:'freelance'},{a:850,d:'2026-02-20',s:'ehail'},{a:920,d:'2026-02-27',s:'ehail'},
+    {a:500,d:'2026-03-01',s:'parttime'},{a:910,d:'2026-03-06',s:'ehail'},{a:946,d:'2026-03-13',s:'ehail'},{a:620,d:'2026-03-18',s:'freelance'},{a:890,d:'2026-03-20',s:'ehail'},{a:980,d:'2026-03-27',s:'ehail'},
+    {a:500,d:'2026-04-01',s:'parttime'},{a:1010,d:'2026-04-03',s:'ehail'},{a:1150,d:'2026-04-10',s:'freelance'},{a:1065,d:'2026-04-10',s:'ehail'},{a:990,d:'2026-04-17',s:'ehail'},{a:1000,d:'2026-04-24',s:'ehail'},
+    {a:500,d:'2026-05-01',s:'parttime'},{a:1020,d:'2026-05-08',s:'ehail'},{a:995,d:'2026-05-15',s:'ehail'},{a:780,d:'2026-05-15',s:'freelance'},{a:1080,d:'2026-05-22',s:'ehail'},{a:960,d:'2026-05-29',s:'ehail'},
+    {a:500,d:'2026-06-01',s:'parttime'},{a:940,d:'2026-06-05',s:'ehail'},{a:1005,d:'2026-06-12',s:'ehail'},{a:850,d:'2026-06-12',s:'freelance'},{a:926,d:'2026-06-19',s:'ehail'},{a:960,d:'2026-06-26',s:'ehail'},
+    {a:500,d:'2026-07-01',s:'parttime'},{a:1030,d:'2026-07-03',s:'ehail'},{a:1064,d:'2026-07-10',s:'ehail'},{a:890,d:'2026-07-17',s:'freelance'},{a:985,d:'2026-07-17',s:'ehail'},{a:1020,d:'2026-07-24',s:'ehail'}
+  ],
+  workCosts:[
+    {id:'petrol',k:'wc_petrol',a:480},{id:'service',k:'wc_service',a:75},{id:'platform',k:'wc_platform',a:130},{id:'data',k:'wc_data',a:55},{id:'roadtax',k:'wc_roadtax',a:95}
+  ],
+  commitments:{
+    living:[{id:'rent',k:'cm_rent',a:700},{id:'food',k:'cm_food',a:900},{id:'util',k:'cm_util',a:180},{id:'family',k:'cm_family',a:300}],
+    debts:[{id:'motor',k:'cm_motor',a:420},{id:'ptptn',k:'cm_ptptn',a:150}],
+    savings:[{id:'save',k:'cm_save',a:100}]
+  },
+  commitPresets:['rent','food','util','motor','ptptn','family','save'],
+  house:{price:250000, deposit:0, rate:4.3, years:35, knownPayment:null},
+  homeCosts:[
+    {id:'maint',k:'hc_maint',a:150},{id:'insure',k:'hc_insure',a:55},{id:'assess',k:'hc_assess',a:20},{id:'quit',k:'hc_quit',a:5},{id:'parking',k:'hc_parking',a:0},{id:'other',k:'hc_other',a:0}
+  ],
+  cashOnHand:8000,
+  upfront:[
+    {id:'legal',k:'uf_legal',a:2700,p:'assume'},{id:'stampT',k:'uf_stampT',a:4000,p:'official'},{id:'stampL',k:'uf_stampL',a:1250,p:'official'},{id:'val',k:'uf_val',a:800,p:'assume'},{id:'disb',k:'uf_disb',a:1500,p:'assume'},{id:'move',k:'uf_move',a:800,p:'assume'},{id:'basic',k:'uf_basic',a:2000,p:'assume'}
+  ],
+  comparePayments:[1000,1200,1400],
+  after:{
+    months:[
+      {y:2026,m:7,inc:1560,home:1380},
+      {y:2026,m:8,inc:1240,home:1380},
+      {y:2026,m:9,inc:1690,home:1430},
+      {y:2026,m:10,inc:1470,home:1380},
+      {y:2026,m:11,inc:1320,home:1380}
+    ]
+  }
+};
+
+/* ================= state ================= */
+const S = {
+  lang:'en',
+  route:'home',
+  stack:[],
+  onboard:0, onboarded:false,
+  data:JSON.parse(JSON.stringify(MOCK)),
+  coverage:{answer:null, slow:[]},
+  testRan:false,
+  howOpen:false, rgHowOpen:false, tcOpen:false, dcOpen:false, docsChecked:[],
+  shock:0,
+  bought:false,
+  incomeDraft:{a:'',d:'2026-08-21',s:'ehail',flag:null},
+  sheet:null
+};
+
+/* ================= i18n + format helpers ================= */
+function t(k,vars){
+  let s=(STRINGS[S.lang][k]!==undefined)?STRINGS[S.lang][k]:STRINGS.en[k];
+  if(s===undefined) s='['+k+']';
+  if(vars) for(const v in vars) s=s.split('{'+v+'}').join(vars[v]);
+  return s;
+}
+function esc(x){return String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function nf(v){return Math.round(v).toLocaleString('en-MY')}
+function rm(v){return 'RM '+nf(v)}
+const PROV_G={user:'●',official:'○',calc:'▸',assume:'▩'};
+function prov(p){
+  return '<button class="prov" data-prov="'+p+'" aria-label="'+esc(t('prov_'+p))+'"><i class="g">'+PROV_G[p]+'</i>'+esc(t('prov_'+p))+'</button>';
+}
+function fig(value,p,cls){
+  return '<span class="fig"><span class="display '+(cls||'h-m')+'">'+esc(value)+'</span>'+prov(p)+'</span>';
+}
+function monthName(m){return STRINGS[S.lang].months[m]}
+
+/* ================= derived calculations ================= */
+function workCostTotal(){return S.data.workCosts.reduce((a,c)=>a+(+c.a||0),0)}
+function commitTotal(){const c=S.data.commitments;return [...c.living,...c.debts,...c.savings].reduce((a,x)=>a+(+x.a||0),0)}
+function monthsAgg(){
+  const map=new Map();
+  for(const e of S.data.income){
+    const y=+e.d.slice(0,4), m=+e.d.slice(5,7)-1;
+    const key=y*12+m;
+    if(!map.has(key)) map.set(key,{y,m,gross:0});
+    map.get(key).gross+=(+e.a||0);
+  }
+  const wc=workCostTotal(), cm=commitTotal();
+  return [...map.values()].sort((a,b)=>(a.y*12+a.m)-(b.y*12+b.m))
+    .map(r=>({...r, net:r.gross-wc, surplus:r.gross-wc-cm}));
+}
+function instalment(P,rate,years){
+  if(P<=0) return 0;
+  const r=rate/1200, n=years*12;
+  if(r===0) return P/n;
+  return P*r/(1-Math.pow(1+r,-n));
+}
+function extrasTotal(){return S.data.homeCosts.reduce((a,c)=>a+(+c.a||0),0)}
+function currentInstalment(){
+  const h=S.data.house;
+  if(h.knownPayment!=null) return +h.knownPayment;
+  return instalment(Math.max(0,h.price-h.deposit),h.rate,h.years);
+}
+function totalHomeCost(){return currentInstalment()+extrasTotal()}
+function priceForInstalment(M){
+  const h=S.data.house, r=h.rate/1200, n=h.years*12;
+  if(M<=0) return 0;
+  if(r===0) return M*n;
+  return M*(1-Math.pow(1+r,-n))/r;
+}
+function testRows(cost,shockPct){
+  const f=1-(shockPct||0)/100, cm=commitTotal();
+  return monthsAgg().map(r=>{
+    const surplus=(r.net*f)-cm;
+    return {...r,surplus,short:surplus<cost,gap:Math.max(0,cost-surplus)};
+  });
+}
+function carryRange(){
+  const s=monthsAgg().map(r=>r.surplus).sort((a,b)=>a-b);
+  if(!s.length) return null;
+  const lo=s[0];
+  const hi=(s.length%2)?s[(s.length-1)/2]:(s[s.length/2-1]+s[s.length/2])/2;
+  return {lo,hi};
+}
+function bufferNeed(cost){
+  let bal=0,min=0;
+  const rows=monthsAgg().map(r=>{
+    bal+=r.surplus-cost; if(bal<min)min=bal;
+    return {y:r.y,m:r.m,bal};
+  });
+  return {need:Math.max(0,-min),rows};
+}
+function recSpan(){
+  const a=monthsAgg();
+  if(!a.length) return null;
+  return {from:a[0],to:a[a.length-1],list:a};
+}
+function slowUnseen(){
+  const sp=recSpan();
+  if(!sp||S.coverage.answer!=='yes'||!S.coverage.slow.length) return [];
+  const seen=new Set(sp.list.map(r=>r.m));
+  return S.coverage.slow.filter(m=>!seen.has(m));
+}
+function upfrontNeed(){
+  return S.data.house.deposit + S.data.upfront.reduce((a,c)=>a+(+c.a||0),0);
+}
+
+/* ================= navigation ================= */
+const TAB_OF={home:'home',money:'money',income:'money',workcosts:'money',commit:'money',pattern:'money',coverage:'money',
+  house:'test',homecost:'test',precheck:'test',result:'test',range:'test',compare:'test',shock:'test',
+  prepare:'prepare',upfront:'prepare',buffer:'prepare',docs:'prepare',pv_switch:'prepare',pv_month:'prepare',pv_compare:'prepare'};
+function go(r){S.stack.push(S.route);S.route=r;S.howOpen=false;S.rgHowOpen=false;render();document.getElementById('screen').scrollTop=0}
+function preHousingOk(){
+  const rows=testRows(0);
+  return rows.length>0&&Math.min(...rows.map(r=>r.surplus))>=0;
+}
+function backNav(){
+  const prev=S.stack.pop();
+  if(prev){S.route=prev;render();return}
+  const tab=TAB_OF[S.route]||'home';
+  const root=(tab==='test')?(S.testRan?'result':'house'):tab;
+  goTab(S.route===root?'home':tab);
+}
+function goTab(tab){
+  S.stack=[];
+  if(tab==='test') S.route=S.testRan?(preHousingOk()?'result':'precheck'):'house';
+  else S.route=tab;
+  render();document.getElementById('screen').scrollTop=0;
+}
+function runTest(){
+  if(!preHousingOk()){go('precheck');return}
+  S.testRan=true;
+  go('result');
+}
+let toastTimer=null;
+function toast(msg){
+  const el=document.getElementById('toast');
+  document.getElementById('toastmsg').textContent=msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.remove('show'),1800);
+}
+
+/* ================= shared view pieces ================= */
+function header(opts){
+  const back=opts.back?'<button class="iconbtn" data-act="back" aria-label="'+esc(t('back'))+'">←</button>':'';
+  const title=opts.brand
+    ?'<span class="brandmark">RuMampu</span>'
+    :'<span class="ttl">'+esc(opts.title||'')+'</span>';
+  return '<div class="hdr">'+back+title+
+    '<button class="langbtn" data-act="lang" aria-label="'+esc(t('lang_pick'))+'">'+S.lang.toUpperCase()+' ▾</button></div>';
+}
+function waterline(rows,cost,opts){
+  opts=opts||{};
+  const max=Math.max(cost,...rows.map(r=>r.surplus),1)*1.12;
+  const pct=v=>Math.max(0,v/max*100);
+  let bars='';
+  for(const r of rows){
+    const h=pct(r.surplus);
+    let gap='';
+    if(r.short&&r.gap>0){
+      gap='<i class="wl-gap" style="bottom:'+h+'%;height:'+(pct(cost)-h)+'%" aria-hidden="true"></i>';
+    }
+    bars+='<div class="wl-col"><i class="wl-bar" style="height:'+h+'%"></i>'+gap+'</div>';
+  }
+  const lbl=opts.lineLabel?'<span class="wl-linelbl" style="bottom:'+pct(cost)+'%">'+esc(rm(cost))+'</span>':'';
+  const xs=opts.noLabels?'':'<div class="wl-x">'+rows.map(r=>'<span>'+esc(monthName(r.m))+'</span>').join('')+'</div>';
+  const pv=opts.prov?'<div class="figrow">'+prov(opts.prov)+'</div>':'';
+  return '<div class="wl'+(opts.small?' small':'')+'"><div class="wl-plot">'+bars+
+    '<span class="wl-line" style="bottom:'+pct(cost)+'%"></span>'+lbl+'</div>'+xs+pv+'</div>';
+}
+function covStrip(){
+  const sp=recSpan(); if(!sp) return '';
+  const rec=new Map(sp.list.map(r=>[r.m,r]));
+  const maxNet=Math.max(...sp.list.map(r=>r.net),1);
+  let cells='';
+  for(let m=0;m<12;m++){
+    if(rec.has(m)) cells+='<i class="rec" style="height:'+Math.max(18,rec.get(m).net/maxNet*44)+'px" title="'+esc(monthName(m))+'"></i>';
+    else cells+='<i class="unk" title="'+esc(monthName(m))+': '+esc(t('unknown'))+'"></i>';
+  }
+  return '<div class="cov" role="img" aria-label="'+esc(t('covspan',{a:monthName(sp.from.m),b:monthName(sp.to.m)}))+'">'+cells+'</div>';
+}
+function editList(list,onScreenPrefix){
+  return list.map((c,i)=>
+    '<div class="editrow"><span class="lbl">'+esc(c.custom?c.name:t(c.k))+'<br>'+prov(c.p||'user')+'</span>'+
+    '<input type="number" inputmode="numeric" min="0" value="'+(+c.a||0)+'" data-edit="'+onScreenPrefix+'" data-i="'+i+'" aria-label="'+esc(c.custom?c.name:t(c.k))+'"></div>'
+  ).join('');
+}
+
+/* ================= screens ================= */
+const SCREENS={
+
+home(){
+  const sp=recSpan(); const n=sp?sp.list.length:0;
+  let inner='';
+  if(!sp){
+    return header({brand:true})+'<div class="stack"><p class="display h-l">'+esc(t('inc_empty'))+'</p>'+
+      '<button class="btn" data-act="go" data-to="income">'+esc(t('inc_add'))+'</button></div>';
+  }
+  if(!S.testRan){
+    inner+='<p class="display h-xl">'+esc(t('home_rec',{n}))+'</p>';
+    inner+='<div class="figrow">'+prov('user')+'</div>';
+    inner+=covStrip();
+    inner+='<p class="body-s muted">'+esc(t('covspan',{a:monthName(sp.from.m),b:monthName(sp.to.m)}))+'</p>';
+    if(n<4) inner+='<div class="note-c"><p class="body-s">'+esc(t('home_rec_thin',{n}))+'</p></div>';
+    inner+='<button class="btn" data-act="go" data-to="house">'+esc(t('home_test'))+'</button>';
+  }else{
+    const cost=totalHomeCost();
+    const rows=testRows(cost);
+    const s=rows.filter(r=>r.short).length;
+    const g=Math.max(...rows.map(r=>r.gap),0);
+    inner+='<p class="display h-xl">'+esc(s?t('headline',{s,n}):t('headline_zero',{n}))+'</p>';
+    inner+='<div class="figrow">'+prov('calc')+'</div>';
+    if(s) inner+='<div class="kv"><span class="k">'+esc(t('gap_lbl'))+'</span>'+fig(rm(g),'calc')+'</div>';
+    inner+=covStrip();
+    inner+='<p class="body-s muted">'+esc(t('covspan',{a:monthName(sp.from.m),b:monthName(sp.to.m)}))+'</p>';
+    const un=slowUnseen();
+    if(un.length) inner+='<div class="note-c"><p class="body-s">'+esc(t('cov_missed',{m:un.map(monthName).join(', ')}))+'</p></div>';
+    else if(S.coverage.answer===null) inner+='<button class="btn-line" data-act="go" data-to="coverage">'+esc(t('cov_unchecked'))+' →</button>';
+    inner+='<button class="btn" data-act="run">'+esc(t('home_retest'))+'</button>';
+  }
+  return header({brand:true})+'<div class="stack">'+inner+'</div>';
+},
+
+money(){
+  const netAvg=monthsAgg().reduce((a,r)=>a+r.net,0)/Math.max(1,monthsAgg().length);
+  const rows=[
+    ['income','money_income'],['workcosts','money_workcosts'],['commit','money_commit'],
+    ['pattern','money_pattern'],['coverage','money_coverage']
+  ].map(([r,k])=>'<button class="btn-quiet" data-act="go" data-to="'+r+'"><span>'+esc(t(k))+'</span><span aria-hidden="true">→</span></button>').join('');
+  return header({title:t('tab_money')})+
+    '<div class="stack"><div class="card"><p class="body-s muted">'+esc(t('net_lbl'))+'</p>'+
+    fig(rm(netAvg),'calc','h-l')+'<p class="body-s muted">'+esc(t('per_month'))+'</p></div>'+rows+'</div>';
+},
+
+income(){
+  const d=S.incomeDraft;
+  const list=S.data.income.slice(-6).reverse().map(e=>{
+    const src=S.data.sources.find(x=>x.id===e.s);
+    const dd=+e.d.slice(8,10)+' '+monthName(+e.d.slice(5,7)-1);
+    return '<div class="kv"><span class="k">'+esc(dd)+' · '+esc(src?(src.custom?src.name:t(src.k)):e.s)+'</span>'+fig(rm(e.a),'user','body-s')+'</div>';
+  }).join('');
+  const srcChips=S.data.sources.map(x=>
+    '<button class="chip'+(d.s===x.id?' on':'')+'" data-act="srcpick" data-id="'+x.id+'">'+esc(x.custom?x.name:t(x.k))+'</button>').join('')+
+    '<button class="chip" data-act="srcown">'+esc(t('src_own'))+'</button>';
+  let flag='';
+  if(d.flag==='neg') flag='<div class="note-c"><p class="body-s">'+esc(t('inc_neg'))+'</p></div>';
+  if(d.flag==='outlier') flag='<div class="note-c"><p class="body-s">'+esc(t('inc_outlier'))+'</p>'+
+    '<button class="btn-line" data-act="inc-keep">'+esc(t('keep'))+'</button></div>';
+  return header({back:1,title:t('money_income')})+
+    '<div class="stack">'+
+    (S.data.income.length?'':'<p class="h-m display">'+esc(t('inc_empty'))+'</p>')+
+    '<div class="card stack-s">'+
+    '<label class="field"><span>'+esc(t('inc_amount'))+'</span><input id="inc-a" type="number" inputmode="numeric" value="'+esc(d.a)+'"></label>'+
+    '<label class="field"><span>'+esc(t('inc_date'))+'</span><input id="inc-d" type="date" value="'+esc(d.d)+'"></label>'+
+    '<div class="field"><span>'+esc(t('inc_source'))+'</span><div class="chips">'+srcChips+'</div></div>'+
+    flag+
+    '<button class="btn" data-act="inc-add">'+esc(t('inc_add'))+'</button></div>'+
+    (S.data.income.length?'<div class="stack-s">'+list+'</div>':'')+
+    '</div>';
+},
+
+workcosts(){
+  const netAvg=monthsAgg().reduce((a,r)=>a+r.net,0)/Math.max(1,monthsAgg().length);
+  return header({back:1,title:t('money_workcosts')})+
+    '<div class="stack"><div class="card stack-s">'+editList(S.data.workCosts,'wc')+
+    '<button class="btn-line" data-act="own" data-list="wc">'+esc(t('wc_own'))+'</button></div>'+
+    '<div class="card"><p class="body-s muted">'+esc(t('net_lbl'))+'</p>'+fig(rm(netAvg),'calc','h-l')+
+    '<p class="body-s muted">'+esc(t('per_month'))+' — '+esc(t('wc_note'))+'</p></div></div>';
+},
+
+commit(){
+  const c=S.data.commitments;
+  const added=new Set([...c.living,...c.debts,...c.savings].map(x=>x.id));
+  const chips=MOCK.commitPresets.filter(id=>!added.has(id)).map(id=>{
+    const src=[...MOCK.commitments.living,...MOCK.commitments.debts,...MOCK.commitments.savings].find(x=>x.id===id);
+    return '<button class="chip" data-act="cm-chip" data-id="'+id+'">+ '+esc(t(src.k))+'</button>';
+  }).join('');
+  const sec=(kk,list,name)=>'<div class="card stack-s"><p class="body-s muted">'+esc(t(kk))+'</p>'+editList(list,name)+'</div>';
+  return header({back:1,title:t('money_commit')})+
+    '<div class="stack">'+
+    (chips?'<div class="chips">'+chips+'</div>':'')+
+    sec('cm_living',c.living,'cml')+sec('cm_debts',c.debts,'cmd')+sec('cm_savings',c.savings,'cms')+
+    '<div class="kv"><span class="k">'+esc(t('cm_total'))+'</span>'+fig(rm(commitTotal()),'calc')+'</div></div>';
+},
+
+pattern(){
+  const a=monthsAgg().map(r=>r.net);
+  const avg=a.reduce((x,y)=>x+y,0)/Math.max(1,a.length);
+  const srt=[...a].sort((x,y)=>x-y);
+  const med=(srt.length%2)?srt[(srt.length-1)/2]:(srt[srt.length/2-1]+srt[srt.length/2])/2;
+  const hi=Math.max(...a), lo=Math.min(...a);
+  const below=monthsAgg().filter(r=>r.net<avg*0.75).map(r=>monthName(r.m));
+  const kv=(k,v)=>'<div class="kv"><span class="k">'+esc(t(k))+'</span>'+fig(rm(v),'calc')+'</div>';
+  return header({back:1,title:t('money_pattern')})+
+    '<div class="stack">'+
+    '<div>'+fig(rm(avg),'calc','h-xl')+'<p class="body-s muted">'+esc(t('pt_avg'))+' — '+esc(t('pt_range',{x:nf((hi-lo)/2)}))+'</p></div>'+
+    '<div class="card stack-s">'+kv('pt_med',med)+kv('pt_high',hi)+kv('pt_low',lo)+'</div>'+
+    '<p class="body-s muted">'+esc(t('pt_rule'))+'</p>'+
+    '<p class="body-s">'+esc(below.length?t('pt_some',{m:below.join(', ')}):t('pt_none'))+'</p>'+
+    '</div>';
+},
+
+coverage(){
+  const sp=recSpan();
+  const ans=S.coverage.answer;
+  const q='<p class="display h-l">'+esc(t('cv_q'))+'</p>'+
+    '<div class="chips">'+[['yes','cv_yes'],['no','cv_no'],['notsure','cv_notsure']].map(([v,k])=>
+      '<button class="chip'+(ans===v?' brand-on':'')+'" data-act="cv-ans" data-v="'+v+'">'+esc(t(k))+'</button>').join('')+'</div>';
+  let body='';
+  if(ans==='yes'){
+    body+='<p>'+esc(t('cv_pick'))+'</p><div class="mgrid">'+
+      STRINGS[S.lang].months.map((mn,i)=>'<button class="'+(S.coverage.slow.includes(i)?'on':'')+'" data-act="cv-m" data-m="'+i+'">'+esc(mn)+'</button>').join('')+'</div>';
+    if(S.coverage.slow.length&&sp){
+      const un=slowUnseen();
+      const slowNames=S.coverage.slow.map(monthName).join(', ');
+      const msg=un.length?t('cv_unseen',{slow:slowNames,a:monthName(sp.from.m),b:monthName(sp.to.m)})
+                         :t('cv_seen',{slow:slowNames,a:monthName(sp.from.m),b:monthName(sp.to.m)});
+      body+='<div class="'+(un.length?'note-c':'card')+'"><p class="body-s">'+esc(msg)+'</p></div>';
+    }
+  }else if(ans==='no'||ans==='notsure'){
+    const nets=monthsAgg().map(r=>r.net);
+    const avg=nets.reduce((x,y)=>x+y,0)/Math.max(1,nets.length);
+    const spread=Math.max(...nets)-Math.min(...nets);
+    const narrow=spread<avg*0.12;
+    body+='<div class="'+(narrow?'note-c':'card')+'"><p class="body-s">'+
+      esc(narrow?t('cv_narrow'):t('cv_varied',{a:monthName(sp.from.m),b:monthName(sp.to.m)}))+'</p></div>';
+  }
+  return header({back:1,title:t('money_coverage')})+
+    '<div class="stack">'+q+body+'<p class="body-s muted">'+esc(t('cv_note'))+'</p></div>';
+},
+
+house(){
+  const h=S.data.house;
+  const inst=currentInstalment();
+  const known=h.knownPayment!=null;
+  let form='';
+  if(!known){
+    form='<div class="card stack-s">'+
+    '<label class="field"><span>'+esc(t('th_price'))+'</span><input id="h-price" type="number" inputmode="numeric" value="'+h.price+'"></label>'+
+    '<label class="field"><span>'+esc(t('th_dep'))+'</span><input id="h-dep" type="number" inputmode="numeric" min="0" value="'+h.deposit+'"></label>'+
+    '<p class="body-s muted">'+esc(t('th_dep0'))+' '+prov('official')+'</p>'+
+    '<div class="kv"><span class="k">'+esc(t('th_fin'))+'</span>'+fig(rm(Math.max(0,h.price-h.deposit)),'calc')+'</div>'+
+    '<label class="field"><span>'+esc(t('th_rate'))+'</span><input id="h-rate" type="number" inputmode="decimal" step="0.05" value="'+h.rate+'"></label>'+
+    '<label class="field"><span>'+esc(t('th_ten'))+'</span><input id="h-ten" type="number" inputmode="numeric" value="'+h.years+'"></label>'+
+    '</div>'+
+    '<div class="kv"><span class="k">'+esc(t('th_inst'))+'</span>'+fig(rm(inst),'calc','h-l')+'</div>'+
+    '<button class="btn-line" data-act="h-known">'+esc(t('th_known'))+'</button>';
+  }else{
+    form='<div class="card stack-s">'+
+    '<label class="field"><span>'+esc(t('th_knownamt'))+'</span><input id="h-kp" type="number" inputmode="numeric" value="'+(+h.knownPayment||0)+'"></label>'+
+    '<div class="figrow">'+prov('user')+'</div></div>'+
+    '<button class="btn-line" data-act="h-unknown">'+esc(t('cancel'))+'</button>';
+  }
+  return header({back:1,title:t('th_title')})+
+    '<div class="stack">'+form+
+    '<button class="btn" data-act="go" data-to="homecost">'+esc(t('th_next'))+' →</button></div>';
+},
+
+homecost(){
+  const inst=currentInstalment(), total=totalHomeCost();
+  let breakdown='';
+  if(S.tcOpen){
+    breakdown='<div class="card stack-s">'+
+      '<div class="kv"><span class="k">'+esc(t('tc_inst'))+'</span>'+fig(rm(inst),S.data.house.knownPayment!=null?'user':'calc')+'</div>'+
+      editList(S.data.homeCosts.map(c=>({...c,p:'assume'})),'hc')+'</div>';
+  }
+  return header({back:1,title:t('tc_title')})+
+    '<div class="stack">'+
+    '<div>'+fig(rm(total),'calc','h-xl')+'</div>'+
+    '<p class="body-s muted">'+esc(t('tc_point'))+'</p>'+
+    '<button class="btn-quiet" data-act="tc-toggle" aria-expanded="'+(S.tcOpen?'true':'false')+'"><span>'+esc(t('tc_break'))+'</span><span aria-hidden="true">'+(S.tcOpen?'−':'+')+'</span></button>'+
+    breakdown+
+    '<button class="btn" data-act="run">'+esc(t('tc_run'))+' →</button></div>';
+},
+
+precheck(){
+  const rows=testRows(0);
+  const worst=rows.reduce((a,b)=>a.surplus<b.surplus?a:b,rows[0]);
+  const x=Math.max(0,-worst.surplus);
+  return header({back:1,title:t('pc_title')})+
+    '<div class="stack">'+
+    '<p class="display h-l">'+esc(t('pc_msg',{m:monthName(worst.m),x:nf(x)}))+'</p>'+
+    '<div class="figrow">'+prov('calc')+'</div>'+
+    '<p class="body-s muted">'+esc(t('pc_msg2'))+'</p>'+
+    '<button class="btn" data-act="tab" data-to="money">'+esc(t('pc_btn'))+'</button></div>';
+},
+
+result(){
+  const cost=totalHomeCost();
+  const rows=testRows(cost);
+  const n=rows.length, s=rows.filter(r=>r.short).length;
+  const g=Math.max(...rows.map(r=>r.gap),0);
+  const un=slowUnseen();
+  let lead='';
+  if(un.length){
+    lead='<div class="note-c"><p class="display h-l">'+esc(t('rs_limit_slow',{m:un.map(monthName).join(', ')}))+'</p></div>'+
+      '<p class="h-m display">'+esc(s?t('headline',{s,n}):t('headline_zero',{n}))+'</p><div class="figrow">'+prov('calc')+'</div>';
+  }else if(n<4){
+    lead='<div class="note-c"><p class="display h-l">'+esc(t('rs_limit_thin',{n}))+'</p></div>'+
+      '<p class="h-m display">'+esc(s?t('headline',{s,n}):t('headline_zero',{n}))+'</p><div class="figrow">'+prov('calc')+'</div>';
+  }else{
+    lead='<p class="display h-xl">'+esc(s?t('headline',{s,n}):t('headline_zero',{n}))+'</p><div class="figrow">'+prov('calc')+'</div>';
+  }
+  const how=S.howOpen?'<div class="card"><p class="body-s">'+esc(t('rs_how_body',{c:nf(cost)}))+'</p></div>':'';
+  return header({back:1,title:t('rs_title')})+
+    '<div class="stack">'+lead+
+    (s?'<div class="kv"><span class="k">'+esc(t('gap_lbl'))+'</span>'+fig(rm(g),'calc')+'</div>':'')+
+    waterline(rows,cost,{lineLabel:true,prov:'calc'})+
+    '<button class="btn-line" data-act="how" aria-expanded="'+(S.howOpen?'true':'false')+'">'+esc(t('rs_how'))+'</button>'+how+
+    '<div class="stack-s">'+
+    '<button class="btn-quiet" data-act="go" data-to="range"><span>'+esc(t('rs_range'))+'</span><span aria-hidden="true">→</span></button>'+
+    '<button class="btn-quiet" data-act="go" data-to="compare"><span>'+esc(t('rs_compare'))+'</span><span aria-hidden="true">→</span></button>'+
+    '<button class="btn-quiet" data-act="go" data-to="shock"><span>'+esc(t('rs_shock'))+'</span><span aria-hidden="true">→</span></button>'+
+    '</div></div>';
+},
+
+range(){
+  const cr=carryRange(); if(!cr) return header({back:1,title:t('rs_range')});
+  const h=S.data.house, ex=extrasTotal();
+  const rd=v=>Math.round(v/1000)*1000;
+  const pLo=rd(priceForInstalment(cr.lo-ex)+h.deposit), pHi=rd(priceForInstalment(cr.hi-ex)+h.deposit);
+  const you=totalHomeCost();
+  const lo=cr.lo*0.8, hiS=Math.max(cr.hi,you)*1.15;
+  const pos=v=>Math.min(100,Math.max(0,(v-lo)/(hiS-lo)*100));
+  const how=S.rgHowOpen?'<div class="card"><p class="body-s">'+esc(t('rg_how_body',{a:nf(cr.lo),b:nf(cr.hi)}))+'</p></div>':'';
+  return header({back:1,title:t('rs_range')})+
+    '<div class="stack">'+
+    '<p class="display h-l">'+esc(t('rg_lead',{a:nf(cr.lo),b:nf(cr.hi)}))+'</p>'+
+    '<div class="figrow">'+prov('calc')+'</div>'+
+    '<div class="band"><span style="position:absolute;right:0;top:-6px">'+prov('calc')+'</span><span class="track"></span>'+
+    '<span class="fill" style="left:'+pos(cr.lo)+'%;width:'+(pos(cr.hi)-pos(cr.lo))+'%"></span>'+
+    '<span class="pin" style="left:'+pos(you)+'%">'+esc(rm(you))+'<br>'+esc(t('rg_pin'))+'</span></div>'+
+    '<button class="btn-line" data-act="rghow" aria-expanded="'+(S.rgHowOpen?'true':'false')+'">'+esc(t('rg_how'))+'</button>'+how+
+    '<hr class="divider">'+
+    '<p>'+esc(t('rg_price',{r:h.rate,y:h.years,p:nf(pLo),q:nf(pHi)}))+'</p>'+
+    '<div class="figrow">'+prov('assume')+'</div>'+
+    '<p class="body-s muted">'+esc(t('rg_ind'))+'</p></div>';
+},
+
+compare(){
+  const n=monthsAgg().length;
+  const cols=S.data.comparePayments.map((p,i)=>{
+    const rows=testRows(p);
+    const s=rows.filter(r=>r.short).length, g=Math.max(...rows.map(r=>r.gap),0);
+    return '<div class="card stack-s" style="flex:1;min-width:0;padding:10px">'+
+      '<input type="number" inputmode="numeric" value="'+p+'" data-edit="cp" data-i="'+i+'" aria-label="'+esc(t('cp_pay',{i:i+1}))+'" style="min-height:44px">'+
+      waterline(rows,p,{small:true,noLabels:true})+
+      '<p class="body-s"><b>'+esc(t('cp_short',{s,n}))+'</b><br><span class="muted">'+esc(t('cp_gap',{g:nf(g)}))+'</span></p>'+prov('calc')+'</div>';
+  }).join('');
+  return header({back:1,title:t('rs_compare')})+
+    '<div class="stack"><p class="body-s muted">'+esc(t('cp_note'))+'</p>'+
+    '<div style="display:flex;gap:8px;align-items:stretch">'+cols+'</div></div>';
+},
+
+shock(){
+  const cost=totalHomeCost();
+  const p=S.shock;
+  const rows=testRows(cost,p);
+  const n=rows.length, s=rows.filter(r=>r.short).length;
+  const chips=[0,10,20].map(v=>'<button class="chip'+(p===v?' on':'')+'" data-act="shock" data-v="'+v+'">'+(v===0?'0%':'−'+v+'%')+'</button>').join('')+
+    '<button class="chip'+(![0,10,20].includes(p)?' on':'')+'" data-act="shock-custom">'+esc(t('sh_custom'))+'</button>';
+  const custom=![0,10,20].includes(p)||S.sheet==='shockcustom'
+    ?'<label class="field"><span>'+esc(t('sh_pct'))+'</span><input id="sh-p" type="number" inputmode="numeric" min="0" max="90" value="'+p+'"></label>':'';
+  return header({back:1,title:t('rs_shock')})+
+    '<div class="stack"><div class="chips">'+chips+'</div>'+custom+
+    '<p class="display h-l">'+esc(t('sh_head',{p,s,n}))+'</p>'+
+    '<div class="figrow">'+prov('assume')+'</div>'+
+    waterline(rows,cost,{lineLabel:true,prov:'assume'})+
+    '<p class="body-s muted">'+esc(t('sh_note'))+'</p></div>';
+},
+
+prepare(){
+  const rows=[['upfront','pr_upfront'],['buffer','pr_buffer'],['docs','pr_docs']].map(([r,k])=>
+    '<button class="btn-quiet" data-act="go" data-to="'+r+'"><span>'+esc(t(k))+'</span><span aria-hidden="true">→</span></button>').join('');
+  return header({title:t('tab_prepare')})+
+    '<div class="stack">'+rows+
+    '<hr class="divider">'+
+    '<button class="btn-quiet" data-act="go" data-to="pv_switch"><span><span class="badge caution">'+esc(t('pr_pv'))+'</span><br><span class="body-s muted">'+esc(t('pr_pv_note'))+'</span></span><span aria-hidden="true">→</span></button>'+
+    '</div>';
+},
+
+upfront(){
+  const dep=S.data.house.deposit;
+  const need=upfrontNeed(), have=S.data.cashOnHand, gap=Math.max(0,need-have);
+  const scale=Math.max(need,have,1)*1.12;
+  const pct=v=>v/scale*100;
+  const chart='<div class="wl"><div class="wl-plot" style="height:120px;justify-content:center">'+
+    '<div class="wl-col" style="max-width:120px;flex:0 0 120px"><i class="wl-bar" style="height:'+pct(have)+'%"></i>'+
+    (gap>0?'<i class="wl-gap" style="bottom:'+pct(have)+'%;height:'+(pct(need)-pct(have))+'%" aria-hidden="true"></i>':'')+
+    '</div><span class="wl-line" style="bottom:'+pct(need)+'%"></span>'+
+    '<span class="wl-linelbl" style="bottom:'+pct(need)+'%">'+esc(rm(need))+'</span></div><div class="figrow">'+prov('calc')+'</div></div>';
+  return header({back:1,title:t('pr_upfront')})+
+    '<div class="stack">'+
+    '<div class="kv"><span class="k">'+esc(t('uf_have'))+'</span>'+fig(rm(have),'user','h-l')+'</div>'+
+    '<div class="kv"><span class="k">'+esc(t('uf_need'))+'</span>'+fig(rm(need),'calc','h-l')+'</div>'+
+    '<div class="kv"><span class="k">'+esc(t('uf_gap'))+'</span>'+fig(rm(gap),'calc','h-l')+'</div>'+
+    chart+
+    (dep===0?'<p class="body-s muted">'+esc(t('uf_dep0'))+' '+prov('user')+'</p>':'<div class="kv"><span class="k">'+esc(t('uf_dep'))+'</span>'+fig(rm(dep),'user')+'</div>')+
+    '<div class="card stack-s">'+editList(S.data.upfront,'uf')+'</div>'+
+    '<p class="body-s muted">'+esc(t('dc_src'))+'</p></div>';
+},
+
+buffer(){
+  const cost=totalHomeCost();
+  const b=bufferNeed(cost);
+  const maxAbs=Math.max(...b.rows.map(r=>Math.abs(r.bal)),1);
+  const mid=52;
+  const bars=b.rows.map(r=>{
+    const h=Math.max(3,Math.abs(r.bal)/maxAbs*46);
+    const neg=r.bal<0;
+    return '<div class="wl-col" style="height:104px"><i class="'+(neg?'wl-gap':'wl-bar')+'" style="position:absolute;left:15%;width:70%;'+(neg?'top:'+mid+'px;height:'+h+'px':'bottom:'+(104-mid)+'px;height:'+h+'px')+';border-radius:3px"></i></div>';
+  }).join('');
+  const chart='<div class="wl"><div class="wl-plot" style="height:104px;align-items:stretch">'+bars+
+    '<span class="wl-line" style="bottom:'+(104-mid)+'px"></span></div>'+
+    '<div class="wl-x">'+b.rows.map(r=>'<span>'+esc(monthName(r.m))+'</span>').join('')+'</div><div class="figrow">'+prov('calc')+'</div></div>';
+  const sp=recSpan();
+  return header({back:1,title:t('pr_buffer')})+
+    '<div class="stack">'+
+    '<div>'+fig(rm(b.need),'calc','h-xl')+'</div>'+
+    '<p class="body-s muted">'+esc(t('bf_def'))+'</p>'+
+    (b.need===0?'<div class="note-c"><p class="body-s">'+esc(t('bf_zero'))+' '+prov('calc')+'</p></div>':'')+
+    '<p class="body-s muted">'+esc(t('bf_bal'))+'</p>'+chart+
+    '<p class="body-s muted">'+esc(t('bf_basis',{a:monthName(sp.from.m),b:monthName(sp.to.m)}))+'</p></div>';
+},
+
+docs(){
+  const check=k=>'<button class="btn-quiet" style="min-height:48px" data-act="dc-check" data-k="'+k+'" aria-pressed="'+(S.docsChecked.includes(k)?'true':'false')+'"><span>'+(S.docsChecked.includes(k)?'☑':'☐')+' '+esc(t(k))+'</span></button>';
+  return header({back:1,title:t('pr_docs')})+
+    '<div class="stack">'+
+    '<div class="card stack-s">'+['dc_bank','dc_ehail','dc_statdec','dc_epf','dc_commitlist'].map(check).join('')+'</div>'+
+    '<div class="card stack-s"><p class="body-s muted">'+esc(t('dc_sjkp'))+'</p>'+
+    ['dc_sj1','dc_sj2','dc_sj3'].map(k=>'<p class="body-s">· '+esc(t(k))+'</p>').join('')+
+    '<div class="figrow">'+prov('official')+'</div>'+
+    '<p class="body-s muted">'+esc(t('dc_src'))+'</p>'+
+    '<hr class="divider">'+
+    '<button class="btn-line" data-act="dc65" aria-expanded="'+(S.dcOpen?'true':'false')+'" style="text-decoration:none"><span class="badge caution">'+esc(t('dc_65'))+' '+(S.dcOpen?'−':'+')+'</span></button>'+
+    (S.dcOpen?'<p class="body-s muted">'+esc(t('dc_65_note'))+'</p>':'')+'</div>'+
+    '<p class="body-s">'+esc(t('dc_plain'))+'</p></div>';
+},
+
+pv_switch(){
+  return header({back:1,title:t('pv_switch')})+
+    '<div class="stack"><span class="badge caution">'+esc(t('pv_banner'))+'</span>'+
+    '<p class="body-s muted">'+esc(t('pv_switch_note'))+'</p>'+
+    '<button class="btn" data-act="buy">'+esc(t('pv_switch_btn'))+'</button>'+
+    (S.bought?'<button class="btn-quiet" data-act="go" data-to="pv_month"><span>'+esc(t('pv_month'))+'</span><span aria-hidden="true">→</span></button>'+
+    '<button class="btn-quiet" data-act="go" data-to="pv_compare"><span>'+esc(t('pv_then'))+'</span><span aria-hidden="true">→</span></button>':'')+
+    '</div>';
+},
+
+pv_month(){
+  const cur=S.data.after.months[S.data.after.months.length-1];
+  const left=cur.inc-cur.home;
+  const rows=S.data.after.months.map(r=>({m:r.m,surplus:r.inc,short:r.inc<r.home,gap:Math.max(0,r.home-r.inc)}));
+  return header({back:1,title:t('pv_month')})+
+    '<div class="stack"><span class="badge caution">'+esc(t('pv_banner'))+'</span>'+
+    '<div>'+fig((left<0?'−':'')+rm(Math.abs(left)),'user','h-xl')+
+    '<p class="body-s muted">'+esc(left<0?t('pv_shortby'):t('pv_left'))+'</p></div>'+
+    '<div class="kv"><span class="k">'+esc(t('pv_in'))+'</span>'+fig(rm(cur.inc),'user')+'</div>'+
+    '<div class="kv"><span class="k">'+esc(t('pv_out'))+'</span>'+fig(rm(cur.home),'user')+'</div>'+
+    waterline(rows,cur.home,{lineLabel:true,prov:'user'})+
+    '</div>';
+},
+
+pv_compare(){
+  const cost=totalHomeCost();
+  const rows=testRows(cost);
+  const n=rows.length, s=rows.filter(r=>r.short).length;
+  const am=S.data.after.months;
+  const s2=am.filter(r=>r.inc<r.home).length;
+  return header({back:1,title:t('pv_then')})+
+    '<div class="stack"><span class="badge caution">'+esc(t('pv_banner'))+'</span>'+
+    '<p class="display h-m">'+esc(t('pv_then_a',{s,n}))+'</p><div class="figrow">'+prov('calc')+'</div>'+
+    '<p class="display h-m">'+esc(t('pv_then_b',{s2,n2:am.length}))+'</p><div class="figrow">'+prov('user')+'</div>'+
+    '<hr class="divider">'+
+    '<p class="body-s muted">'+esc(t('pv_then_why'))+'</p></div>';
+}
+};
+
+/* ================= sheets & onboarding ================= */
+function renderOverlay(){
+  const o=document.getElementById('overlay');
+  if(!S.onboarded){
+    const cards=['ob1','ob2','ob3'];
+    const i=S.onboard;
+    o.innerHTML='<div class="ob">'+
+      '<div style="display:flex;justify-content:space-between"><button class="langbtn" data-act="lang" aria-label="'+esc(t('lang_pick'))+'">'+S.lang.toUpperCase()+' ▾</button><button class="iconbtn" data-act="ob-skip" style="font-family:var(--disp);font-weight:700;font-size:15px;min-width:64px">'+esc(t('ob_skip'))+'</button></div>'+
+      '<div class="obcard"><span class="brandmark display" style="font-size:24px">RuMampu</span>'+
+      '<p class="display h-l">'+esc(t(cards[i]))+'</p></div>'+
+      '<div class="dots">'+cards.map((_,j)=>'<i class="'+(j===i?'on':'')+'"></i>').join('')+'</div>'+
+      '<button class="btn" data-act="ob-next">'+esc(i<2?t('ob_next'):t('ob_start'))+'</button></div>';
+    return;
+  }
+  if(S.sheet==='lang'){
+    o.innerHTML='<div class="sheetwrap"><div class="scrim" data-act="sheet-close"></div><div class="sheet">'+
+      '<h3>'+esc(t('lang_pick'))+'</h3>'+
+      ['en','ms','zh'].map(l=>'<button class="opt'+(S.lang===l?' on':'')+'" data-act="setlang" data-l="'+l+'">'+esc(STRINGS[l].langname)+(S.lang===l?' <span style="color:var(--brand)">✓</span>':'')+'</button>').join('')+
+      '</div></div>';
+    return;
+  }
+  if(S.sheet&&S.sheet.startsWith('prov:')){
+    const p=S.sheet.slice(5);
+    o.innerHTML='<div class="sheetwrap"><div class="scrim" data-act="sheet-close"></div><div class="sheet">'+
+      '<h3><i class="g" style="font-style:normal;font-size:13px">'+PROV_G[p]+'</i> '+esc(t('prov_'+p))+'</h3>'+
+      '<p class="body-s">'+esc(t('provf_'+p))+'</p>'+
+      '<button class="btn" data-act="sheet-close" style="margin-top:16px">'+esc(t('done'))+'</button></div></div>';
+    return;
+  }
+  if(S.sheet==='srcown'||S.sheet==='wcown'){
+    const isSrc=S.sheet==='srcown';
+    o.innerHTML='<div class="sheetwrap"><div class="scrim" data-act="sheet-close"></div><div class="sheet stack-s">'+
+      '<h3>'+esc(isSrc?t('src_own'):t('wc_own'))+'</h3>'+
+      '<label class="field"><span>'+esc(t('src_name'))+'</span><input id="own-name" type="text"></label>'+
+      (isSrc?'':'<label class="field"><span>'+esc(t('inc_amount'))+'</span><input id="own-amt" type="number" inputmode="numeric" min="0" value="0"></label>')+
+      '<button class="btn" data-act="own-save" data-kind="'+(isSrc?'src':'wc')+'">'+esc(t('add'))+'</button></div></div>';
+    return;
+  }
+  o.innerHTML='';
+}
+
+/* ================= render ================= */
+function render(){
+  document.documentElement.lang=S.lang==='zh'?'zh':(S.lang==='ms'?'ms':'en');
+  const scr=document.getElementById('screen');
+  scr.innerHTML=(SCREENS[S.route]||SCREENS.home)();
+  const tab=TAB_OF[S.route]||'home';
+  document.getElementById('tabbar').innerHTML=[
+    ['home','⌂','tab_home'],['money','◔','tab_money'],['test','≟','tab_test'],['prepare','☰','tab_prepare']
+  ].map(([id,ico,k])=>'<button class="'+(tab===id?'on':'')+'" data-act="tab" data-to="'+id+'" aria-current="'+(tab===id?'page':'false')+'"><span class="ico" aria-hidden="true">'+ico+'</span>'+esc(t(k))+'</button>').join('');
+  renderOverlay();
+}
+
+/* ================= events ================= */
+document.getElementById('phone').addEventListener('click',ev=>{
+  const b=ev.target.closest('[data-act],[data-prov]');
+  if(!b) return;
+  if(b.dataset.prov){S.sheet='prov:'+b.dataset.prov;renderOverlay();return}
+  const act=b.dataset.act;
+  if(act==='back') backNav();
+  else if(act==='go') go(b.dataset.to);
+  else if(act==='tab') goTab(b.dataset.to);
+  else if(act==='lang'){S.sheet='lang';renderOverlay()}
+  else if(act==='setlang'){S.lang=b.dataset.l;S.sheet=null;render()}
+  else if(act==='sheet-close'){S.sheet=null;renderOverlay()}
+  else if(act==='ob-skip'){S.onboarded=true;renderOverlay()}
+  else if(act==='ob-next'){if(S.onboard<2){S.onboard++;renderOverlay()}else{S.onboarded=true;renderOverlay()}}
+  else if(act==='how'){S.howOpen=!S.howOpen;render()}
+  else if(act==='rghow'){S.rgHowOpen=!S.rgHowOpen;render()}
+  else if(act==='tc-toggle'){S.tcOpen=!S.tcOpen;render()}
+  else if(act==='dc65'){S.dcOpen=!S.dcOpen;render()}
+  else if(act==='dc-check'){const k=b.dataset.k;const i=S.docsChecked.indexOf(k);if(i>=0)S.docsChecked.splice(i,1);else S.docsChecked.push(k);render()}
+  else if(act==='run') runTest();
+  else if(act==='srcpick'){S.incomeDraft.s=b.dataset.id;render()}
+  else if(act==='srcown'){S.sheet='srcown';renderOverlay()}
+  else if(act==='own'){S.sheet=b.dataset.list==='wc'?'wcown':'srcown';renderOverlay()}
+  else if(act==='own-save'){
+    const name=(document.getElementById('own-name').value||'').trim();
+    if(name){
+      if(b.dataset.kind==='src'){
+        const id='own'+Date.now();
+        S.data.sources.push({id,custom:true,name});
+        S.incomeDraft.s=id;
+      }else{
+        S.data.workCosts.push({id:'own'+Date.now(),custom:true,name,a:+document.getElementById('own-amt').value||0});
+      }
+      S.sheet=null;toast(t('saved'));render();
+    }
+  }
+  else if(act==='inc-add'||act==='inc-keep'){
+    const a=+document.getElementById('inc-a')?.value||+S.incomeDraft.a||0;
+    const d=document.getElementById('inc-d')?.value||S.incomeDraft.d;
+    if(a<0){S.incomeDraft.flag='neg';S.incomeDraft.a=a;render();return}
+    if(!a){document.getElementById('inc-a')?.focus();return}
+    const amts=S.data.income.map(e=>e.a).sort((x,y)=>x-y);
+    const med=amts.length?amts[Math.floor(amts.length/2)]:a;
+    if(act==='inc-add'&&amts.length&&a>med*3){S.incomeDraft={...S.incomeDraft,a,d,flag:'outlier'};render();return}
+    S.data.income.push({a,d,s:S.incomeDraft.s});
+    S.data.income.sort((x,y)=>x.d<y.d?-1:1);
+    S.incomeDraft={a:'',d,s:S.incomeDraft.s,flag:null};
+    toast(t('entry_saved'));render();
+  }
+  else if(act==='cm-chip'){
+    const id=b.dataset.id;
+    const all={living:MOCK.commitments.living,debts:MOCK.commitments.debts,savings:MOCK.commitments.savings};
+    for(const sec in all){
+      const src=all[sec].find(x=>x.id===id);
+      if(src){S.data.commitments[sec].push({...src});break}
+    }
+    toast(t('saved'));render();
+  }
+  else if(act==='cv-ans'){S.coverage.answer=b.dataset.v;render()}
+  else if(act==='cv-m'){
+    const m=+b.dataset.m;
+    const i=S.coverage.slow.indexOf(m);
+    if(i>=0)S.coverage.slow.splice(i,1);else S.coverage.slow.push(m);
+    render();
+  }
+  else if(act==='h-known'){S.data.house.knownPayment=Math.round(currentInstalment());render()}
+  else if(act==='h-unknown'){S.data.house.knownPayment=null;render()}
+  else if(act==='shock'){S.shock=+b.dataset.v;S.sheet=null;render()}
+  else if(act==='shock-custom'){S.sheet='shockcustom';render()}
+  else if(act==='buy'){S.bought=true;toast(t('saved'));render()}
+});
+document.getElementById('phone').addEventListener('input',ev=>{
+  const el=ev.target;
+  if(el.id==='inc-a')S.incomeDraft.a=el.value;
+  if(el.id==='inc-d')S.incomeDraft.d=el.value;
+  if(el.id==='h-price'){S.data.house.price=+el.value||0;softUpdate()}
+  if(el.id==='h-dep'){S.data.house.deposit=Math.max(0,+el.value||0);softUpdate()}
+  if(el.id==='h-rate'){S.data.house.rate=+el.value||0;softUpdate()}
+  if(el.id==='h-ten'){S.data.house.years=+el.value||1;softUpdate()}
+  if(el.id==='h-kp'){S.data.house.knownPayment=+el.value||0}
+  if(el.id==='sh-p'){S.shock=Math.min(90,Math.max(0,+el.value||0));softUpdate()}
+  const listMap={wc:S.data.workCosts,hc:S.data.homeCosts,uf:S.data.upfront,
+    cml:S.data.commitments.living,cmd:S.data.commitments.debts,cms:S.data.commitments.savings,cp:S.data.comparePayments};
+  if(el.dataset.edit){
+    const list=listMap[el.dataset.edit], i=+el.dataset.i;
+    if(el.dataset.edit==='cp') list[i]=Math.max(0,+el.value||0);
+    else if(list&&list[i]) list[i].a=Math.max(0,+el.value||0);
+    softUpdate();
+  }
+});
+/* re-render derived figures without stealing focus from the input being typed in */
+let softTimer=null;
+function softUpdate(){
+  clearTimeout(softTimer);
+  softTimer=setTimeout(()=>{
+    const el=document.activeElement;
+    const id=el&&el.id, de=el&&el.dataset?el.dataset.edit:null, di=el&&el.dataset?el.dataset.i:null;
+    const pos=el&&el.selectionStart;
+    render();
+    let again=null;
+    if(id) again=document.getElementById(id);
+    else if(de!=null&&di!=null) again=document.querySelector('[data-edit="'+de+'"][data-i="'+di+'"]');
+    if(again){again.focus();try{if(pos!=null)again.setSelectionRange(pos,pos)}catch(e){}}
+  },600);
+}
+
+/* audit hook — used by the self-audit script, not by the product UI */
+window.__audit={
+  routes:['home','money','income','workcosts','commit','pattern','coverage','house','homecost','precheck','result','range','compare','shock','prepare','upfront','buffer','docs','pv_switch','pv_month','pv_compare'],
+  goto(r){S.onboarded=true;S.testRan=true;S.bought=true;S.sheet=null;S.howOpen=false;S.rgHowOpen=false;S.tcOpen=false;S.dcOpen=false;S.route=r;render()},
+  setLang(l){S.lang=l;render()},
+  ob(){S.onboarded=false;S.onboard=0;render()}
+};
+
+render();
+</script>
+</body>
+</html>
