@@ -20,7 +20,7 @@ Scale (px / line-height): **40/44** display (max one per screen) · **26/32** he
 | Token | Spent on |
 |---|---|
 | `--ink` #3C5152 | All text, chrome, and **every neutral data bar — including covered months** |
-| `--paper` #E1DFC6 | The page. Cards are paper darkened 4%, never white |
+| `--paper` #FFFFFF | The page (changed from the brief's #E1DFC6 cream at client request, 23 Aug 2026). Cards are a cool ink-tinted gray, #EFF3F2, with a hairline edge |
 | `--brand` #4A9195 | One primary button per screen, active tab, links, focus ring |
 | `--confirm` #32B14A | The save toast and entry-accepted tick. Nothing else, ever |
 | `--caution` #FEC844 | Unknown values, coverage gaps, the "test hasn't seen enough" state |
