@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>RuMampu</title>
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="%2328343A"/><g transform="rotate(-42 50 50)"><rect x="32" y="45.8" width="56" height="8.4" rx="4.2" fill="%23FFFFFF"/><rect x="54" y="29" width="6" height="17" rx="3" fill="%234C9F58"/><rect x="63" y="35" width="6" height="11" rx="3" fill="%23F4C64D"/><rect x="72" y="31" width="6" height="15" rx="3" fill="%234C9F58"/><rect x="81" y="38" width="6" height="8" rx="3" fill="%23D95436"/><circle cx="32" cy="50" r="16.5" fill="%23FFFFFF"/><path d="M32 43.5 L40 50 L40 57 L24 57 L24 50 Z" fill="%2328343A"/></g></svg>'>
 <style>
 @font-face{
   font-family:'Space Grotesk';
@@ -532,6 +533,10 @@ function t(k,vars){
 function esc(x){return String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function nf(v){return Math.round(v).toLocaleString('en-MY')}
 function rm(v){return 'RM '+nf(v)}
+function logoSvg(px){
+  return '<svg width="'+px+'" height="'+px+'" viewBox="0 0 100 100" aria-hidden="true" focusable="false">'+
+    '<circle cx="50" cy="50" r="50" fill="#28343A"/>'+'<g transform="rotate(-42 50 50)">'+'<rect x="32" y="45.8" width="56" height="8.4" rx="4.2" fill="#FFFFFF"/>'+'<rect x="54" y="29" width="6" height="17" rx="3" fill="#4C9F58"/>'+'<rect x="63" y="35" width="6" height="11" rx="3" fill="#F4C64D"/>'+'<rect x="72" y="31" width="6" height="15" rx="3" fill="#4C9F58"/>'+'<rect x="81" y="38" width="6" height="8" rx="3" fill="#D95436"/>'+'<circle cx="32" cy="50" r="16.5" fill="#FFFFFF"/>'+'<path d="M32 43.5 L40 50 L40 57 L24 57 L24 50 Z" fill="#28343A"/>'+'</g></svg>';
+}
 const PROV_G={user:'●',official:'○',calc:'▸',assume:'▩'};
 function prov(p){
   return '<button class="prov" data-prov="'+p+'" aria-label="'+esc(t('prov_'+p))+'"><i class="g">'+PROV_G[p]+'</i>'+esc(t('prov_'+p))+'</button>';
@@ -652,7 +657,7 @@ function toast(msg){
 function header(opts){
   const back=opts.back?'<button class="iconbtn" data-act="back" aria-label="'+esc(t('back'))+'">←</button>':'';
   const title=opts.brand
-    ?'<span class="brandmark">RuMampu</span>'
+    ?'<span class="brandmark" style="display:inline-flex;align-items:center;gap:9px">'+logoSvg(28)+'RuMampu</span>'
     :'<span class="ttl">'+esc(opts.title||'')+'</span>';
   return '<div class="hdr">'+back+title+
     '<button class="langbtn" data-act="lang" aria-label="'+esc(t('lang_pick'))+'">'+S.lang.toUpperCase()+' ▾</button></div>';
@@ -1093,7 +1098,7 @@ function renderOverlay(){
     const i=S.onboard;
     o.innerHTML='<div class="ob">'+
       '<div style="display:flex;justify-content:space-between"><button class="langbtn" data-act="lang" aria-label="'+esc(t('lang_pick'))+'">'+S.lang.toUpperCase()+' ▾</button><button class="iconbtn" data-act="ob-skip" style="font-family:var(--disp);font-weight:700;font-size:15px;min-width:64px">'+esc(t('ob_skip'))+'</button></div>'+
-      '<div class="obcard"><span class="brandmark display" style="font-size:24px">RuMampu</span>'+
+      '<div class="obcard">'+logoSvg(84)+'<span class="brandmark display" style="font-size:24px">RuMampu</span>'+
       '<p class="display h-l">'+esc(t(cards[i]))+'</p></div>'+
       '<div class="dots">'+cards.map((_,j)=>'<i class="'+(j===i?'on':'')+'"></i>').join('')+'</div>'+
       '<button class="btn" data-act="ob-next">'+esc(i<2?t('ob_next'):t('ob_start'))+'</button></div>';
