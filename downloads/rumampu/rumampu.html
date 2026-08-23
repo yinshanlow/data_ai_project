@@ -1666,27 +1666,27 @@ function endSplash(){
 }
 function renderOverlay(){
   const o=document.getElementById('overlay');
-  if(!S.onboarded&&S.splash){
-    o.innerHTML='<div class="splash" data-act="splash-skip" role="button" aria-label="RuMampu">'+
-      '<span class="sp-mark">'+logoSvg(126)+'</span>'+
-      '<span class="sp-wm wordmark">RuMampu</span>'+
-      '<span class="sp-slg body-s muted">'+esc(t('ob_slogan'))+'</span></div>';
-    if(!S.splashTimer){
-      const quick=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-      S.splashTimer=setTimeout(endSplash,quick?700:1800);
-    }
-    return;
-  }
   if(!S.onboarded){
     const cards=['ob1','ob2','ob3'];
     const i=S.onboard;
-    o.innerHTML='<div class="ob">'+
+    let obHtml='<div class="ob">'+
       '<div style="display:flex;justify-content:space-between"><button class="langbtn" data-act="lang" aria-label="'+esc(t('lang_pick'))+'">'+S.lang.toUpperCase()+' ▾</button><button class="iconbtn" data-act="ob-skip" style="font-family:var(--disp);font-weight:700;font-size:15px;min-width:64px">'+esc(t('ob_skip'))+'</button></div>'+
       '<div class="obcard ob-anim" style="align-items:center;text-align:center;padding-top:6px">'+HERO+
       '<p class="body-s muted" style="margin-top:2px">'+esc(t('ob_slogan'))+'</p>'+
       '<p class="display h-m" style="margin-top:14px;max-width:300px;min-height:120px">'+esc(t(cards[i]))+'</p></div>'+
       '<div class="dots">'+cards.map((_,j)=>'<i class="'+(j===i?'on':'')+'"></i>').join('')+'</div>'+
       '<button class="btn" data-act="ob-next">'+esc(i<2?t('ob_next'):t('ob_start'))+'</button></div>';
+    if(S.splash){
+      obHtml+='<div class="splash" data-act="splash-skip" role="button" aria-label="RuMampu">'+
+        '<span class="sp-mark">'+logoSvg(126)+'</span>'+
+        '<span class="sp-wm wordmark">RuMampu</span>'+
+        '<span class="sp-slg body-s muted">'+esc(t('ob_slogan'))+'</span></div>';
+      if(!S.splashTimer){
+        const quick=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+        S.splashTimer=setTimeout(endSplash,quick?700:1800);
+      }
+    }
+    o.innerHTML=obHtml;
     return;
   }
   if(S.sheet==='lang'){
