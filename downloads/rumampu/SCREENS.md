@@ -16,6 +16,7 @@ Format: screen → what the user is deciding here → the single primary action.
 | 19 | Money — Daily expenses | whether the spending record is building | **Add expense** (or Scan a receipt, preview) |
 | 20 | Money — Add expense | how much just left the pocket | **Add expense** (amount, category, date) |
 | 21 | Money — Scan a receipt *(preview: staged AI extraction)* | whether the read values are right | confirm the extracted fields, then **Add** |
+| 22 | Money — Monthly summary | how each recorded month of spending compares, and which are complete | tap a month for its category breakdown |
 | 8 | Test — The house | which house, and on what financing | **Total monthly cost →** (escape hatch: "I already know my monthly payment") |
 | 9 | Test — Total monthly cost | whether they accept what the house *really* costs monthly | **Run the test →** |
 | 10 | Test — Pre-housing check *(fires only when the weakest month is short before housing)* | whether to fix income/costs before testing any price | **Go to Money** |

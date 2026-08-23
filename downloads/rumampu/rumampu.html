@@ -276,7 +276,10 @@ en:{
   ex_scan_sample:'Use a sample receipt',
   ex_reading:'Reading the receipt…',
   ex_check:'Read from your receipt. Check it before saving.',
-  ex_merchant:'Shop', ex_total:'Total (RM)', ex_retake:'Retake', ex_fromr:'from receipt', ex_cat:'Category'
+  ex_merchant:'Shop', ex_total:'Total (RM)', ex_retake:'Retake', ex_fromr:'from receipt', ex_cat:'Category',
+  ex_monthly:'Monthly summary',
+  ex_full:'fully recorded', ex_used:'used in the test',
+  ex_partial:'{d} days, rest of month unknown'
 },
 ms:{
   langname:'Bahasa Melayu', months:['Jan','Feb','Mac','Apr','Mei','Jun','Jul','Ogo','Sep','Okt','Nov','Dis'],
@@ -408,7 +411,10 @@ ms:{
   ex_scan_sample:'Guna resit contoh',
   ex_reading:'Membaca resit…',
   ex_check:'Dibaca daripada resit anda. Semak sebelum menyimpan.',
-  ex_merchant:'Kedai', ex_total:'Jumlah (RM)', ex_retake:'Ambil semula', ex_fromr:'daripada resit', ex_cat:'Kategori'
+  ex_merchant:'Kedai', ex_total:'Jumlah (RM)', ex_retake:'Ambil semula', ex_fromr:'daripada resit', ex_cat:'Kategori',
+  ex_monthly:'Ringkasan bulanan',
+  ex_full:'lengkap direkod', ex_used:'digunakan dalam ujian',
+  ex_partial:'{d} hari, hari lain tidak diketahui'
 },
 zh:{
   langname:'中文', months:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
@@ -540,7 +546,10 @@ zh:{
   ex_scan_sample:'用示例收据',
   ex_reading:'正在读取收据……',
   ex_check:'从收据读到的内容，保存前请核对。',
-  ex_merchant:'商家', ex_total:'总额 (RM)', ex_retake:'重拍', ex_fromr:'来自收据', ex_cat:'类别'
+  ex_merchant:'商家', ex_total:'总额 (RM)', ex_retake:'重拍', ex_fromr:'来自收据', ex_cat:'类别',
+  ex_monthly:'按月汇总',
+  ex_full:'记录完整', ex_used:'已用于测试',
+  ex_partial:'记录 {d} 天，其余未知'
 }
 };
 
@@ -648,7 +657,7 @@ const S = {
   data:JSON.parse(JSON.stringify(MOCK)),
   coverage:{answer:null, slow:[]},
   testRan:false,
-  howOpen:false, rgHowOpen:false, tcOpen:false, dcOpen:false, docsChecked:[], keptTests:[], expDraft:{a:'',c:'meals',d:'2026-08-23'}, scan:{stage:'pick'}, exCatOpen:false,
+  howOpen:false, rgHowOpen:false, tcOpen:false, dcOpen:false, docsChecked:[], keptTests:[], expDraft:{a:'',c:'meals',d:'2026-08-23'}, scan:{stage:'pick'}, exCatOpen:false, exMonthOpen:null,
   shock:0,
   bought:false,
   incomeDraft:{a:'',d:'2026-08-21',s:'ehail',flag:null},
@@ -771,7 +780,7 @@ function upfrontNeed(){
 }
 
 /* ================= navigation ================= */
-const TAB_OF={home:'home',money:'money',income:'money',workcosts:'money',commit:'money',pattern:'money',coverage:'money',record:'money',expenses:'money',expadd:'money',expscan:'money',
+const TAB_OF={home:'home',money:'money',income:'money',workcosts:'money',commit:'money',pattern:'money',coverage:'money',record:'money',expenses:'money',expadd:'money',expscan:'money',expmonths:'money',
   house:'test',homecost:'test',precheck:'test',result:'test',range:'test',compare:'test',shock:'test',
   prepare:'prepare',upfront:'prepare',buffer:'prepare',docs:'prepare',pv_switch:'prepare',pv_month:'prepare',pv_compare:'prepare'};
 function go(r){S.stack.push(S.route);S.route=r;S.howOpen=false;S.rgHowOpen=false;render();document.getElementById('screen').scrollTop=0}
@@ -1027,6 +1036,49 @@ expenses(){
     '<button class="btn-quiet" data-act="go" data-to="expscan"><span>'+esc(t('ex_scan'))+' <span class="badge caution">'+esc(t('ex_preview'))+'</span></span><span aria-hidden="true">→</span></button>'+
     '<div class="stack-s">'+list+'</div>'+
     '<button class="btn-line" data-act="excat" aria-expanded="'+(S.exCatOpen?'true':'false')+'">'+esc(t('ex_bycat'))+'</button>'+bycat+
+    '<button class="btn-quiet" data-act="go" data-to="expmonths"><span>'+esc(t('ex_monthly'))+'</span><span aria-hidden="true">→</span></button>'+
+    '<p class="body-s muted">'+esc(t('ex_rule'))+'</p></div>';
+},
+
+expmonths(){
+  const cats=id=>{const c=S.data.expenseCats.find(x=>x.id===id);return c?(c.custom?c.name:t(c.k)):id};
+  const em=[...expByMonth().entries()];
+  const asc=[...em].sort((a,b)=>a[0]-b[0]);
+  const max=Math.max(...em.map(([k,v])=>v.total),1);
+  const incomeKeys=new Set(monthsAgg().map(r=>r.y*12+r.m));
+  const bars=asc.map(([k,v])=>{
+    const h=Math.max(6,v.total/max*100);
+    const full=v.days.size>=EXP_FULL_DAYS;
+    return '<div class="wl-col" style="max-width:48px"><i class="wl-bar" style="height:'+h+'%;'+(full?'':'background:none;border:1.5px dashed var(--caution)')+'"></i></div>';
+  }).join('');
+  const chart='<div class="wl small"><div class="wl-plot" style="gap:14px">'+bars+'</div>'+
+    '<div class="wl-x" style="gap:14px">'+asc.map(([k])=>'<span style="max-width:48px">'+esc(monthName(k%12))+'</span>').join('')+'</div>'+
+    '<div class="figrow">'+prov('user')+'</div></div>';
+  const rows=[...em].sort((a,b)=>b[0]-a[0]).map(([k,v])=>{
+    const y=Math.floor(k/12), m=k%12;
+    const full=v.days.size>=EXP_FULL_DAYS;
+    const open=S.exMonthOpen===k;
+    const status=full
+      ?'<span class="body-s muted">'+esc(t('ex_full'))+(incomeKeys.has(k)?' · '+esc(t('ex_used')):'')+'</span>'
+      :'<span class="fromr">'+esc(t('ex_partial',{d:v.days.size}))+'</span>';
+    let detail='';
+    if(open){
+      const totals=new Map();
+      for(const e of S.data.expenses){
+        const key=(+e.d.slice(0,4))*12+(+e.d.slice(5,7)-1);
+        if(key!==k) continue;
+        totals.set(e.c,(totals.get(e.c)||0)+(+e.a||0));
+      }
+      detail=[...totals.entries()].sort((a,b)=>b[1]-a[1]).map(([c,x])=>
+        '<div class="kv"><span class="k">'+esc(cats(c))+'</span>'+fig(rm(x),'calc','body-s')+'</div>').join('');
+    }
+    return '<div class="card stack-s">'+
+      '<button class="row" data-act="exmonth" data-k="'+k+'" aria-expanded="'+(open?'true':'false')+'" style="width:100%;min-height:44px">'+
+      '<span class="display h-m">'+esc(monthName(m)+' '+y)+'</span><span aria-hidden="true">'+(open?'−':'+')+'</span></button>'+
+      '<div class="kv"><span class="k">'+status+'</span>'+fig(rm(v.total),'user')+'</div>'+detail+'</div>';
+  }).join('');
+  return header({back:1,title:t('ex_monthly')})+
+    '<div class="stack">'+chart+rows+
     '<p class="body-s muted">'+esc(t('ex_rule'))+'</p></div>';
 },
 
@@ -1516,6 +1568,7 @@ document.getElementById('phone').addEventListener('click',ev=>{
     toast(t('rs_kept'));
   }
   else if(act==='excat'){S.exCatOpen=!S.exCatOpen;render()}
+  else if(act==='exmonth'){const k=+b.dataset.k;S.exMonthOpen=S.exMonthOpen===k?null:k;render()}
   else if(act==='xcpick'){S.expDraft.c=b.dataset.id;render()}
   else if(act==='xcown'){S.sheet='xcown';renderOverlay()}
   else if(act==='ex-save'){
@@ -1587,7 +1640,7 @@ function softUpdate(){
 
 /* audit hook, used by the self-audit script, not by the product UI */
 window.__audit={
-  routes:['home','money','income','workcosts','commit','pattern','coverage','record','expenses','expadd','expscan','house','homecost','precheck','result','range','compare','shock','prepare','upfront','buffer','docs','pv_switch','pv_month','pv_compare'],
+  routes:['home','money','income','workcosts','commit','pattern','coverage','record','expenses','expadd','expscan','expmonths','house','homecost','precheck','result','range','compare','shock','prepare','upfront','buffer','docs','pv_switch','pv_month','pv_compare'],
   goto(r){S.onboarded=true;S.testRan=true;S.bought=true;S.sheet=null;S.howOpen=false;S.rgHowOpen=false;S.tcOpen=false;S.dcOpen=false;S.scan={stage:'pick'};S.exCatOpen=false;S.route=r;render()},
   setLang(l){S.lang=l;render()},
   ob(){S.onboarded=false;S.onboard=0;render()}
