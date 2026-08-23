@@ -247,7 +247,20 @@ en:{
   pv_then_a:'Your earlier test: {s} short months out of {n} recorded.',
   pv_then_b:'Since buying: {s2} of your first {n2} months have run short.',
   pv_then_why:'The earlier record had no year-end month in it. Two arrived after buying.',
-  see_pattern:'Income pattern', see_coverage:'Coverage check'
+  see_pattern:'Income pattern', see_coverage:'Coverage check',
+  money_record:'Your record',
+  rc_months:'{n} months recorded',
+  rc_entries:'{e} entries, latest {d}',
+  rc_tests:'Kept tests',
+  rc_none:'No test kept yet. Run one from the Test tab.',
+  rc_live:'Every screen updates as you add. In this preview, the record lives only in this session.',
+  rc_keep_line:'Every new week you record gives the next test more of your real months.',
+  rs_keep:'Keep this test', rs_kept:'Test kept',
+  entry_saved_n:'Entry saved. The analysis now uses {n} months.',
+  inc_past:'Add a past month',
+  inc_past_hint:'One total for that month is enough.',
+  pt_bymonth:'Month by month',
+  pv_keep:'Keep recording after buying. The same record keeps working.'
 },
 ms:{
   langname:'Bahasa Melayu', months:['Jan','Feb','Mac','Apr','Mei','Jun','Jul','Ogo','Sep','Okt','Nov','Dis'],
@@ -353,7 +366,20 @@ ms:{
   pv_then_a:'Ujian awal anda: {s} bulan kurang daripada {n} direkod.',
   pv_then_b:'Sejak membeli: {s2} daripada {n2} bulan pertama anda kurang.',
   pv_then_why:'Rekod awal tiada bulan hujung tahun di dalamnya. Dua bulan begitu tiba selepas membeli.',
-  see_pattern:'Corak pendapatan', see_coverage:'Semakan liputan'
+  see_pattern:'Corak pendapatan', see_coverage:'Semakan liputan',
+  money_record:'Rekod anda',
+  rc_months:'{n} bulan direkod',
+  rc_entries:'{e} catatan, terkini {d}',
+  rc_tests:'Ujian disimpan',
+  rc_none:'Belum ada ujian disimpan. Jalankan satu dari tab Uji.',
+  rc_live:'Setiap skrin dikemas kini apabila anda menambah. Dalam pratonton ini, rekod hanya wujud dalam sesi ini.',
+  rc_keep_line:'Setiap minggu baharu yang anda rekodkan memberi ujian seterusnya lebih banyak bulan sebenar anda.',
+  rs_keep:'Simpan ujian ini', rs_kept:'Ujian disimpan',
+  entry_saved_n:'Catatan disimpan. Analisis kini menggunakan {n} bulan.',
+  inc_past:'Tambah bulan lalu',
+  inc_past_hint:'Satu jumlah untuk bulan itu sudah cukup.',
+  pt_bymonth:'Bulan demi bulan',
+  pv_keep:'Terus merekod selepas membeli. Rekod yang sama terus berfungsi.'
 },
 zh:{
   langname:'中文', months:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
@@ -459,7 +485,20 @@ zh:{
   pv_then_a:'先前测试：{n} 个记录月中 {s} 个短缺。',
   pv_then_b:'买房后：头 {n2} 个月中 {s2} 个短缺。',
   pv_then_why:'先前的记录里没有年末月份，买房后遇上了两个。',
-  see_pattern:'收入形态', see_coverage:'覆盖检查'
+  see_pattern:'收入形态', see_coverage:'覆盖检查',
+  money_record:'记录档案',
+  rc_months:'已记录 {n} 个月',
+  rc_entries:'{e} 笔，最近 {d}',
+  rc_tests:'留存的测试',
+  rc_none:'还没有留存的测试。到测试页跑一次。',
+  rc_live:'每加一笔，所有页面即时更新。在这个原型里，记录只保存在本次会话中。',
+  rc_keep_line:'每多记一周，下一次测试就多一点你真实的月份。',
+  rs_keep:'留存这次测试', rs_kept:'已留存',
+  entry_saved_n:'已记录。分析现在用上 {n} 个月。',
+  inc_past:'补记过去的月份',
+  inc_past_hint:'那个月一个总数就够。',
+  pt_bymonth:'逐月',
+  pv_keep:'买房后继续记录，同一份记录继续发挥作用。'
 }
 };
 
@@ -516,7 +555,7 @@ const S = {
   data:JSON.parse(JSON.stringify(MOCK)),
   coverage:{answer:null, slow:[]},
   testRan:false,
-  howOpen:false, rgHowOpen:false, tcOpen:false, dcOpen:false, docsChecked:[],
+  howOpen:false, rgHowOpen:false, tcOpen:false, dcOpen:false, docsChecked:[], keptTests:[],
   shock:0,
   bought:false,
   incomeDraft:{a:'',d:'2026-08-21',s:'ehail',flag:null},
@@ -618,7 +657,7 @@ function upfrontNeed(){
 }
 
 /* ================= navigation ================= */
-const TAB_OF={home:'home',money:'money',income:'money',workcosts:'money',commit:'money',pattern:'money',coverage:'money',
+const TAB_OF={home:'home',money:'money',income:'money',workcosts:'money',commit:'money',pattern:'money',coverage:'money',record:'money',
   house:'test',homecost:'test',precheck:'test',result:'test',range:'test',compare:'test',shock:'test',
   prepare:'prepare',upfront:'prepare',buffer:'prepare',docs:'prepare',pv_switch:'prepare',pv_month:'prepare',pv_compare:'prepare'};
 function go(r){S.stack.push(S.route);S.route=r;S.howOpen=false;S.rgHowOpen=false;render();document.getElementById('screen').scrollTop=0}
@@ -738,11 +777,28 @@ money(){
   const netAvg=monthsAgg().reduce((a,r)=>a+r.net,0)/Math.max(1,monthsAgg().length);
   const rows=[
     ['income','money_income'],['workcosts','money_workcosts'],['commit','money_commit'],
-    ['pattern','money_pattern'],['coverage','money_coverage']
+    ['pattern','money_pattern'],['coverage','money_coverage'],['record','money_record']
   ].map(([r,k])=>'<button class="btn-quiet" data-act="go" data-to="'+r+'"><span>'+esc(t(k))+'</span><span aria-hidden="true">→</span></button>').join('');
   return header({title:t('tab_money')})+
     '<div class="stack"><div class="card"><p class="body-s muted">'+esc(t('net_lbl'))+'</p>'+
     fig(rm(netAvg),'calc','h-l')+'<p class="body-s muted">'+esc(t('per_month'))+'</p></div>'+rows+'</div>';
+},
+
+record(){
+  const sp=recSpan(); const n=sp?sp.list.length:0;
+  const e=S.data.income.length;
+  const last=e?S.data.income[e-1].d:'';
+  const lastLbl=last?(+last.slice(8,10))+' '+monthName(+last.slice(5,7)-1):'';
+  const tests=S.keptTests.length?S.keptTests.map(k=>
+    '<div class="kv"><span class="k">'+esc(rm(k.pay))+' · '+esc(t('cp_short',{s:k.s,n:k.n}))+'</span><span class="fig"><span class="body-s muted">'+esc(t('gap_lbl'))+'</span>'+fig(rm(k.g),'calc','body-s')+'</span></div>').join('')
+    :'<p class="body-s muted">'+esc(t('rc_none'))+'</p>';
+  return header({back:1,title:t('money_record')})+
+    '<div class="stack">'+
+    '<div>'+fig(t('rc_months',{n}),'user','h-l')+'</div>'+
+    '<p class="body-s muted">'+esc(t('rc_entries',{e,d:lastLbl}))+'</p>'+
+    '<div class="card stack-s"><p class="body-s muted">'+esc(t('rc_tests'))+'</p>'+tests+'</div>'+
+    '<p class="body-s muted">'+esc(t('rc_live'))+'</p>'+
+    '<p class="body-s">'+esc(t('rc_keep_line'))+'</p></div>';
 },
 
 income(){
@@ -768,6 +824,7 @@ income(){
     '<div class="field"><span>'+esc(t('inc_source'))+'</span><div class="chips">'+srcChips+'</div></div>'+
     flag+
     '<button class="btn" data-act="inc-add">'+esc(t('inc_add'))+'</button></div>'+
+    '<button class="btn-line" data-act="inc-past">'+esc(t('inc_past'))+'</button>'+
     (S.data.income.length?'<div class="stack-s">'+list+'</div>':'')+
     '</div>';
 },
@@ -807,6 +864,8 @@ pattern(){
   return header({back:1,title:t('money_pattern')})+
     '<div class="stack">'+
     '<div>'+fig(rm(avg),'calc','h-xl')+'<p class="body-s muted">'+esc(t('pt_avg'))+' · '+esc(t('pt_range',{x:nf((hi-lo)/2)}))+'</p></div>'+
+    '<p class="body-s muted">'+esc(t('pt_bymonth'))+'</p>'+
+    waterline(monthsAgg().map(r=>({m:r.m,surplus:r.net,short:false,gap:0})),0,{small:true,prov:'calc'})+
     '<div class="card stack-s">'+kv('pt_med',med)+kv('pt_high',hi)+kv('pt_low',lo)+'</div>'+
     '<p class="body-s muted">'+esc(t('pt_rule'))+'</p>'+
     '<p class="body-s">'+esc(below.length?t('pt_some',{m:below.join(', ')}):t('pt_none'))+'</p>'+
@@ -920,6 +979,7 @@ result(){
     (s?'<div class="kv"><span class="k">'+esc(t('gap_lbl'))+'</span>'+fig(rm(g),'calc')+'</div>':'')+
     waterline(rows,cost,{lineLabel:true,prov:'calc'})+
     '<button class="btn-line" data-act="how" aria-expanded="'+(S.howOpen?'true':'false')+'">'+esc(t('rs_how'))+'</button>'+how+
+    '<button class="btn-line" data-act="keep-test">'+esc(t('rs_keep'))+'</button>'+
     '<div class="stack-s">'+
     '<button class="btn-quiet" data-act="go" data-to="range"><span>'+esc(t('rs_range'))+'</span><span aria-hidden="true">→</span></button>'+
     '<button class="btn-quiet" data-act="go" data-to="compare"><span>'+esc(t('rs_compare'))+'</span><span aria-hidden="true">→</span></button>'+
@@ -979,6 +1039,7 @@ shock(){
     '<div class="stack"><div class="chips">'+chips+'</div>'+custom+
     '<p class="display h-l">'+esc(t('sh_head',{p,s,n}))+'</p>'+
     '<div class="figrow">'+prov('assume')+'</div>'+
+    (s?'<div class="kv"><span class="k">'+esc(t('gap_lbl'))+'</span>'+fig(rm(Math.max(...rows.map(r=>r.gap),0)),'calc')+'</div>':'')+
     waterline(rows,cost,{lineLabel:true,prov:'assume'})+
     '<p class="body-s muted">'+esc(t('sh_note'))+'</p></div>';
 },
@@ -1087,7 +1148,8 @@ pv_compare(){
     '<p class="display h-m">'+esc(t('pv_then_a',{s,n}))+'</p><div class="figrow">'+prov('calc')+'</div>'+
     '<p class="display h-m">'+esc(t('pv_then_b',{s2,n2:am.length}))+'</p><div class="figrow">'+prov('user')+'</div>'+
     '<hr class="divider">'+
-    '<p class="body-s muted">'+esc(t('pv_then_why'))+'</p></div>';
+    '<p class="body-s muted">'+esc(t('pv_then_why'))+'</p>'+
+    '<p class="body-s muted">'+esc(t('pv_keep'))+'</p></div>';
 }
 };
 
@@ -1118,6 +1180,22 @@ function renderOverlay(){
       '<h3><i class="g" style="font-style:normal;font-size:13px">'+PROV_G[p]+'</i> '+esc(t('prov_'+p))+'</h3>'+
       '<p class="body-s">'+esc(t('provf_'+p))+'</p>'+
       '<button class="btn" data-act="sheet-close" style="margin-top:16px">'+esc(t('done'))+'</button></div></div>';
+    return;
+  }
+  if(S.sheet==='pastmonth'){
+    const sp=recSpan();
+    const firstKey=sp?sp.from.y*12+sp.from.m:2026*12+7;
+    let opts='';
+    for(let k=firstKey-1;k>=firstKey-6;k--){
+      const y=Math.floor(k/12), m=k%12;
+      opts+='<option value="'+y+'-'+String(m+1).padStart(2,'0')+'">'+esc(monthName(m)+' '+y)+'</option>';
+    }
+    o.innerHTML='<div class="sheetwrap"><div class="scrim" data-act="sheet-close"></div><div class="sheet stack-s">'+
+      '<h3>'+esc(t('inc_past'))+'</h3>'+
+      '<p class="body-s muted">'+esc(t('inc_past_hint'))+'</p>'+
+      '<label class="field"><span>'+esc(t('inc_date'))+'</span><select id="past-m">'+opts+'</select></label>'+
+      '<label class="field"><span>'+esc(t('inc_amount'))+'</span><input id="past-a" type="number" inputmode="numeric" min="0"></label>'+
+      '<button class="btn" data-act="past-save">'+esc(t('add'))+'</button></div></div>';
     return;
   }
   if(S.sheet==='srcown'||S.sheet==='wcown'){
@@ -1191,7 +1269,7 @@ document.getElementById('phone').addEventListener('click',ev=>{
     S.data.income.push({a,d,s:S.incomeDraft.s});
     S.data.income.sort((x,y)=>x.d<y.d?-1:1);
     S.incomeDraft={a:'',d,s:S.incomeDraft.s,flag:null};
-    toast(t('entry_saved'));render();
+    toast(t('entry_saved_n',{n:monthsAgg().length}));render();
   }
   else if(act==='cm-chip'){
     const id=b.dataset.id;
@@ -1214,6 +1292,20 @@ document.getElementById('phone').addEventListener('click',ev=>{
   else if(act==='shock'){S.shock=+b.dataset.v;S.sheet=null;render()}
   else if(act==='shock-custom'){S.sheet='shockcustom';render()}
   else if(act==='buy'){S.bought=true;toast(t('saved'));render()}
+  else if(act==='inc-past'){S.sheet='pastmonth';renderOverlay()}
+  else if(act==='past-save'){
+    const v=document.getElementById('past-m').value, a=+document.getElementById('past-a').value||0;
+    if(a>0&&/^\d{4}-\d{2}$/.test(v)){
+      S.data.income.push({a,d:v+'-15',s:S.incomeDraft.s});
+      S.data.income.sort((x,y)=>x.d<y.d?-1:1);
+      S.sheet=null;toast(t('entry_saved_n',{n:monthsAgg().length}));render();
+    }
+  }
+  else if(act==='keep-test'){
+    const cost=totalHomeCost(), rows=testRows(cost);
+    S.keptTests.push({pay:Math.round(cost),s:rows.filter(r=>r.short).length,n:rows.length,g:Math.round(Math.max(...rows.map(r=>r.gap),0))});
+    toast(t('rs_kept'));
+  }
 });
 document.getElementById('phone').addEventListener('input',ev=>{
   const el=ev.target;
@@ -1252,7 +1344,7 @@ function softUpdate(){
 
 /* audit hook, used by the self-audit script, not by the product UI */
 window.__audit={
-  routes:['home','money','income','workcosts','commit','pattern','coverage','house','homecost','precheck','result','range','compare','shock','prepare','upfront','buffer','docs','pv_switch','pv_month','pv_compare'],
+  routes:['home','money','income','workcosts','commit','pattern','coverage','record','house','homecost','precheck','result','range','compare','shock','prepare','upfront','buffer','docs','pv_switch','pv_month','pv_compare'],
   goto(r){S.onboarded=true;S.testRan=true;S.bought=true;S.sheet=null;S.howOpen=false;S.rgHowOpen=false;S.tcOpen=false;S.dcOpen=false;S.route=r;render()},
   setLang(l){S.lang=l;render()},
   ob(){S.onboarded=false;S.onboard=0;render()}
