@@ -126,6 +126,7 @@ input[type=text],input[type=number],input[type=date],select{width:100%;min-heigh
 .divider{border:none;border-top:1.5px solid var(--ink14);margin:16px 0}
 .badge{display:inline-flex;align-items:center;min-height:24px;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
 .badge.caution{background:var(--caution);color:var(--ink)}
+.rowico{flex:0 0 auto;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .hbar{position:relative;height:12px;border-radius:6px;background:var(--ink14);overflow:visible;margin:6px 0 2px}
 .hbar .fill{position:absolute;left:0;top:0;bottom:0;border-radius:6px 0 0 6px;background:var(--ink)}
 .hbar .over{position:absolute;top:0;bottom:0;background:var(--short);border-radius:0 6px 6px 0}
@@ -704,6 +705,29 @@ function logoSvg(px){
   return '<svg width="'+px+'" height="'+px+'" viewBox="0 0 100 100" aria-hidden="true" focusable="false">'+
     '<circle cx="50" cy="50" r="50" fill="#28343A"/>'+'<g transform="rotate(-42 50 50)">'+'<rect x="32" y="45.8" width="56" height="8.4" rx="4.2" fill="#FFFFFF"/>'+'<rect x="54" y="29" width="6" height="17" rx="3" fill="#4C9F58"/>'+'<rect x="63" y="35" width="6" height="11" rx="3" fill="#F4C64D"/>'+'<rect x="72" y="31" width="6" height="15" rx="3" fill="#4C9F58"/>'+'<rect x="81" y="38" width="6" height="8" rx="3" fill="#D95436"/>'+'<circle cx="32" cy="50" r="16.5" fill="#FFFFFF"/>'+'<path d="M32 43.5 L40 50 L40 57 L24 57 L24 50 Z" fill="#28343A"/>'+'</g></svg>';
 }
+const ICONS={
+banknote:'<rect x="2.5" y="6.5" width="19" height="11.5" rx="2"/><circle cx="12" cy="12.2" r="2.7"/><path d="M6 10v4.4M18 10v4.4"/>',
+wrench:'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
+calendar:'<rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M16 2.5v4M8 2.5v4M3 10.5h18M8 15h3"/>',
+receipt:'<path d="M6 2.8h12v18.4l-2-1.6-2 1.6-2-1.6-2 1.6-2-1.6-2 1.6z"/><path d="M9 8h6M9 12h6"/>',
+bars:'<path d="M5.5 20V13M12 20V4.5M18.5 20v-9.5"/>',
+search:'<circle cx="11" cy="11" r="7"/><path d="M16.3 16.3L21 21"/>',
+book:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2.5H20v19H6.5A2.5 2.5 0 0 1 4 19V5a2.5 2.5 0 0 1 2.5-2.5z"/>',
+wallet:'<rect x="2.5" y="5.5" width="19" height="14.5" rx="2.5"/><path d="M2.5 10h19"/><circle cx="16.8" cy="15" r="1.3"/>',
+ring:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.8"/><path d="M5.7 5.7l3.6 3.6M14.7 14.7l3.6 3.6M18.3 5.7l-3.6 3.6M9.3 14.7l-3.6 3.6"/>',
+file:'<path d="M14 2.5H6.5A1.5 1.5 0 0 0 5 4v16a1.5 1.5 0 0 0 1.5 1.5h11A1.5 1.5 0 0 0 19 20V7.5z"/><path d="M14 2.5V8h5M9 12h6M9 16h6"/>',
+band:'<path d="M4 12h16"/><path d="M4 8.5v7M20 8.5v7"/><circle cx="12" cy="12" r="2.4"/>',
+columns:'<path d="M3.5 20h17"/><rect x="5" y="9" width="3.6" height="8" rx="1.2"/><rect x="10.2" y="5.5" width="3.6" height="11.5" rx="1.2"/><rect x="15.4" y="11.5" width="3.6" height="5.5" rx="1.2"/>',
+trend:'<path d="M21.5 17.5L13 9l-4 4-6.5-6.5"/><path d="M16 17.5h5.5V12"/>',
+camera:'<path d="M3 7.5a1.5 1.5 0 0 1 1.5-1.5h2.6L9 3.5h6L16.9 6h2.6A1.5 1.5 0 0 1 21 7.5V18a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18z"/><circle cx="12" cy="12.5" r="3.6"/>',
+calsum:'<rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M16 2.5v4M8 2.5v4M3 10.5h18"/><path d="M8 17.5v-3M12 17.5v-4.5M16 17.5v-2"/>',
+gauge:'<path d="M5 19a9 9 0 1 1 14 0"/><path d="M12 13.5l3.5-4"/><circle cx="12" cy="14" r="1.6"/>',
+eye:'<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/>',
+calday:'<rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M16 2.5v4M8 2.5v4M3 10.5h18"/><circle cx="12" cy="15.5" r="1.6"/>',
+swap:'<path d="M17 3.5l4 4-4 4"/><path d="M21 7.5H8"/><path d="M7 12.5l-4 4 4 4"/><path d="M3 16.5h13"/>'
+};
+function ico(n){return '<svg class="rowico" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">'+ICONS[n]+'</svg>'}
+function iclab(n,txt){return '<span style="display:inline-flex;align-items:center;gap:13px;min-width:0">'+ico(n)+'<span style="min-width:0">'+txt+'</span></span>'}
 const CHART_COLS=['#4A9195','#F4C64D','#7B6CC3','#E58A4E','#5B8FD9','#C46A9A'];
 const PROV_G={user:'●',official:'○',calc:'▸',assume:'▩'};
 function prov(p){
@@ -967,9 +991,9 @@ home(){
 money(){
   const netAvg=monthsAgg().reduce((a,r)=>a+r.net,0)/Math.max(1,monthsAgg().length);
   const rows=[
-    ['income','money_income'],['workcosts','money_workcosts'],['commit','money_commit'],
-    ['expenses','money_expenses'],['pattern','money_pattern'],['coverage','money_coverage'],['record','money_record']
-  ].map(([r,k])=>'<button class="btn-quiet" data-act="go" data-to="'+r+'"><span>'+esc(t(k))+'</span><span aria-hidden="true">→</span></button>').join('');
+    ['income','money_income','banknote'],['workcosts','money_workcosts','wrench'],['commit','money_commit','calendar'],
+    ['expenses','money_expenses','receipt'],['pattern','money_pattern','bars'],['coverage','money_coverage','search'],['record','money_record','book']
+  ].map(([r,k,ic])=>'<button class="btn-quiet" data-act="go" data-to="'+r+'">'+iclab(ic,esc(t(k)))+'<span aria-hidden="true">→</span></button>').join('');
   const ek=latestExpMonth();
   let donuts='';
   if(ek!=null){
@@ -1115,11 +1139,11 @@ expenses(){
     '<div class="stack">'+
     '<div>'+fig(rm(cur.total),'user','h-xl')+'<p class="body-s muted">'+esc(t('ex_sofar',{m:curName}))+' · '+esc(t('ex_days',{d:cur.days.size}))+'</p></div>'+
     '<button class="btn" data-act="go" data-to="expadd">'+esc(t('ex_add'))+'</button>'+
-    '<button class="btn-quiet" data-act="go" data-to="expscan"><span>'+esc(t('ex_scan'))+' <span class="badge caution">'+esc(t('ex_preview'))+'</span></span><span aria-hidden="true">→</span></button>'+
+    '<button class="btn-quiet" data-act="go" data-to="expscan">'+iclab('camera',esc(t('ex_scan'))+' <span class="badge caution">'+esc(t('ex_preview'))+'</span>')+'<span aria-hidden="true">→</span></button>'+
     '<div class="stack-s">'+list+'</div>'+
     '<button class="btn-line" data-act="excat" aria-expanded="'+(S.exCatOpen?'true':'false')+'">'+esc(t('ex_bycat'))+'</button>'+bycat+
-    '<button class="btn-quiet" data-act="go" data-to="expmonths"><span>'+esc(t('ex_monthly'))+'</span><span aria-hidden="true">→</span></button>'+
-    '<button class="btn-quiet" data-act="go" data-to="exlimits"><span>'+esc(t('ex_limits'))+'</span><span aria-hidden="true">→</span></button>'+
+    '<button class="btn-quiet" data-act="go" data-to="expmonths">'+iclab('calsum',esc(t('ex_monthly')))+'<span aria-hidden="true">→</span></button>'+
+    '<button class="btn-quiet" data-act="go" data-to="exlimits">'+iclab('gauge',esc(t('ex_limits')))+'<span aria-hidden="true">→</span></button>'+
     '<p class="body-s muted">'+esc(t('ex_rule'))+'</p></div>';
 },
 
@@ -1347,9 +1371,9 @@ result(){
     '<button class="btn-line" data-act="how" aria-expanded="'+(S.howOpen?'true':'false')+'">'+esc(t('rs_how'))+'</button>'+how+
     '<button class="btn-line" data-act="keep-test">'+esc(t('rs_keep'))+'</button>'+
     '<div class="stack-s">'+
-    '<button class="btn-quiet" data-act="go" data-to="range"><span>'+esc(t('rs_range'))+'</span><span aria-hidden="true">→</span></button>'+
-    '<button class="btn-quiet" data-act="go" data-to="compare"><span>'+esc(t('rs_compare'))+'</span><span aria-hidden="true">→</span></button>'+
-    '<button class="btn-quiet" data-act="go" data-to="shock"><span>'+esc(t('rs_shock'))+'</span><span aria-hidden="true">→</span></button>'+
+    '<button class="btn-quiet" data-act="go" data-to="range">'+iclab('band',esc(t('rs_range')))+'<span aria-hidden="true">→</span></button>'+
+    '<button class="btn-quiet" data-act="go" data-to="compare">'+iclab('columns',esc(t('rs_compare')))+'<span aria-hidden="true">→</span></button>'+
+    '<button class="btn-quiet" data-act="go" data-to="shock">'+iclab('trend',esc(t('rs_shock')))+'<span aria-hidden="true">→</span></button>'+
     '</div></div>';
 },
 
@@ -1411,12 +1435,12 @@ shock(){
 },
 
 prepare(){
-  const rows=[['upfront','pr_upfront'],['buffer','pr_buffer'],['docs','pr_docs']].map(([r,k])=>
-    '<button class="btn-quiet" data-act="go" data-to="'+r+'"><span>'+esc(t(k))+'</span><span aria-hidden="true">→</span></button>').join('');
+  const rows=[['upfront','pr_upfront','wallet'],['buffer','pr_buffer','ring'],['docs','pr_docs','file']].map(([r,k,ic])=>
+    '<button class="btn-quiet" data-act="go" data-to="'+r+'">'+iclab(ic,esc(t(k)))+'<span aria-hidden="true">→</span></button>').join('');
   return header({title:t('tab_prepare')})+
     '<div class="stack">'+rows+
     '<hr class="divider">'+
-    '<button class="btn-quiet" data-act="go" data-to="pv_switch"><span><span class="badge caution">'+esc(t('pr_pv'))+'</span><br><span class="body-s muted">'+esc(t('pr_pv_note'))+'</span></span><span aria-hidden="true">→</span></button>'+
+    '<button class="btn-quiet" data-act="go" data-to="pv_switch">'+iclab('eye','<span class="badge caution">'+esc(t('pr_pv'))+'</span><br><span class="body-s muted">'+esc(t('pr_pv_note'))+'</span>')+'<span aria-hidden="true">→</span></button>'+
     '</div>';
 },
 
@@ -1484,8 +1508,8 @@ pv_switch(){
     '<div class="stack"><span class="badge caution">'+esc(t('pv_banner'))+'</span>'+
     '<p class="body-s muted">'+esc(t('pv_switch_note'))+'</p>'+
     '<button class="btn" data-act="buy">'+esc(t('pv_switch_btn'))+'</button>'+
-    (S.bought?'<button class="btn-quiet" data-act="go" data-to="pv_month"><span>'+esc(t('pv_month'))+'</span><span aria-hidden="true">→</span></button>'+
-    '<button class="btn-quiet" data-act="go" data-to="pv_compare"><span>'+esc(t('pv_then'))+'</span><span aria-hidden="true">→</span></button>':'')+
+    (S.bought?'<button class="btn-quiet" data-act="go" data-to="pv_month">'+iclab('calday',esc(t('pv_month')))+'<span aria-hidden="true">→</span></button>'+
+    '<button class="btn-quiet" data-act="go" data-to="pv_compare">'+iclab('swap',esc(t('pv_then')))+'<span aria-hidden="true">→</span></button>':'')+
     '</div>';
 },
 
