@@ -704,6 +704,7 @@ function logoSvg(px){
   return '<svg width="'+px+'" height="'+px+'" viewBox="0 0 100 100" aria-hidden="true" focusable="false">'+
     '<circle cx="50" cy="50" r="50" fill="#28343A"/>'+'<g transform="rotate(-42 50 50)">'+'<rect x="32" y="45.8" width="56" height="8.4" rx="4.2" fill="#FFFFFF"/>'+'<rect x="54" y="29" width="6" height="17" rx="3" fill="#4C9F58"/>'+'<rect x="63" y="35" width="6" height="11" rx="3" fill="#F4C64D"/>'+'<rect x="72" y="31" width="6" height="15" rx="3" fill="#4C9F58"/>'+'<rect x="81" y="38" width="6" height="8" rx="3" fill="#D95436"/>'+'<circle cx="32" cy="50" r="16.5" fill="#FFFFFF"/>'+'<path d="M32 43.5 L40 50 L40 57 L24 57 L24 50 Z" fill="#28343A"/>'+'</g></svg>';
 }
+const CHART_COLS=['#4A9195','#F4C64D','#7B6CC3','#E58A4E','#5B8FD9','#C46A9A'];
 const PROV_G={user:'●',official:'○',calc:'▸',assume:'▩'};
 function prov(p){
   return '<button class="prov" data-prov="'+p+'" aria-label="'+esc(t('prov_'+p))+'"><i class="g">'+PROV_G[p]+'</i>'+esc(t('prov_'+p))+'</button>';
@@ -878,21 +879,22 @@ function waterline(rows,cost,opts){
   return '<div class="wl'+(opts.small?' small':'')+'"><div class="wl-plot">'+bars+
     '<span class="wl-line" style="bottom:'+pct(cost)+'%"></span>'+lbl+'</div>'+xs+pv+'</div>';
 }
-function donut(slices){
+function donut(slices,centerLabel){
   const total=slices.reduce((a,x)=>a+x.v,0)||1;
-  const OP=[1,.72,.5,.34,.2,.12];
   let acc=0, segs='';
   slices.forEach((sl,i)=>{
     const pct=sl.v/total*100;
-    segs+='<circle r="15.9155" cx="21" cy="21" fill="none" stroke="var(--ink)" stroke-opacity="'+(OP[i]||.1)+'" stroke-width="7.5" stroke-dasharray="'+pct+' '+(100-pct)+'" stroke-dashoffset="'+(25-acc)+'"></circle>';
+    segs+='<circle r="15.9155" cx="21" cy="21" fill="none" stroke="'+(CHART_COLS[i%CHART_COLS.length])+'" stroke-width="8" stroke-dasharray="'+pct+' '+(100-pct)+'" stroke-dashoffset="'+(25-acc)+'"></circle>';
     acc+=pct;
   });
-  return '<svg viewBox="0 0 42 42" width="88" height="88" aria-hidden="true">'+segs+'</svg>';
+  return '<span style="position:relative;display:inline-flex;align-items:center;justify-content:center">'+
+    '<svg viewBox="0 0 42 42" width="104" height="104" aria-hidden="true">'+segs+'</svg>'+
+    '<span class="display" style="position:absolute;font-size:13px;font-variant-numeric:tabular-nums">'+esc(centerLabel||'')+'</span></span>';
 }
 function donutLegend(slices){
-  const OP=[1,.72,.5,.34,.2,.12];
+  const total=slices.reduce((a,x)=>a+x.v,0)||1;
   return slices.map((sl,i)=>
-    '<div class="row" style="min-height:22px;gap:6px"><span class="body-s" style="display:inline-flex;gap:6px;align-items:center;min-width:0"><i style="flex:0 0 8px;width:8px;height:8px;border-radius:2px;background:var(--ink);opacity:'+(OP[i]||.1)+'"></i><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(sl.label)+'</span></span><span class="body-s display" style="white-space:nowrap">'+esc(rm(sl.v))+'</span></div>').join('');
+    '<div class="row" style="min-height:24px;gap:6px"><span class="body-s" style="display:inline-flex;gap:7px;align-items:center;min-width:0"><i style="flex:0 0 9px;width:9px;height:9px;border-radius:3px;background:'+(CHART_COLS[i%CHART_COLS.length])+'"></i><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(sl.label)+'</span></span><span class="body-s display" style="white-space:nowrap">'+Math.round(sl.v/total*100)+'% · '+esc(rm(sl.v))+'</span></div>').join('');
 }
 function catLabel(id){const c=S.data.expenseCats.find(x=>x.id===id);return c?(c.custom?c.name:t(c.k)):id}
 function latestExpMonth(){
@@ -981,12 +983,16 @@ money(){
     }
     const srcLabel=id=>{const x=S.data.sources.find(z=>z.id===id);return x?(x.custom?x.name:t(x.k)):id};
     const inc=[...srcTot.entries()].sort((a,b)=>b[1]-a[1]).map(([id,v])=>({label:srcLabel(id),v}));
-    donuts='<div class="card"><div style="display:flex;gap:14px">'+
-      '<div style="flex:1;min-width:0"><div style="display:flex;justify-content:center">'+donut(spend)+'</div>'+
-      '<p class="body-s muted" style="text-align:center">'+esc(t('hb_spend',{m:monthName(ek%12)}))+'</p>'+donutLegend(spend)+'</div>'+
-      '<div style="flex:1;min-width:0"><div style="display:flex;justify-content:center">'+donut(inc)+'</div>'+
-      '<p class="body-s muted" style="text-align:center">'+esc(t('hb_income',{m:lastInc?monthName(lastInc.m):''}))+'</p>'+donutLegend(inc)+'</div>'+
-      '</div><div class="figrow">'+prov('calc')+'</div></div>';
+    const sect=(title,slices,total)=>
+      '<p class="body-s muted">'+esc(title)+'</p>'+
+      '<div style="display:flex;gap:16px;align-items:center">'+donut(slices,rm(total))+
+      '<div style="flex:1;min-width:0">'+donutLegend(slices)+'</div></div>';
+    const spendTotal=spend.reduce((a,x)=>a+x.v,0), incTotal=inc.reduce((a,x)=>a+x.v,0);
+    donuts='<div class="card stack-s">'+
+      sect(t('hb_spend',{m:monthName(ek%12)}),spend,spendTotal)+
+      '<hr class="divider">'+
+      sect(t('hb_income',{m:lastInc?monthName(lastInc.m):''}),inc,incTotal)+
+      '<div class="figrow">'+prov('calc')+'</div></div>';
   }
   return header({title:t('tab_money')})+
     '<div class="stack"><div class="card"><p class="body-s muted">'+esc(t('net_lbl'))+'</p>'+

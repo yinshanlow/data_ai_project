@@ -26,6 +26,8 @@ Scale (px / line-height): **40/44** display (max one per screen) · **26/32** he
 | `--caution` #FEC844 | Unknown values, coverage gaps, the "test hasn't seen enough" state |
 | `--short` #F1592A | The shortfall itself — one component per screen, nothing else |
 
+**Categorical chart palette (added at client request, 23 Aug):** the Money-hub donuts use six nominal-category colours — #4A9195, #F4C64D, #7B6CC3, #E58A4E, #5B8FD9, #C46A9A — for *what kind of thing* only, never for outcomes; pure green and pure red are deliberately absent so slices can never collide with `--confirm`/`--short` semantics.
+
 **Outcome is encoded by geometry, not hue.** A month is a bar; the cost is a line; a short month is a bar that fails to reach the line — and only the *gap segment* fills `--short`. Covered months stay ink and look deliberately boring. Colour is thereby freed to mean exactly two things: "short" and "RuMampu doesn't know". No traffic light can form because green never touches an outcome and yellow never touches a judgement.
 
 ## Signature element — the waterline
