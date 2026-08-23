@@ -892,7 +892,7 @@ function donut(slices){
 function donutLegend(slices){
   const OP=[1,.72,.5,.34,.2,.12];
   return slices.map((sl,i)=>
-    '<div class="row" style="min-height:22px;gap:6px"><span class="body-s" style="display:inline-flex;gap:6px;align-items:center;min-width:0"><i style="flex:0 0 8px;width:8px;height:8px;border-radius:2px;background:var(--ink);opacity:'+(OP[i]||.1)+'"></i><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(sl.label)+'</span></span><span class="body-s display">'+esc(rm(sl.v))+'</span></div>').join('');
+    '<div class="row" style="min-height:22px;gap:6px"><span class="body-s" style="display:inline-flex;gap:6px;align-items:center;min-width:0"><i style="flex:0 0 8px;width:8px;height:8px;border-radius:2px;background:var(--ink);opacity:'+(OP[i]||.1)+'"></i><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(sl.label)+'</span></span><span class="body-s display" style="white-space:nowrap">'+esc(rm(sl.v))+'</span></div>').join('');
 }
 function catLabel(id){const c=S.data.expenseCats.find(x=>x.id===id);return c?(c.custom?c.name:t(c.k)):id}
 function latestExpMonth(){
