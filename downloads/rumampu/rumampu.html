@@ -958,10 +958,9 @@ compare(){
     return '<div class="card stack-s">'+
       '<div class="row">'+
         '<input type="number" inputmode="numeric" value="'+p+'" data-edit="cp" data-i="'+i+'" aria-label="'+esc(t('cp_pay',{i:i+1}))+'" style="width:118px;flex:0 0 auto">'+
-        '<p class="body-s" style="text-align:right"><b>'+esc(t('cp_short',{s,n}))+'</b><br><span class="muted">'+esc(t('cp_gap',{g:nf(g)}))+'</span></p>'+
+        '<p class="body-s" style="text-align:right"><b>'+esc(t('cp_short',{s,n}))+'</b><br><span class="muted">'+esc(t('cp_gap',{g:nf(g)}))+'</span> '+prov('calc')+'</p>'+
       '</div>'+
-      waterline(rows,p,{small:true})+
-      '<div class="figrow">'+prov('calc')+'</div></div>';
+      waterline(rows,p,{small:true})+'</div>';
   }).join('');
   return header({back:1,title:t('rs_compare')})+
     '<div class="stack"><p class="body-s muted">'+esc(t('cp_note'))+'</p>'+rowsHtml+'</div>';
