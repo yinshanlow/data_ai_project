@@ -124,7 +124,7 @@ input[type=text],input[type=number],input[type=date],select{width:100%;min-heigh
 .editrow .lbl{flex:1;font-size:15px}
 .editrow input{width:104px;text-align:right;min-height:44px}
 .divider{border:none;border-top:1.5px solid var(--ink14);margin:16px 0}
-.badge{display:inline-flex;align-items:center;min-height:24px;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.badge{display:inline-flex;align-items:center;min-height:19px;padding:1px 8px;border-radius:10px;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
 .badge.caution{background:var(--caution);color:var(--ink)}
 .rowico{flex:0 0 auto;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .hbar{position:relative;height:12px;border-radius:6px;background:var(--ink14);overflow:visible;margin:6px 0 2px}
@@ -1440,7 +1440,7 @@ prepare(){
   return header({title:t('tab_prepare')})+
     '<div class="stack">'+rows+
     '<hr class="divider">'+
-    '<button class="btn-quiet" data-act="go" data-to="pv_switch">'+iclab('eye','<span class="badge caution">'+esc(t('pr_pv'))+'</span><br><span class="body-s muted">'+esc(t('pr_pv_note'))+'</span>')+'<span aria-hidden="true">→</span></button>'+
+    '<button class="btn-quiet" style="padding:12px 16px" data-act="go" data-to="pv_switch">'+iclab('eye','<span class="badge caution" style="margin-bottom:3px">'+esc(t('pr_pv'))+'</span><br><span class="body-s muted">'+esc(t('pr_pv_note'))+'</span>')+'<span aria-hidden="true">→</span></button>'+
     '</div>';
 },
 
