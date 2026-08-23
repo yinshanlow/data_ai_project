@@ -110,7 +110,7 @@ input[type=text],input[type=number],input[type=date],select{width:100%;min-heigh
 .opt{display:flex;width:100%;min-height:52px;align-items:center;justify-content:space-between;font-size:17px;border-radius:12px;padding:0 12px}
 .opt.on{background:var(--card);font-weight:600}
 .ob{position:absolute;inset:0;z-index:50;background:var(--paper);display:flex;flex-direction:column;padding:24px 24px calc(24px + env(safe-area-inset-bottom))}
-.ob .obcard{flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.ob .obcard{flex:1;display:flex;flex-direction:column;justify-content:flex-start;gap:14px;padding-top:72px}
 .wordmark{font-family:'Helvetica Neue',Helvetica,Arial,system-ui,sans-serif;font-weight:800;font-size:36px;line-height:1.1;letter-spacing:-.015em;color:var(--ink)}
 .dots{display:flex;gap:8px;justify-content:center;margin-bottom:20px}
 .dots i{width:8px;height:8px;border-radius:50%;background:var(--ink14)}
@@ -1558,7 +1558,7 @@ function renderOverlay(){
       '<div class="obcard" style="align-items:center;text-align:center">'+logoSvg(118)+
       '<span class="wordmark">RuMampu</span>'+
       '<p class="body-s muted" style="margin-top:-6px">'+esc(t('ob_slogan'))+'</p>'+
-      '<p class="display h-m" style="margin-top:26px;max-width:300px">'+esc(t(cards[i]))+'</p></div>'+
+      '<p class="display h-m" style="margin-top:34px;max-width:300px;min-height:130px">'+esc(t(cards[i]))+'</p></div>'+
       '<div class="dots">'+cards.map((_,j)=>'<i class="'+(j===i?'on':'')+'"></i>').join('')+'</div>'+
       '<button class="btn" data-act="ob-next">'+esc(i<2?t('ob_next'):t('ob_start'))+'</button></div>';
     return;
