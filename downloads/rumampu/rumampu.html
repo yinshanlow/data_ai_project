@@ -705,6 +705,107 @@ function t(k,vars){
 function esc(x){return String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function nf(v){return Math.round(v).toLocaleString('en-MY')}
 function rm(v){return 'RM '+nf(v)}
+const HERO=`<svg width="330" height="291" viewBox="0 0 470 415" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="330" height="291" rx="18" fill="#EFEDE0"/>
+<g>
+  <circle cx="46" cy="34" r="13" fill="#28343A"/>
+  <g transform="rotate(-42 46 34)">
+    <rect x="41" y="32.9" width="15" height="2.2" rx="1.1" fill="#FFFFFF"/>
+    <rect x="47" y="28.5" width="1.7" height="4.5" rx="0.8" fill="#4C9F58"/>
+    <rect x="49.5" y="30" width="1.7" height="3" rx="0.8" fill="#F4C64D"/>
+    <rect x="52" y="29" width="1.7" height="4" rx="0.8" fill="#4C9F58"/>
+    <rect x="54.5" y="31" width="1.7" height="2.2" rx="0.8" fill="#D95436"/>
+    <circle cx="41" cy="34" r="4.4" fill="#FFFFFF"/>
+    <path d="M41 32.2 L43.2 34 L43.2 35.9 L38.8 35.9 L38.8 34 Z" fill="#28343A"/>
+  </g>
+  <text x="70" y="43" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="800" font-size="26" fill="#20262A">RuMampu</text>
+</g>
+<rect x="20" y="62" width="430" height="336" rx="16" fill="#F5F3E9"/>
+<ellipse cx="402" cy="112" rx="82" ry="66" fill="#E9E6D4"/>
+<ellipse cx="70" cy="372" rx="72" ry="44" fill="#E9E6D4"/>
+<circle cx="235" cy="205" r="86" stroke="#E4E1CE" stroke-width="2"/>
+<circle cx="235" cy="205" r="62" stroke="#E4E1CE" stroke-width="2"/>
+<ellipse cx="238" cy="374" rx="112" ry="13" fill="#DDD9C8"/>
+<g fill="#D9D5C4">
+  <circle cx="88" cy="112" r="2.2"/><circle cx="98" cy="112" r="2.2"/><circle cx="108" cy="112" r="2.2"/>
+  <circle cx="88" cy="122" r="2.2"/><circle cx="98" cy="122" r="2.2"/><circle cx="108" cy="122" r="2.2"/>
+  <circle cx="88" cy="132" r="2.2"/><circle cx="98" cy="132" r="2.2"/><circle cx="108" cy="132" r="2.2"/>
+  <circle cx="392" cy="348" r="2.2"/><circle cx="402" cy="348" r="2.2"/><circle cx="412" cy="348" r="2.2"/>
+  <circle cx="392" cy="358" r="2.2"/><circle cx="402" cy="358" r="2.2"/><circle cx="412" cy="358" r="2.2"/>
+  <circle cx="392" cy="368" r="2.2"/><circle cx="402" cy="368" r="2.2"/><circle cx="412" cy="368" r="2.2"/>
+</g>
+<path d="M128 84 l4.5 11 11 4.5 -11 4.5 -4.5 11 -4.5 -11 -11 -4.5 11 -4.5 Z" fill="#F0C24B"/>
+<path d="M398 292 l3.4 8 8 3.4 -8 3.4 -3.4 8 -3.4 -8 -8 -3.4 8 -3.4 Z" fill="#F0C24B"/>
+<circle cx="374" cy="120" r="6" fill="#CE8A70"/>
+<circle cx="80" cy="292" r="5" fill="#8FA9AB"/>
+<rect x="32" y="158" width="124" height="74" rx="11" fill="#2F6B4F"/>
+<circle cx="54" cy="178" r="10.5" stroke="#F5F3E9" stroke-width="2.5"/>
+<text x="54" y="182" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="#F5F3E9">RM</text>
+<circle cx="136" cy="178" r="9.5" stroke="#F5F3E9" stroke-width="2" stroke-dasharray="3 3"/>
+<text x="136" y="181" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="7" fill="#F5F3E9">RM</text>
+<rect x="72" y="172" width="42" height="5" rx="2.5" fill="#BFD2C4"/>
+<rect x="72" y="182" width="50" height="5" rx="2.5" fill="#9FBCA8"/>
+<rect x="46" y="208" width="62" height="5" rx="2.5" fill="#9FBCA8"/>
+<g>
+  <rect x="112" y="266" width="46" height="9" rx="4.5" fill="#2A3238"/>
+  <rect x="120" y="250" width="7" height="17" rx="3.5" fill="#4C9F58"/>
+  <rect x="131" y="255" width="7" height="12" rx="3.5" fill="#F4C64D"/>
+  <rect x="142" y="252" width="7" height="15" rx="3.5" fill="#4C9F58"/>
+  <rect x="153" y="258" width="7" height="9" rx="3.5" fill="#D95436"/>
+  <circle cx="98" cy="271" r="24" fill="#2A3238"/>
+  <path d="M98 259 L109 267.5 L104.5 280 L91.5 280 L87 267.5 Z" fill="#F5F3E9"/>
+</g>
+<path d="M150 336 Q168 306 218 300 L252 300 Q302 306 322 336 Q300 352 236 352 Q172 352 150 336 Z" fill="#3A4247"/>
+<path d="M186 232 Q186 202 220 198 L252 198 Q286 202 286 232 L286 290 Q286 306 262 306 L210 306 Q186 306 186 290 Z" fill="#4CA24E"/>
+<polyline points="188,268 202,254 216,268 230,254 244,268 258,254 272,268 284,258" stroke="#F4C64D" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="rotate(-8 210 300)">
+  <rect x="196" y="276" width="28" height="48" rx="7" fill="#2A3238"/>
+  <rect x="201" y="286" width="12" height="4" rx="2" fill="#4C9F58"/>
+  <rect x="201" y="294" width="16" height="4" rx="2" fill="#8C979B"/>
+  <circle cx="207" cy="310" r="5" stroke="#F4C64D" stroke-width="2.5"/>
+</g>
+<circle cx="212" cy="280" r="9" fill="#E8B28A"/>
+<rect x="227" y="188" width="17" height="14" rx="5" fill="#E8B28A"/>
+<circle cx="236" cy="160" r="34" fill="#E9B489"/>
+<circle cx="203" cy="164" r="6.5" fill="#E9B489"/>
+<path d="M204 150 Q208 116 242 117 Q270 120 270 146 L270 152 Q238 138 204 156 Z" fill="#3E7C46"/>
+<ellipse cx="199" cy="148" rx="8" ry="15" transform="rotate(-18 199 148)" fill="#2F6B3F"/>
+<circle cx="264" cy="133" r="4.5" fill="#F4C64D"/>
+<path d="M206 155 Q222 146 240 146 L240 152 Q224 152 208 160 Z" fill="#22282B"/>
+<path d="M222 150 q6 -4 11 -1" stroke="#3B2F27" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+<path d="M246 148 q6 -3 10 0" stroke="#3B2F27" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+<circle cx="229" cy="160" r="2.8" fill="#33302C"/>
+<circle cx="252" cy="158" r="2.8" fill="#33302C"/>
+<path d="M231 174 Q241 182 253 172" stroke="#3B2F27" stroke-width="3" fill="none" stroke-linecap="round"/>
+<circle cx="221" cy="170" r="4.5" fill="#E19A76" opacity="0.7"/>
+<g>
+  <rect x="318" y="138" width="126" height="114" rx="13" fill="#FFFFFF"/>
+  <rect x="332" y="154" width="58" height="7" rx="3.5" fill="#D8D6CC"/>
+  <path d="M414 150 L428 160 L428 172 L400 172 L400 160 Z" fill="#2F6B4F"/>
+  <rect x="410" y="164" width="8" height="8" fill="#F5F3E9"/>
+  <rect x="332" y="182" width="23" height="23" rx="6" fill="#D95436"/>
+  <circle cx="343.5" cy="193.5" r="17" stroke="#F4C64D" stroke-width="4"/>
+  <rect x="362" y="182" width="23" height="23" rx="6" fill="#3D7F84"/>
+  <rect x="392" y="182" width="23" height="23" rx="6" fill="#3D7F84"/>
+  <rect x="332" y="212" width="23" height="23" rx="6" fill="#3D7F84"/>
+  <rect x="362" y="212" width="23" height="23" rx="6" fill="#F4C64D"/>
+  <rect x="392" y="212" width="23" height="23" rx="6" fill="#3D7F84"/>
+</g>
+<path d="M280 238 Q318 214 344 206 L350 220 Q322 228 286 254 Z" fill="#4CA24E"/>
+<circle cx="350" cy="212" r="10" fill="#E8B28A"/>
+<g>
+  <path d="M196 322 L280 322 L268 338 L208 338 Z" fill="#EDEBDF"/>
+  <rect x="176" y="330" width="124" height="58" rx="9" fill="#FFFFFF"/>
+  <path d="M196 344 q30 -10 60 0 q-24 8 -46 2" stroke="#C9C6B8" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <g fill="#2A3238">
+    <rect x="190" y="362" width="3" height="16"/><rect x="196" y="362" width="2" height="16"/>
+    <rect x="201" y="362" width="4" height="16"/><rect x="208" y="362" width="2" height="16"/>
+    <rect x="213" y="362" width="3" height="16"/><rect x="219" y="362" width="2" height="16"/>
+    <rect x="224" y="362" width="4" height="16"/><rect x="231" y="362" width="2" height="16"/>
+  </g>
+  <text x="288" y="377" text-anchor="end" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="17" fill="#2F6B4F">3,720</text>
+</g>
+</svg>`;
 function logoSvg(px){
   return '<svg width="'+px+'" height="'+px+'" viewBox="0 0 100 100" aria-hidden="true" focusable="false">'+
     '<circle cx="50" cy="50" r="50" fill="#28343A"/>'+'<g transform="rotate(-42 50 50)">'+'<rect x="32" y="45.8" width="56" height="8.4" rx="4.2" fill="#FFFFFF"/>'+'<rect x="54" y="29" width="6" height="17" rx="3" fill="#4C9F58"/>'+'<rect x="63" y="35" width="6" height="11" rx="3" fill="#F4C64D"/>'+'<rect x="72" y="31" width="6" height="15" rx="3" fill="#4C9F58"/>'+'<rect x="81" y="38" width="6" height="8" rx="3" fill="#D95436"/>'+'<circle cx="32" cy="50" r="16.5" fill="#FFFFFF"/>'+'<path d="M32 43.5 L40 50 L40 57 L24 57 L24 50 Z" fill="#28343A"/>'+'</g></svg>';
@@ -1555,10 +1656,9 @@ function renderOverlay(){
     const i=S.onboard;
     o.innerHTML='<div class="ob">'+
       '<div style="display:flex;justify-content:space-between"><button class="langbtn" data-act="lang" aria-label="'+esc(t('lang_pick'))+'">'+S.lang.toUpperCase()+' ▾</button><button class="iconbtn" data-act="ob-skip" style="font-family:var(--disp);font-weight:700;font-size:15px;min-width:64px">'+esc(t('ob_skip'))+'</button></div>'+
-      '<div class="obcard" style="align-items:center;text-align:center">'+logoSvg(118)+
-      '<span class="wordmark">RuMampu</span>'+
-      '<p class="body-s muted" style="margin-top:-6px">'+esc(t('ob_slogan'))+'</p>'+
-      '<p class="display h-m" style="margin-top:34px;max-width:300px;min-height:130px">'+esc(t(cards[i]))+'</p></div>'+
+      '<div class="obcard" style="align-items:center;text-align:center;padding-top:6px">'+HERO+
+      '<p class="body-s muted" style="margin-top:2px">'+esc(t('ob_slogan'))+'</p>'+
+      '<p class="display h-m" style="margin-top:14px;max-width:300px;min-height:120px">'+esc(t(cards[i]))+'</p></div>'+
       '<div class="dots">'+cards.map((_,j)=>'<i class="'+(j===i?'on':'')+'"></i>').join('')+'</div>'+
       '<button class="btn" data-act="ob-next">'+esc(i<2?t('ob_next'):t('ob_start'))+'</button></div>';
     return;
