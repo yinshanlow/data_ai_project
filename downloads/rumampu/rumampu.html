@@ -984,15 +984,14 @@ money(){
     const srcLabel=id=>{const x=S.data.sources.find(z=>z.id===id);return x?(x.custom?x.name:t(x.k)):id};
     const inc=[...srcTot.entries()].sort((a,b)=>b[1]-a[1]).map(([id,v])=>({label:srcLabel(id),v}));
     const sect=(title,slices,total)=>
-      '<p class="body-s muted">'+esc(title)+'</p>'+
+      '<p class="body-s muted">'+esc(title)+' '+prov('calc')+'</p>'+
       '<div style="display:flex;gap:16px;align-items:center">'+donut(slices,rm(total))+
       '<div style="flex:1;min-width:0">'+donutLegend(slices)+'</div></div>';
     const spendTotal=spend.reduce((a,x)=>a+x.v,0), incTotal=inc.reduce((a,x)=>a+x.v,0);
     donuts='<div class="card stack-s">'+
       sect(t('hb_spend',{m:monthName(ek%12)}),spend,spendTotal)+
       '<hr class="divider">'+
-      sect(t('hb_income',{m:lastInc?monthName(lastInc.m):''}),inc,incTotal)+
-      '<div class="figrow">'+prov('calc')+'</div></div>';
+      sect(t('hb_income',{m:lastInc?monthName(lastInc.m):''}),inc,incTotal)+'</div>';
   }
   return header({title:t('tab_money')})+
     '<div class="stack"><div class="card"><p class="body-s muted">'+esc(t('net_lbl'))+'</p>'+
