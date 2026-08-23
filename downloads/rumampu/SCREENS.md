@@ -13,6 +13,9 @@ Format: screen → what the user is deciding here → the single primary action.
 | 6 | Money — Income pattern | how much their income actually moves | read; edit nothing (figures only) |
 | 7 | Money — Coverage check | whether the recorded months are the *right* months | answer **Yes / No / Not sure** |
 | 18 | Money — Your record *(journey stage 10, Monitor)* | whether the record is growing and which tests to keep | add entries elsewhere; review kept tests |
+| 19 | Money — Daily expenses | whether the spending record is building | **Add expense** (or Scan a receipt, preview) |
+| 20 | Money — Add expense | how much just left the pocket | **Add expense** (amount, category, date) |
+| 21 | Money — Scan a receipt *(preview: staged AI extraction)* | whether the read values are right | confirm the extracted fields, then **Add** |
 | 8 | Test — The house | which house, and on what financing | **Total monthly cost →** (escape hatch: "I already know my monthly payment") |
 | 9 | Test — Total monthly cost | whether they accept what the house *really* costs monthly | **Run the test →** |
 | 10 | Test — Pre-housing check *(fires only when the weakest month is short before housing)* | whether to fix income/costs before testing any price | **Go to Money** |
@@ -32,6 +35,7 @@ Notes
 
 - **Reaching screen 10:** it renders only when it fires. To demo: Money → Commitments → raise rent to RM 9,000 → open Test. Restore rent and the Test tab returns to the Result.
 - **Preview entry** is the badged row at the foot of Prepare — deliberately not in the tab bar.
+- **Daily expenses feed the test:** categories marked as daily (food, family support) are replaced by recorded actuals for any month with 20 or more logged days (RuMampu's own rule, stated on screen); other months keep the flat estimate. The commitments screen names each month using actuals. The receipt scan is a designed mock behind a Preview badge; real OCR is backend work for a later iteration.
 - **Journey-map additions (23 Aug):** past-month bulk entry on Income (stage 1), largest gap on the shock screen (stage 8), month-by-month strip on Income pattern (stage 4), "Keep this test" on Result feeding the Your-record screen (stage 10), and the keep-recording line on the after-buying comparison (stage 15).
 - The **language switcher** (EN · BM · 中文) is in every header, onboarding included.
 - `audit.mjs` in this folder is the self-audit: `node audit.mjs` (needs Node; DOM checks additionally need the `playwright` package and Chromium — set `NODE_PATH` to a global install if required).
