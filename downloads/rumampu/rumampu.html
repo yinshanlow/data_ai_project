@@ -126,6 +126,10 @@ input[type=text],input[type=number],input[type=date],select{width:100%;min-heigh
 .divider{border:none;border-top:1.5px solid var(--ink14);margin:16px 0}
 .badge{display:inline-flex;align-items:center;min-height:24px;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
 .badge.caution{background:var(--caution);color:var(--ink)}
+.hbar{position:relative;height:12px;border-radius:6px;background:var(--ink14);overflow:visible;margin:6px 0 2px}
+.hbar .fill{position:absolute;left:0;top:0;bottom:0;border-radius:6px 0 0 6px;background:var(--ink)}
+.hbar .over{position:absolute;top:0;bottom:0;background:var(--short);border-radius:0 6px 6px 0}
+.hbar .tick{position:absolute;top:-4px;bottom:-4px;width:2.5px;background:var(--ink)}
 .fromr{display:inline-flex;align-items:center;min-height:20px;padding:1px 8px;border:1.5px solid var(--caution);border-radius:10px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink64);font-weight:600}
 .shimmer{height:130px;border-radius:14px;background:linear-gradient(90deg,var(--card) 25%,#fff 50%,var(--card) 75%);background-size:200% 100%;animation:shm 1.1s linear infinite}
 @keyframes shm{to{background-position:-200% 0}}
@@ -279,7 +283,14 @@ en:{
   ex_merchant:'Shop', ex_total:'Total (RM)', ex_retake:'Retake', ex_fromr:'from receipt', ex_cat:'Category',
   ex_monthly:'Monthly summary',
   ex_full:'fully recorded', ex_used:'used in the test',
-  ex_partial:'{d} days, rest of month unknown'
+  ex_partial:'{d} days, rest of month unknown',
+  ex_limits:'Spending limits',
+  lm_note:'The limits are yours to set. RuMampu only counts.',
+  lm_total:'Whole month', lm_limit:'Limit (RM)',
+  lm_left:'RM {x} left',
+  lm_over:'RM {x} past your limit',
+  lm_none:'no limit set',
+  hb_spend:'Spending · {m}', hb_income:'Income · {m}'
 },
 ms:{
   langname:'Bahasa Melayu', months:['Jan','Feb','Mac','Apr','Mei','Jun','Jul','Ogo','Sep','Okt','Nov','Dis'],
@@ -414,7 +425,14 @@ ms:{
   ex_merchant:'Kedai', ex_total:'Jumlah (RM)', ex_retake:'Ambil semula', ex_fromr:'daripada resit', ex_cat:'Kategori',
   ex_monthly:'Ringkasan bulanan',
   ex_full:'lengkap direkod', ex_used:'digunakan dalam ujian',
-  ex_partial:'{d} hari, hari lain tidak diketahui'
+  ex_partial:'{d} hari, hari lain tidak diketahui',
+  ex_limits:'Had perbelanjaan',
+  lm_note:'Had ini anda yang tetapkan. RuMampu hanya mengira.',
+  lm_total:'Keseluruhan bulan', lm_limit:'Had (RM)',
+  lm_left:'RM {x} lagi',
+  lm_over:'RM {x} melebihi had anda',
+  lm_none:'tiada had ditetapkan',
+  hb_spend:'Perbelanjaan · {m}', hb_income:'Pendapatan · {m}'
 },
 zh:{
   langname:'中文', months:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
@@ -549,7 +567,14 @@ zh:{
   ex_merchant:'商家', ex_total:'总额 (RM)', ex_retake:'重拍', ex_fromr:'来自收据', ex_cat:'类别',
   ex_monthly:'按月汇总',
   ex_full:'记录完整', ex_used:'已用于测试',
-  ex_partial:'记录 {d} 天，其余未知'
+  ex_partial:'记录 {d} 天，其余未知',
+  ex_limits:'消费上限',
+  lm_note:'上限由你自己设定，RuMampu 只负责计数。',
+  lm_total:'整月', lm_limit:'上限 (RM)',
+  lm_left:'还剩 RM {x}',
+  lm_over:'超出上限 RM {x}',
+  lm_none:'未设上限',
+  hb_spend:'开销 · {m}', hb_income:'收入 · {m}'
 }
 };
 
@@ -589,6 +614,7 @@ const MOCK = {
   expenseCats:[
     {id:'meals',k:'xc_meals'},{id:'groc',k:'xc_groc'},{id:'transp',k:'xc_transp'},{id:'family',k:'xc_family'},{id:'other',k:'xc_other'}
   ],
+  expenseLimits:{total:1500, meals:220, groc:300, family:300},
   expenses:[
     {a:28,d:'2026-07-01',c:'meals'},
     {a:7,d:'2026-07-02',c:'transp'},
@@ -780,7 +806,7 @@ function upfrontNeed(){
 }
 
 /* ================= navigation ================= */
-const TAB_OF={home:'home',money:'money',income:'money',workcosts:'money',commit:'money',pattern:'money',coverage:'money',record:'money',expenses:'money',expadd:'money',expscan:'money',expmonths:'money',
+const TAB_OF={home:'home',money:'money',income:'money',workcosts:'money',commit:'money',pattern:'money',coverage:'money',record:'money',expenses:'money',expadd:'money',expscan:'money',expmonths:'money',exlimits:'money',
   house:'test',homecost:'test',precheck:'test',result:'test',range:'test',compare:'test',shock:'test',
   prepare:'prepare',upfront:'prepare',buffer:'prepare',docs:'prepare',pv_switch:'prepare',pv_month:'prepare',pv_compare:'prepare'};
 function go(r){S.stack.push(S.route);S.route=r;S.howOpen=false;S.rgHowOpen=false;render();document.getElementById('screen').scrollTop=0}
@@ -852,6 +878,37 @@ function waterline(rows,cost,opts){
   return '<div class="wl'+(opts.small?' small':'')+'"><div class="wl-plot">'+bars+
     '<span class="wl-line" style="bottom:'+pct(cost)+'%"></span>'+lbl+'</div>'+xs+pv+'</div>';
 }
+function donut(slices){
+  const total=slices.reduce((a,x)=>a+x.v,0)||1;
+  const OP=[1,.72,.5,.34,.2,.12];
+  let acc=0, segs='';
+  slices.forEach((sl,i)=>{
+    const pct=sl.v/total*100;
+    segs+='<circle r="15.9155" cx="21" cy="21" fill="none" stroke="var(--ink)" stroke-opacity="'+(OP[i]||.1)+'" stroke-width="7.5" stroke-dasharray="'+pct+' '+(100-pct)+'" stroke-dashoffset="'+(25-acc)+'"></circle>';
+    acc+=pct;
+  });
+  return '<svg viewBox="0 0 42 42" width="88" height="88" aria-hidden="true">'+segs+'</svg>';
+}
+function donutLegend(slices){
+  const OP=[1,.72,.5,.34,.2,.12];
+  return slices.map((sl,i)=>
+    '<div class="row" style="min-height:22px;gap:6px"><span class="body-s" style="display:inline-flex;gap:6px;align-items:center;min-width:0"><i style="flex:0 0 8px;width:8px;height:8px;border-radius:2px;background:var(--ink);opacity:'+(OP[i]||.1)+'"></i><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(sl.label)+'</span></span><span class="body-s display">'+esc(rm(sl.v))+'</span></div>').join('');
+}
+function catLabel(id){const c=S.data.expenseCats.find(x=>x.id===id);return c?(c.custom?c.name:t(c.k)):id}
+function latestExpMonth(){
+  const keys=[...expByMonth().keys()];
+  if(!keys.length) return null;
+  return Math.max(...keys);
+}
+function expCatTotals(key){
+  const totals=new Map();
+  for(const e of S.data.expenses){
+    const k=(+e.d.slice(0,4))*12+(+e.d.slice(5,7)-1);
+    if(k!==key) continue;
+    totals.set(e.c,(totals.get(e.c)||0)+(+e.a||0));
+  }
+  return totals;
+}
 function covStrip(){
   const sp=recSpan(); if(!sp) return '';
   const rec=new Map(sp.list.map(r=>[r.m,r]));
@@ -911,9 +968,29 @@ money(){
     ['income','money_income'],['workcosts','money_workcosts'],['commit','money_commit'],
     ['expenses','money_expenses'],['pattern','money_pattern'],['coverage','money_coverage'],['record','money_record']
   ].map(([r,k])=>'<button class="btn-quiet" data-act="go" data-to="'+r+'"><span>'+esc(t(k))+'</span><span aria-hidden="true">→</span></button>').join('');
+  const ek=latestExpMonth();
+  let donuts='';
+  if(ek!=null){
+    const spend=[...expCatTotals(ek).entries()].sort((a,b)=>b[1]-a[1]).map(([c,v])=>({label:catLabel(c),v}));
+    const ia=monthsAgg(), lastInc=ia[ia.length-1];
+    const srcTot=new Map();
+    for(const e of S.data.income){
+      const k=(+e.d.slice(0,4))*12+(+e.d.slice(5,7)-1);
+      if(!lastInc||k!==lastInc.y*12+lastInc.m) continue;
+      srcTot.set(e.s,(srcTot.get(e.s)||0)+(+e.a||0));
+    }
+    const srcLabel=id=>{const x=S.data.sources.find(z=>z.id===id);return x?(x.custom?x.name:t(x.k)):id};
+    const inc=[...srcTot.entries()].sort((a,b)=>b[1]-a[1]).map(([id,v])=>({label:srcLabel(id),v}));
+    donuts='<div class="card"><div style="display:flex;gap:14px">'+
+      '<div style="flex:1;min-width:0"><div style="display:flex;justify-content:center">'+donut(spend)+'</div>'+
+      '<p class="body-s muted" style="text-align:center">'+esc(t('hb_spend',{m:monthName(ek%12)}))+'</p>'+donutLegend(spend)+'</div>'+
+      '<div style="flex:1;min-width:0"><div style="display:flex;justify-content:center">'+donut(inc)+'</div>'+
+      '<p class="body-s muted" style="text-align:center">'+esc(t('hb_income',{m:lastInc?monthName(lastInc.m):''}))+'</p>'+donutLegend(inc)+'</div>'+
+      '</div><div class="figrow">'+prov('calc')+'</div></div>';
+  }
   return header({title:t('tab_money')})+
     '<div class="stack"><div class="card"><p class="body-s muted">'+esc(t('net_lbl'))+'</p>'+
-    fig(rm(netAvg),'calc','h-l')+'<p class="body-s muted">'+esc(t('per_month'))+'</p></div>'+rows+'</div>';
+    fig(rm(netAvg),'calc','h-l')+'<p class="body-s muted">'+esc(t('per_month'))+'</p></div>'+donuts+rows+'</div>';
 },
 
 record(){
@@ -1037,6 +1114,7 @@ expenses(){
     '<div class="stack-s">'+list+'</div>'+
     '<button class="btn-line" data-act="excat" aria-expanded="'+(S.exCatOpen?'true':'false')+'">'+esc(t('ex_bycat'))+'</button>'+bycat+
     '<button class="btn-quiet" data-act="go" data-to="expmonths"><span>'+esc(t('ex_monthly'))+'</span><span aria-hidden="true">→</span></button>'+
+    '<button class="btn-quiet" data-act="go" data-to="exlimits"><span>'+esc(t('ex_limits'))+'</span><span aria-hidden="true">→</span></button>'+
     '<p class="body-s muted">'+esc(t('ex_rule'))+'</p></div>';
 },
 
@@ -1080,6 +1158,39 @@ expmonths(){
   return header({back:1,title:t('ex_monthly')})+
     '<div class="stack">'+chart+rows+
     '<p class="body-s muted">'+esc(t('ex_rule'))+'</p></div>';
+},
+
+exlimits(){
+  const ek=latestExpMonth();
+  const totals=ek!=null?expCatTotals(ek):new Map();
+  const monthTotal=[...totals.values()].reduce((a,b)=>a+b,0);
+  const lims=S.data.expenseLimits;
+  const bar=(spend,lim)=>{
+    const scale=Math.max(spend,lim)*1.06;
+    const sp=spend/scale*100, lp=lim/scale*100;
+    const over=spend>lim;
+    return '<div class="hbar">'+
+      '<span class="fill" style="width:'+Math.min(sp,lp)+'%"></span>'+
+      (over?'<span class="over" style="left:'+lp+'%;width:'+(sp-lp)+'%"></span>':'')+
+      '<span class="tick" style="left:'+lp+'%"></span></div>';
+  };
+  const line=(spend,lim)=>{
+    if(!(lim>0)) return '<span class="fromr">'+esc(t('lm_none'))+'</span>';
+    return bar(spend,lim)+'<p class="body-s muted">'+
+      esc(spend>lim?t('lm_over',{x:nf(spend-lim)}):t('lm_left',{x:nf(lim-spend)}))+' '+prov('calc')+'</p>';
+  };
+  const row=(label,spend,id)=>
+    '<div class="card stack-s"><div class="row"><span>'+esc(label)+'</span>'+
+    '<span class="fig">'+fig(rm(spend),'user','body-s')+'</span></div>'+
+    '<div class="editrow"><span class="lbl body-s muted">'+esc(t('lm_limit'))+'<br>'+prov('user')+'</span>'+
+    '<input type="number" inputmode="numeric" min="0" value="'+(+lims[id]||'')+'" data-lm="'+id+'" aria-label="'+esc(label)+' '+esc(t('lm_limit'))+'"></div>'+
+    line(spend,+lims[id]||0)+'</div>';
+  const catRows=S.data.expenseCats.filter(c=>totals.get(c.id)||lims[c.id]).map(c=>
+    row(c.custom?c.name:t(c.k),totals.get(c.id)||0,c.id)).join('');
+  return header({back:1,title:t('ex_limits')})+
+    '<div class="stack"><p class="body-s muted">'+esc(t('lm_note'))+'</p>'+
+    row(t('lm_total')+' · '+(ek!=null?monthName(ek%12):''),monthTotal,'total')+
+    catRows+'</div>';
 },
 
 expadd(){
@@ -1615,6 +1726,10 @@ document.getElementById('phone').addEventListener('input',ev=>{
   if(el.id==='sh-p'){S.shock=Math.min(90,Math.max(0,+el.value||0));softUpdate()}
   const listMap={wc:S.data.workCosts,hc:S.data.homeCosts,uf:S.data.upfront,
     cml:S.data.commitments.living,cmd:S.data.commitments.debts,cms:S.data.commitments.savings,cp:S.data.comparePayments};
+  if(el.dataset.lm){
+    S.data.expenseLimits[el.dataset.lm]=Math.max(0,+el.value||0);
+    softUpdate();
+  }
   if(el.dataset.edit){
     const list=listMap[el.dataset.edit], i=+el.dataset.i;
     if(el.dataset.edit==='cp') list[i]=Math.max(0,+el.value||0);
@@ -1634,13 +1749,14 @@ function softUpdate(){
     let again=null;
     if(id) again=document.getElementById(id);
     else if(de!=null&&di!=null) again=document.querySelector('[data-edit="'+de+'"][data-i="'+di+'"]');
+    else if(el&&el.dataset&&el.dataset.lm) again=document.querySelector('[data-lm="'+el.dataset.lm+'"]');
     if(again){again.focus();try{if(pos!=null)again.setSelectionRange(pos,pos)}catch(e){}}
   },600);
 }
 
 /* audit hook, used by the self-audit script, not by the product UI */
 window.__audit={
-  routes:['home','money','income','workcosts','commit','pattern','coverage','record','expenses','expadd','expscan','expmonths','house','homecost','precheck','result','range','compare','shock','prepare','upfront','buffer','docs','pv_switch','pv_month','pv_compare'],
+  routes:['home','money','income','workcosts','commit','pattern','coverage','record','expenses','expadd','expscan','expmonths','exlimits','house','homecost','precheck','result','range','compare','shock','prepare','upfront','buffer','docs','pv_switch','pv_month','pv_compare'],
   goto(r){S.onboarded=true;S.testRan=true;S.bought=true;S.sheet=null;S.howOpen=false;S.rgHowOpen=false;S.tcOpen=false;S.dcOpen=false;S.scan={stage:'pick'};S.exCatOpen=false;S.route=r;render()},
   setLang(l){S.lang=l;render()},
   ob(){S.onboarded=false;S.onboard=0;render()}
