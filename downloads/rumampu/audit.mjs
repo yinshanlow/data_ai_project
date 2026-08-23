@@ -39,6 +39,12 @@ for (const [lang, pats] of Object.entries(BANNED)) {
   }
   if (!count) ok(`${lang}: 0 banned phrases`);
 }
+// typographic dashes are banned from this file entirely (client request, 23 Aug 2026)
+{
+  const dashes = (src.match(/[\u2013\u2014]/g) || []).length;
+  if (dashes) fail(`typographic dashes (em/en) in file: ${dashes}`);
+  else ok('0 typographic dashes (em/en) in file');
+}
 
 /* ---------- 2. tag balance (all markup appears literally in source) ---------- */
 console.log('\n[2] tag balance');
